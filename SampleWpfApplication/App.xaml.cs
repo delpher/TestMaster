@@ -15,7 +15,7 @@ namespace SampleWpfApplication
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            TestingEndpointServer.Start(_cts.Token);
+            TestingEndpointServer.TestingServer.Start(8080, _cts.Token);
         }
 
         protected override void OnExit(ExitEventArgs e)
