@@ -1,27 +1,20 @@
-﻿using System.Threading;
-using System.Windows;
+﻿using System.Windows;
+using TestAssist.Backend;
 
 namespace SampleWpfApplication
 {
     public partial class App
     {
-        private readonly CancellationTokenSource _cts;
-
-        public App()
-        {
-            _cts = new CancellationTokenSource();
-        }
-        
         protected override void OnStartup(StartupEventArgs e)
         {
+            TestAssistServer.StartServer(8080);
             base.OnStartup(e);
-            TestingEndpointServer.TestingServer.Start(8080, _cts.Token);
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
-            _cts.Cancel();
             base.OnExit(e);
+            TestAssistServer.StopServer();
         }
     }
 }

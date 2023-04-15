@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TestingEndpointServer\TestingEndpointServer.csproj" />
+      <ProjectReference Include="..\TestAssist.Backend\TestAssist.Backend.csproj" />
     </ItemGroup>
 
 </Project>

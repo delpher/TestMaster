@@ -2,9 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWpfApplication", "SampleWpfApplication\SampleWpfApplication.csproj", "{0C865FB3-0C72-4764-B7B3-8F078A43F8CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingEndpointServer", "TestingEndpointServer\TestingEndpointServer.csproj", "{155CDD59-3D50-4B06-ABB7-4E2BA1CFFDFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAssist.Backend", "TestAssist.Backend\TestAssist.Backend.csproj", "{155CDD59-3D50-4B06-ABB7-4E2BA1CFFDFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingEndpointServer.Tests", "TestingEndpointServer.Tests\TestingEndpointServer.Tests.csproj", "{B9AEF6B5-59AD-4ABA-9B83-A42D836619C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAssist.Backend.Tests", "TestAssist.Backend.Tests\TestAssist.Backend.Tests.csproj", "{B9AEF6B5-59AD-4ABA-9B83-A42D836619C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
