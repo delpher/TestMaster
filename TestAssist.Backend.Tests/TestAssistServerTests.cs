@@ -8,12 +8,12 @@ public class TestAssistServerTests : IDisposable
 {
     private readonly HttpClient _client;
     private readonly UriBuilder _request;
-    private readonly TestAssistServer _server;
+    private readonly TestEndpointsServer _server;
 
     public TestAssistServerTests()
     {
         var port = new Random().Next(8080, 8999);
-        _server = new TestAssistServer(port);
+        _server = new TestEndpointsServer(port);
         _server.Start();
         _client = new HttpClient();
         _request = new UriBuilder($"http://localhost:{port}");

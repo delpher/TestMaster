@@ -1,0 +1,81 @@
+﻿#@name Enumerate registered endpoints 
+GET {{testEndpoint}}
+Accept: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+###
+
+#@name Set last name
+POST {{testEndpoint}}/SetLastName
+Content-Type: application/json
+
+"Onashchuk"
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+    
+    client.test("Headers option exists", function() {
+        client.assert(response.body === true, "Call to setup method failed");
+    });
+%}
+
+###
+
+#@name Set first name
+POST {{testEndpoint}}/SetFirstName
+Content-Type: application/json
+
+"Oleksii"
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Headers option exists", function() {
+        client.assert(response.body === true, "Call to setup method failed");
+    });
+%}
+
+###
+
+#@name Set address
+POST {{testEndpoint}}/SetAddress
+Content-Type: application/json
+
+"Not specified"
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Headers option exists", function() {
+        client.assert(response.body === true, "Call to setup method failed");
+    });
+%}
+
+###
+
+#@name Get full name
+GET {{testEndpoint}}/GetFullName
+Accept: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Headers option exists", function() {
+        client.assert(response.body === "Oleksii Onashchuk", "Expected FullName to be Oleksii Onashchuk");
+    });
+%}
+
+###
