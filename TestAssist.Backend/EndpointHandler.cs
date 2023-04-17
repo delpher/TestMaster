@@ -1,11 +1,12 @@
 ﻿using System.Net;
+using TestAssist.Backend.HttpServer;
 
 namespace TestAssist.Backend;
 
 public abstract class EndpointHandler
 {
     private readonly string _endpointPath;
-
+    
     protected EndpointHandler(string endpointPath)
     {
         _endpointPath = endpointPath;

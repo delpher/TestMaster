@@ -1,20 +1,20 @@
 ﻿using System.Collections.Concurrent;
 using System.Net;
+using TestAssist.Backend.HttpServer;
 
 namespace TestAssist.Backend;
 
-public class TestAssistServer
+public class TestAssistServer : HttpListenerServer
 {
+    private readonly int _port;
     private static TestAssistServer _instance;
-    
-    private readonly Thread _serverThread;
+
     private readonly ConcurrentDictionary<string, EndpointHandler> _endpoints;
-    private readonly CancellationTokenSource _cancellationTokenSource;
 
     public static void StartServer(int port)
     {
-        _instance = new TestAssistServer();
-        _instance.Start(port);
+        _instance = new TestAssistServer(port);
+        _instance.Start();
     }
 
     public static void StopServer()
@@ -22,17 +22,16 @@ public class TestAssistServer
         _instance.Stop();
     }
 
-    public TestAssistServer()
+    public TestAssistServer(int port)
     {
-        _cancellationTokenSource = new CancellationTokenSource();
+        _port = port;
         _endpoints = new ConcurrentDictionary<string, EndpointHandler>();
-        _serverThread = new Thread(RunHttpServer);
     }
-
-    public void Start(int port)
+    
+    public void Start()
     {
-        _serverThread.Start(
-            new TestingEndpointServerStartupArguments(port, _endpoints, _cancellationTokenSource.Token));
+        Register("", EnumerateRegisteredEndpoints);
+        StartListenerThread(new TestingAssistServerStartupArguments(_port, _endpoints));
     }
 
     public bool Register(string endpointPath, Func<object> handler)
@@ -45,36 +44,12 @@ public class TestAssistServer
         return _endpoints.TryAdd(endpointPath, new ParametrizedEndpointHandler<TParameters>(endpointPath, handler));
     }
 
-    private static void RunHttpServer(object obj)
+    protected override void HandleRequest(ServerStartupArguments args, HttpListenerContext context)
     {
-        var args = (TestingEndpointServerStartupArguments)obj;
-        var cancellationToken = args.CancellationToken;
-        var server = new HttpListener();
-        server.Prefixes.Add($"http://localhost:{args.PortNumber}/");
-
-        server.Start();
-
-        cancellationToken.Register(() => server.Stop());
-
-        while (!cancellationToken.IsCancellationRequested)
-        {
-            if (!cancellationToken.IsCancellationRequested)
-            {
-                var context = server.GetContext();
-                ThreadPool.QueueUserWorkItem(_ => HandleRequest(args.Endpoints, context));
-            }
-        }
-    }
-
-    private static void HandleRequest(
-        ConcurrentDictionary<string, EndpointHandler> endpoints,
-        HttpListenerContext context)
-    {
+        var endpoints = ((TestingAssistServerStartupArguments)args).Endpoints;
+        
         var endpointPath = context.Request.Url?.AbsolutePath;
-        if (endpointPath == "/")
-            ReturnEndpointsList(endpoints, context);
-        else
-            HandleEndpointRequest(endpoints, endpointPath?.TrimStart('/'), context);
+        HandleEndpointRequest(endpoints, endpointPath?.TrimStart('/'), context);
     }
 
     private static void HandleEndpointRequest(
@@ -99,15 +74,9 @@ public class TestAssistServer
         ResponseHelper.WriteObject(context, new TestingServerError($"Endpoint '{endpointPath}' is not registered."));
     }
 
-    private static void ReturnEndpointsList(ConcurrentDictionary<string, EndpointHandler> endpoints,
-        HttpListenerContext context)
+    private object EnumerateRegisteredEndpoints()
     {
-        context.Response.StatusCode = (int)HttpStatusCode.OK;
-        ResponseHelper.WriteObject(context, endpoints.Keys.ToArray());
-    }
-
-    public void Stop()
-    {
-        _cancellationTokenSource.Cancel();
+        return _endpoints.Keys
+            .Where(endpointPath => endpointPath != "");
     }
 }

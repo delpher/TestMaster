@@ -12,9 +12,9 @@ public class TestAssistServerTests : IDisposable
 
     public TestAssistServerTests()
     {
-        _server = new TestAssistServer();
         var port = new Random().Next(8080, 8999);
-        _server.Start(port);
+        _server = new TestAssistServer(port);
+        _server.Start();
         _client = new HttpClient();
         _request = new UriBuilder($"http://localhost:{port}");
     }
@@ -91,9 +91,8 @@ public class TestAssistServerTests : IDisposable
         echoedParameters.Should().NotBeNull();
         echoedParameters.Should().BeOfType<TestParameters>();
         echoedParameters.TestValue.Should().Be("test value");
-
     }
-
+    
     private async Task<HttpResponseMessage> SendRequestAsync(string path)
     {
         _request.Path = path;
