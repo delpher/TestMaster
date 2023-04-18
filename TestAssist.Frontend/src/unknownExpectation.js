@@ -1,6 +1,6 @@
-﻿import {TestListExpectation} from "./testListExpectation";
+﻿import {TestSequenceStep} from "./testSequenceStep";
 
-export class UnknownExpectation extends TestListExpectation {
+export class UnknownExpectation extends TestSequenceStep {
     constructor(node) {
         super(node);
     }

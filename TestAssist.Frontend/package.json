@@ -17,5 +17,8 @@
     "html-loader": "^4.2.0",
     "style-loader": "^3.3.2",
     "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "chai": "^4.3.7"
   }
 }

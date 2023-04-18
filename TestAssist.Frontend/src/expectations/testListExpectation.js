@@ -1,4 +1,4 @@
-import {TestSequenceStep} from "./testSequenceStep";
+import {TestSequenceStep} from "../testSequenceStep";
 
 export class TestListExpectation extends TestSequenceStep {
 
@@ -11,8 +11,6 @@ export class TestListExpectation extends TestSequenceStep {
     }
 
     handleResult(invocationResult) {
-        if (invocationResult.length !== this._expectedValues.length)
-            throw new Error(`Assert Failed: expected ${this._expectedValues.length} elements but found ${invocationResult.length}`);
-        return true;
+        throw new Error("List assertion is not implemented");
     }
 }

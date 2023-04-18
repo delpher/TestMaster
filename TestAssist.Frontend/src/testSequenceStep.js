@@ -19,7 +19,8 @@ export class TestSequenceStep {
 
     execute(context) {
         try {
-            const result = this.handleResult(context.invoke(this._methodName, this._methodArguments));
+            const invocationResult = context.invoke(this._methodName, this._methodArguments);
+            const result = this.handleResult(invocationResult);
             if (result) this.showSuccess();
             else this.showFailure();
         } catch (e) {
