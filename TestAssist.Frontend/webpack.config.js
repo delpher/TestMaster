@@ -2,12 +2,12 @@ const path = require('path');
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/main.js',
     mode: 'development',
     devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'index.js',
+        filename: 'test-assist.js',
     },
     module: {
         rules: [

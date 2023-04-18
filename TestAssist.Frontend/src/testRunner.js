@@ -2,14 +2,19 @@ import {Test} from "./test";
 
 export class TestRunner {
 
-    static run(context) {
+    _testNode;
+    
+    constructor(testNode) {
+        this._testNode = testNode;
+    }
+    
+    run(context) {
         const test = this._parseTest();
         test.execute(context)
     }
 
-    static _parseTest() {
-        const testNode = document.querySelectorAll('div[tm-role="test"]').item(0);
-        return new Test(testNode);
+    _parseTest() {
+        return new Test(this._testNode);
     }
 }
 

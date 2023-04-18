@@ -2,9 +2,10 @@
   "name": "test-master",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "scripts": {
     "build": "webpack",
+    "autobuild": "webpack watch",
     "test": "cypress open"
   },
   "author": "",

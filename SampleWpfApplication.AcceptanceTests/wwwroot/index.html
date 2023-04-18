@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>SampleWpfApplication Acceptance Tests</title>
+    <script src="scripts/test-assist.js" defer></script>
 </head>
 <body>
-    <h1>Test cases:</h1>
-    <a href="full-name.spec.html">Editing user details</a>
+    <div tm-role="test-cases" tm-endpoint="http://localhost:8080">
+        <h1>Test cases:</h1>
+        <ul>
+            <li><a href="full-name.spec.html">Editing user details</a></li>
+        </ul>
+    </div>
 </body>
 </html>

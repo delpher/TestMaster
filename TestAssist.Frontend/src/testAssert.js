@@ -1,4 +1,5 @@
 import {TestListExpectation} from "./testListExpectation";
+import {UnknownExpectation} from "./unknownExpectation";
 
 export class TestAssert {
     _expectations;
@@ -15,6 +16,7 @@ export class TestAssert {
         switch (node.nodeName.toLocaleLowerCase()) {
             case 'ul':
                 return new TestListExpectation(node);
+            default: return new UnknownExpectation(node);
         }
     }
 

@@ -52,6 +52,7 @@ public class TestEndpointsServer : HttpListenerServer
 
     private static void InvokeEndpoint(EndpointHandler endpointHandler, HttpListenerContext context)
     {
+        context.Response.AddHeader("Access-Control-Allow-Origin", "*");
         endpointHandler.Invoke(context);
     }
 
