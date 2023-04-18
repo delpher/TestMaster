@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAssist.Backend", "TestA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAssist.Backend.Tests", "TestAssist.Backend.Tests\TestAssist.Backend.Tests.csproj", "{B9AEF6B5-59AD-4ABA-9B83-A42D836619C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWpfApplication.AcceptanceTests", "SampleWpfApplication.AcceptanceTests\SampleWpfApplication.AcceptanceTests.csproj", "{B3ACC41C-99BC-4002-912C-37A18ACDBB1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{B9AEF6B5-59AD-4ABA-9B83-A42D836619C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9AEF6B5-59AD-4ABA-9B83-A42D836619C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9AEF6B5-59AD-4ABA-9B83-A42D836619C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3ACC41C-99BC-4002-912C-37A18ACDBB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3ACC41C-99BC-4002-912C-37A18ACDBB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3ACC41C-99BC-4002-912C-37A18ACDBB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3ACC41C-99BC-4002-912C-37A18ACDBB1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

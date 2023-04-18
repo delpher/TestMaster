@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sampleWpfApplication="clr-namespace:SampleWpfApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" d:DataContext="{d:DesignInstance sampleWpfApplication:MainWindowViewModel}">
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance sampleWpfApplication:MainWindowViewModel}">
     <StackPanel Orientation="Vertical">
         <StackPanel><TextBlock>First name: </TextBlock><TextBox Name="FirstNameField" Text="{Binding FirstName}"></TextBox></StackPanel>
         <StackPanel><TextBlock>Last name: </TextBlock><TextBox Name="LastNameField" Text="{Binding LastName}"></TextBox></StackPanel>

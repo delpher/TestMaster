@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\index.html" />
+      <None Include="wwwroot\full-name.spec.html" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\scripts\" />
+    </ItemGroup>
+    
+</Project>

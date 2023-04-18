@@ -1,0 +1,43 @@
+html, body {
+    font-family: "Cascadia Mono", Tahoma, Verdana, Arial, sans-serif;
+}
+
+body {
+    padding: 3rem;
+}
+
+[tm-role='setup'] {
+    border-color: gainsboro;
+    border-width: 0.2rem;
+    border-style: solid;
+    padding: 1rem;
+}
+
+[tm-arg] {
+    color: darkred;
+    font-weight: bold;
+}
+
+[tm-role='assert'] p:first-child {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.failure {
+    background: lightpink;
+}
+
+.success {
+    background: lightgreen;
+}
+
+.error {
+    padding: 0.5rem;
+    background: lightgoldenrodyellow;
+    line-height: 1.5rem;
+}
+
+span.error {
+    font-size: smaller;
+    font-style: italic;
+}

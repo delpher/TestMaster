@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SampleWpfApplication Acceptance Tests</title>
+    <script src="scripts/index.js" defer></script>
+</head>
+<body>
+
+<div tm-role="test">
+    <h1>Filling user details</h1>
+    <div tm-role="setup">
+        <p tm-call="SetFirstName">Given user first name is <span tm-arg="userName">first-name</span></p>
+        <p tm-call="SetLastName">Given user last name is <span tm-arg="userName">last-name</span></p>
+    </div>
+    <div tm-role="act">
+        When editing user details
+    </div>
+    <div tm-role="assert">
+        <p tm-role="expect" tm-call="GetFullName">Expect full name to be:
+            <span tm-role="expectation">first-name last-name</span>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
