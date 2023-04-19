@@ -1,4 +1,4 @@
-import {Test} from "./test";
+import {TestParser} from "./parser/testParser";
 
 export class TestRunner {
 
@@ -14,7 +14,7 @@ export class TestRunner {
     }
 
     _parseTest() {
-        return new Test(this._testNode);
+        return TestParser.build(this._testNode);
     }
 }
 

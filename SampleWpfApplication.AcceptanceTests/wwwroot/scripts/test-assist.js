@@ -9711,7 +9711,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\n[tm-role='setup'] {\r\n    border-color: gainsboro;\r\n    border-width: 0.2rem;\r\n    border-style: solid;\r\n    padding: 1rem;\r\n}\r\n\r\n[tm-arg] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n.failure {\r\n    background: lightpink;\r\n}\r\n\r\n.success {\r\n    background: lightgreen;\r\n}\r\n\r\n.error {\r\n    padding: 0.5rem;\r\n    background: lightgoldenrodyellow;\r\n    line-height: 1.5rem;\r\n}\r\n\r\nspan.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}", "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,gEAAgE;AACpE;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,uBAAuB;IACvB,oBAAoB;IACpB,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,qBAAqB;AACzB;;AAEA;IACI,sBAAsB;AAC1B;;AAEA;IACI,eAAe;IACf,gCAAgC;IAChC,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;AACtB","sourcesContent":["html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\n[tm-role='setup'] {\r\n    border-color: gainsboro;\r\n    border-width: 0.2rem;\r\n    border-style: solid;\r\n    padding: 1rem;\r\n}\r\n\r\n[tm-arg] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n.failure {\r\n    background: lightpink;\r\n}\r\n\r\n.success {\r\n    background: lightgreen;\r\n}\r\n\r\n.error {\r\n    padding: 0.5rem;\r\n    background: lightgoldenrodyellow;\r\n    line-height: 1.5rem;\r\n}\r\n\r\nspan.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\n[tm-role='setup'] {\r\n    border-color: gainsboro;\r\n    border-width: 0.2rem;\r\n    border-style: solid;\r\n    padding: 1rem;\r\n}\r\n\r\n[tm-arg], [tm-assert] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n.failure {\r\n    background: lightpink;\r\n}\r\n\r\n.success:before {\r\n    content: '✅'\r\n}\r\n\r\n.error {\r\n    padding: 0.5rem;\r\n    background: lightgoldenrodyellow;\r\n    line-height: 1.5rem;\r\n}\r\n\r\nspan.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}", "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,gEAAgE;AACpE;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,uBAAuB;IACvB,oBAAoB;IACpB,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,qBAAqB;AACzB;;AAEA;IACI;AACJ;;AAEA;IACI,eAAe;IACf,gCAAgC;IAChC,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;AACtB","sourcesContent":["html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\n[tm-role='setup'] {\r\n    border-color: gainsboro;\r\n    border-width: 0.2rem;\r\n    border-style: solid;\r\n    padding: 1rem;\r\n}\r\n\r\n[tm-arg], [tm-assert] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n.failure {\r\n    background: lightpink;\r\n}\r\n\r\n.success:before {\r\n    content: '✅'\r\n}\r\n\r\n.error {\r\n    padding: 0.5rem;\r\n    background: lightgoldenrodyellow;\r\n    line-height: 1.5rem;\r\n}\r\n\r\nspan.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12368,15 +12368,16 @@ class EndpointContext {
 
     invoke(name, parameters) {
         if (this._endpoints.hasOwnProperty(name))
-            this._endpoints[name](parameters);
+            return this._endpoints[name](parameters);
+        throw new Error(`Endpoint ${name} not found.`);
     }
 
     _initializeEndpoints(endpoints) {
         this._endpoints = {};
         for (const name of endpoints) {
             this._endpoints[name] = () => {
-                console.log('invoke');
-                throw new Error(`Endpoint: ${name}. Invocator is not implemented`);
+                //throw new Error(`Endpoint: ${name}. Invocator is not implemented`);
+                return true;
             }
         }
     }
@@ -12401,18 +12402,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var chai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chai */ "./node_modules/chai/index.mjs");
 ﻿
+
 class Assertion {
-    _assertionMethod;
+    _assertion;
     _expectedValue;
     
-    constructor(node) {
-        this._assertionMethod = node.getAttribute('tm-assert');
-        this._expectedValue = node.innerText;
-        console.log(this._assertionMethod);
+    constructor(assertion, expectedValue) {
+        this._assertion = assertion;
+        this._expectedValue = expectedValue;
     }
     
     execute(value) {
-        chai__WEBPACK_IMPORTED_MODULE_0__.assert[this._assertionMethod](value, this._expectedValue);
+        chai__WEBPACK_IMPORTED_MODULE_0__.assert[this._assertion](value, this._expectedValue);
     }
 }
 
@@ -12430,17 +12431,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TestExpectation": () => (/* binding */ TestExpectation)
 /* harmony export */ });
 /* harmony import */ var _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../testSequenceStep */ "./src/testSequenceStep.js");
-/* harmony import */ var _assertion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assertion */ "./src/expectations/assertion.js");
 ﻿
-
 
 class TestExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep {
     _assertions;
     
-    constructor(node) {
-        super(node);
-        this._assertions = [];
-        node.querySelectorAll('[tm-assert]').forEach(assertionNode => this._assertions.push(new _assertion__WEBPACK_IMPORTED_MODULE_1__.Assertion(assertionNode)));
+    constructor(methodName, methodArguments, assertions, view) {
+        super(methodName, methodArguments, view);
+        this._assertions = assertions;
     }
     
     handleResult(invocationResult) {
@@ -12450,32 +12448,264 @@ class TestExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.Tes
 
 /***/ }),
 
-/***/ "./src/expectations/testListExpectation.js":
-/*!*************************************************!*\
-  !*** ./src/expectations/testListExpectation.js ***!
-  \*************************************************/
+/***/ "./src/expectations/unknownExpectation.js":
+/*!************************************************!*\
+  !*** ./src/expectations/unknownExpectation.js ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "TestListExpectation": () => (/* binding */ TestListExpectation)
+/* harmony export */   "UnknownExpectation": () => (/* binding */ UnknownExpectation)
 /* harmony export */ });
 /* harmony import */ var _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../testSequenceStep */ "./src/testSequenceStep.js");
+﻿
+
+class UnknownExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep {
+    constructor(methodName, methodArguments, view) {
+        super(methodName, methodArguments, view);
+    }
+    execute() {
+        throw new Error('Expectation syntax can not be recognized.');
+    }
+}
+
+/***/ }),
+
+/***/ "./src/parser/assertionParser.js":
+/*!***************************************!*\
+  !*** ./src/parser/assertionParser.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AssertionParser": () => (/* binding */ AssertionParser)
+/* harmony export */ });
+/* harmony import */ var _expectations_assertion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../expectations/assertion */ "./src/expectations/assertion.js");
+﻿
+
+class AssertionParser {
+    static parse(node) {
+        const assertion = node.getAttribute('tm-assert');
+        const expectedValue = node.innerText;
+        return new _expectations_assertion__WEBPACK_IMPORTED_MODULE_0__.Assertion(assertion, expectedValue);
+    }
+}
+
+/***/ }),
+
+/***/ "./src/parser/testAssertParser.js":
+/*!****************************************!*\
+  !*** ./src/parser/testAssertParser.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TestAssertParser": () => (/* binding */ TestAssertParser)
+/* harmony export */ });
+/* harmony import */ var _testSequence__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../testSequence */ "./src/testSequence.js");
+/* harmony import */ var _expectations_unknownExpectation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../expectations/unknownExpectation */ "./src/expectations/unknownExpectation.js");
+/* harmony import */ var _testExpectationParser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./testExpectationParser */ "./src/parser/testExpectationParser.js");
+﻿
 
 
-class TestListExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep {
 
-    _expectedValues;
 
-    constructor(node) {
-        super(node);
-        this._expectedValues = [];
-        node.querySelectorAll('li').forEach(n => this._expectedValues.push(n.innerText));
+class TestAssertParser {
+    static build(node) {
+        const expectations = [];
+        node.querySelectorAll('[tm-role="expect"]').forEach(
+            n => expectations.push(this._createExpectation(n))
+        );
+
+        return new _testSequence__WEBPACK_IMPORTED_MODULE_0__.TestSequence(expectations);
     }
 
-    handleResult(invocationResult) {
-        throw new Error("List assertion is not implemented");
+    static _createExpectation(node) {
+        switch (node.nodeName.toLocaleLowerCase()) {
+            case 'p':
+                return _testExpectationParser__WEBPACK_IMPORTED_MODULE_2__.TestExpectationParser.build(node);
+            default:
+                return new _expectations_unknownExpectation__WEBPACK_IMPORTED_MODULE_1__.UnknownExpectation();
+        }
+    }
+}
+
+/***/ }),
+
+/***/ "./src/parser/testExpectationParser.js":
+/*!*********************************************!*\
+  !*** ./src/parser/testExpectationParser.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TestExpectationParser": () => (/* binding */ TestExpectationParser)
+/* harmony export */ });
+/* harmony import */ var _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./testSequenceStepParser */ "./src/parser/testSequenceStepParser.js");
+/* harmony import */ var _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../expectations/testExpectation */ "./src/expectations/testExpectation.js");
+/* harmony import */ var _assertionParser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assertionParser */ "./src/parser/assertionParser.js");
+﻿
+
+
+
+class TestExpectationParser {
+    static build(node) {
+        const methodName = _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStepParser._parseMethodName(node);
+        const methodArguments = _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStepParser._parseMethodArguments(node);
+        const view = _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStepParser._createView(node);
+        const assertions = this._parseAssertions(node);
+        return new _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_1__.TestExpectation(methodName, methodArguments, assertions, view);
+    }
+
+    static _parseAssertions(node) {
+        const assertions = [];
+
+        node.querySelectorAll('[tm-assert]')
+            .forEach(assertionNode =>
+                assertions.push(this._parseAssertion(assertionNode)));
+
+        return assertions;
+    }
+
+    static _parseAssertion(assertionNode) {
+        return _assertionParser__WEBPACK_IMPORTED_MODULE_2__.AssertionParser.parse(assertionNode);
+    }
+}
+
+/***/ }),
+
+/***/ "./src/parser/testParser.js":
+/*!**********************************!*\
+  !*** ./src/parser/testParser.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TestParser": () => (/* binding */ TestParser)
+/* harmony export */ });
+/* harmony import */ var _test__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../test */ "./src/test.js");
+/* harmony import */ var _testSequenceParser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./testSequenceParser */ "./src/parser/testSequenceParser.js");
+/* harmony import */ var _testAssertParser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./testAssertParser */ "./src/parser/testAssertParser.js");
+﻿
+
+
+
+class TestParser {
+    static build(node) {
+        const setup = this._parseSetup(node);
+        const act = this._parseAct(node);
+        const assert = this._parseAssert(node);
+        return new _test__WEBPACK_IMPORTED_MODULE_0__.Test(setup, act, assert);
+    }
+
+    static _parseAssert(node) {
+        return _testAssertParser__WEBPACK_IMPORTED_MODULE_2__.TestAssertParser.build(node.querySelectorAll('div[tm-role="assert"]').item(0));
+    }
+
+    static _parseAct(node) {
+        return _testSequenceParser__WEBPACK_IMPORTED_MODULE_1__.TestSequenceParser.build(node.querySelectorAll('div[tm-role="act"]').item(0));
+    }
+
+    static _parseSetup(node) {
+        return _testSequenceParser__WEBPACK_IMPORTED_MODULE_1__.TestSequenceParser.build(node.querySelectorAll('div[tm-role="setup"]').item(0));
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/parser/testSequenceParser.js":
+/*!******************************************!*\
+  !*** ./src/parser/testSequenceParser.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TestSequenceParser": () => (/* binding */ TestSequenceParser)
+/* harmony export */ });
+/* harmony import */ var _testSequence__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../testSequence */ "./src/testSequence.js");
+/* harmony import */ var _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./testSequenceStepParser */ "./src/parser/testSequenceStepParser.js");
+﻿
+
+
+
+class TestSequenceParser {
+    static build(node) {
+        const steps = [];
+
+        node
+            .querySelectorAll('p[tm-call]')
+            .forEach(n => steps.push(this._createStep(n)));
+
+        return new _testSequence__WEBPACK_IMPORTED_MODULE_0__.TestSequence(steps);
+    }
+
+    static _createStep(node) {
+        return _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_1__.TestSequenceStepParser.build(node);
+    }
+}
+
+/***/ }),
+
+/***/ "./src/parser/testSequenceStepParser.js":
+/*!**********************************************!*\
+  !*** ./src/parser/testSequenceStepParser.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TestSequenceStepParser": () => (/* binding */ TestSequenceStepParser)
+/* harmony export */ });
+/* harmony import */ var _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../testSequenceStep */ "./src/testSequenceStep.js");
+/* harmony import */ var _testSequenceStepView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../testSequenceStepView */ "./src/testSequenceStepView.js");
+﻿
+
+
+class TestSequenceStepParser {
+    static build(node) {
+        const methodName = this._parseMethodName(node);
+        const methodArguments = this._parseMethodArguments(node);
+        const view = this._createView(node);
+        return new _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep(methodName, methodArguments, view);
+    }
+
+    static _createView(node) {
+        return new _testSequenceStepView__WEBPACK_IMPORTED_MODULE_1__.TestSequenceStepView(node);
+    }
+
+    static _parseMethodName(node) {
+        return node.getAttribute('tm-call');
+    }
+
+    static _parseMethodArguments(node) {
+        const methodArguments = [];
+
+        node.querySelectorAll('span[tm-arg]')
+            .forEach(argNode =>
+                methodArguments.push(this._createArgument(argNode)));
+
+        return methodArguments;
+    }
+
+    static _createArgument(argNode) {
+        return {
+            name: argNode.getAttribute('tm-arg'),
+            value: argNode.innerText
+        };
     }
 }
 
@@ -12492,72 +12722,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Test": () => (/* binding */ Test)
 /* harmony export */ });
-/* harmony import */ var _testAssert__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./testAssert */ "./src/testAssert.js");
-/* harmony import */ var _testSequence__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./testSequence */ "./src/testSequence.js");
-
-
-
 class Test {
     _setup;
     _act;
     _assert;
 
-    constructor(node) {
-        this._setup = new _testSequence__WEBPACK_IMPORTED_MODULE_1__.TestSequence(node.querySelectorAll('div[tm-role="setup"]').item(0));
-        this._act = new _testSequence__WEBPACK_IMPORTED_MODULE_1__.TestSequence(node.querySelectorAll('div[tm-role="act"]').item(0));
-        this._assert = new _testAssert__WEBPACK_IMPORTED_MODULE_0__.TestAssert(node.querySelectorAll('div[tm-role="assert"]').item(0));
+    constructor(setup, act, assert) {
+        this._setup = setup;
+        this._act = act;
+        this._assert = assert;
     }
 
     execute(context) {
         this._setup.execute(context);
         this._act.execute(context);
         this._assert.execute(context);
-    }
-}
-
-/***/ }),
-
-/***/ "./src/testAssert.js":
-/*!***************************!*\
-  !*** ./src/testAssert.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "TestAssert": () => (/* binding */ TestAssert)
-/* harmony export */ });
-/* harmony import */ var _expectations_testListExpectation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./expectations/testListExpectation */ "./src/expectations/testListExpectation.js");
-/* harmony import */ var _unknownExpectation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./unknownExpectation */ "./src/unknownExpectation.js");
-/* harmony import */ var _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./expectations/testExpectation */ "./src/expectations/testExpectation.js");
-
-
-
-
-class TestAssert {
-    _expectations;
-
-    constructor(node) {
-        this._expectations = [];
-
-        node.querySelectorAll('[tm-role="expect"]').forEach(
-            n => this._expectations.push(this.createExpectation(n))
-        )
-    }
-
-    createExpectation(node) {
-        switch (node.nodeName.toLocaleLowerCase()) {
-            case 'ul':
-                return new _expectations_testListExpectation__WEBPACK_IMPORTED_MODULE_0__.TestListExpectation(node);
-            case 'p':
-                return new _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_2__.TestExpectation(node);
-            default: return new _unknownExpectation__WEBPACK_IMPORTED_MODULE_1__.UnknownExpectation(node);
-        }
-    }
-
-    execute(context) {
-        this._expectations.forEach(expectation => expectation.execute(context));
     }
 }
 
@@ -12597,6 +12776,7 @@ class TestExplorerComponent {
         this._backendUrl = this._casesContainer.getAttribute('tm-backend');
         
         this._testDisplay = document.createElement('div');
+        this._testDisplay.setAttribute('id', 'test-display');
         this._testContainer = this._createTestContainer(this._testDisplay);
         this._casesContainer.after(this._testContainer);
         this._loader = document.createElement('div');
@@ -12627,7 +12807,7 @@ class TestExplorerComponent {
     _loadTestCase(url) {
         this._hideTestCases();
         this._showLoader();
-        fetch(url)
+        fetch(url, {cache: "no-store"})
             .then(response => {
                 if (response.ok) return response.text()
                 throw new ContentsLoadError(response)
@@ -12702,7 +12882,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TestRunner": () => (/* binding */ TestRunner)
 /* harmony export */ });
-/* harmony import */ var _test__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test */ "./src/test.js");
+/* harmony import */ var _parser_testParser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./parser/testParser */ "./src/parser/testParser.js");
 
 
 class TestRunner {
@@ -12719,7 +12899,7 @@ class TestRunner {
     }
 
     _parseTest() {
-        return new _test__WEBPACK_IMPORTED_MODULE_0__.Test(this._testNode);
+        return _parser_testParser__WEBPACK_IMPORTED_MODULE_0__.TestParser.build(this._testNode);
     }
 }
 
@@ -12738,28 +12918,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TestSequence": () => (/* binding */ TestSequence)
 /* harmony export */ });
-/* harmony import */ var _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./testSequenceStep */ "./src/testSequenceStep.js");
-
-
 class TestSequence {
 
     _steps;
 
-    constructor(node) {
-        this._steps = [];
-        node.querySelectorAll('p[tm-call]').forEach(n => this.createStep(n));
-    }
-
-    createStep(node) {
-        this._steps.push(this.createStepInstance(node));
+    constructor(steps) {
+        this._steps = steps;
     }
 
     execute(context) {
         this._steps.forEach(step => step.execute(context));
-    }
-
-    createStepInstance(node) {
-        return new _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep(node);
     }
 }
 
@@ -12778,50 +12946,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 class TestSequenceStep {
 
-    _node;
+    _view;
     _methodName;
     _methodArguments;
 
-    constructor(node) {
-
-        this._node = node;
-
-        this._methodName = node.getAttribute('tm-call');
-        this._methodArguments = [];
-        node.querySelectorAll('span[tm-arg]').forEach(n => this._methodArguments.push(
-            {
-                name: n.getAttribute('tm-arg'),
-                value: n.innerText
-            }));
+    constructor(methodName, methodArguments, view) {
+        this._methodName = methodName;
+        this._methodArguments = methodArguments;
+        this._view = view;
     }
 
     execute(context) {
         try {
             const invocationResult = context.invoke(this._methodName, this._methodArguments);
             const result = this.handleResult(invocationResult);
-            if (result) this.showSuccess();
-            else this.showFailure();
+            if (result === true) this._view.showSuccess();
+            else this._view.showFailure();
         } catch (e) {
-            this.showError(e);
+            this._view.showError(e);
         }
     }
-
-    showSuccess() {
-        this._node.classList.add('success');
-    }
-
-    showFailure() {
-        this._node.classList.add('failure');
-    }
-
-    showError(e) {
-        this._node.classList.add('error');
-        const errorDisplay = document.createElement('div');
-        errorDisplay.innerHTML = `<span class="error">${e.toString()}</span>`;
-        errorDisplay.classList.add('error');
-        this._node.before(errorDisplay);
-    }
-
     handleResult(invocationResult) {
         return invocationResult;
     }
@@ -12829,27 +12973,38 @@ class TestSequenceStep {
 
 /***/ }),
 
-/***/ "./src/unknownExpectation.js":
-/*!***********************************!*\
-  !*** ./src/unknownExpectation.js ***!
-  \***********************************/
+/***/ "./src/testSequenceStepView.js":
+/*!*************************************!*\
+  !*** ./src/testSequenceStepView.js ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "UnknownExpectation": () => (/* binding */ UnknownExpectation)
+/* harmony export */   "TestSequenceStepView": () => (/* binding */ TestSequenceStepView)
 /* harmony export */ });
-/* harmony import */ var _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./testSequenceStep */ "./src/testSequenceStep.js");
-﻿
-
-class UnknownExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep {
+﻿class TestSequenceStepView {
+    _node;
+    
     constructor(node) {
-        super(node);
+        this._node = node;
     }
-
-    execute(context) {
-        console.error('Expectation syntax can not be recognized.', this._node);
+    
+    showSuccess() {
+        this._node.classList.add('success');
+    }
+    
+    showFailure() {
+        this._node.classList.add('failure');
+    }
+    
+    showError(error) {
+        this._node.classList.add('error');
+        const errorDisplay = document.createElement('div');
+        errorDisplay.innerHTML = `<span class="error">${error.toString()}</span>`;
+        errorDisplay.classList.add('error');
+        this._node.before(errorDisplay);
     }
 }
 

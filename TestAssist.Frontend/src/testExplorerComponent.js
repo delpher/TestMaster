@@ -19,6 +19,7 @@ export class TestExplorerComponent {
         this._backendUrl = this._casesContainer.getAttribute('tm-backend');
         
         this._testDisplay = document.createElement('div');
+        this._testDisplay.setAttribute('id', 'test-display');
         this._testContainer = this._createTestContainer(this._testDisplay);
         this._casesContainer.after(this._testContainer);
         this._loader = document.createElement('div');
@@ -49,7 +50,7 @@ export class TestExplorerComponent {
     _loadTestCase(url) {
         this._hideTestCases();
         this._showLoader();
-        fetch(url)
+        fetch(url, {cache: "no-store"})
             .then(response => {
                 if (response.ok) return response.text()
                 throw new ContentsLoadError(response)

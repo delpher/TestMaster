@@ -1,15 +1,15 @@
 ﻿import {assert} from "chai";
+
 export class Assertion {
-    _assertionMethod;
+    _assertion;
     _expectedValue;
     
-    constructor(node) {
-        this._assertionMethod = node.getAttribute('tm-assert');
-        this._expectedValue = node.innerText;
-        console.log(this._assertionMethod);
+    constructor(assertion, expectedValue) {
+        this._assertion = assertion;
+        this._expectedValue = expectedValue;
     }
     
     execute(value) {
-        assert[this._assertionMethod](value, this._expectedValue);
+        assert[this._assertion](value, this._expectedValue);
     }
 }

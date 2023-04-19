@@ -13,7 +13,7 @@ body {
     padding: 1rem;
 }
 
-[tm-arg] {
+[tm-arg], [tm-assert] {
     color: darkred;
     font-weight: bold;
 }
@@ -27,8 +27,8 @@ body {
     background: lightpink;
 }
 
-.success {
-    background: lightgreen;
+.success:before {
+    content: '✅'
 }
 
 .error {

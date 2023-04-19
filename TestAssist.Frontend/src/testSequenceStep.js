@@ -1,49 +1,25 @@
 export class TestSequenceStep {
 
-    _node;
+    _view;
     _methodName;
     _methodArguments;
 
-    constructor(node) {
-
-        this._node = node;
-
-        this._methodName = node.getAttribute('tm-call');
-        this._methodArguments = [];
-        node.querySelectorAll('span[tm-arg]').forEach(n => this._methodArguments.push(
-            {
-                name: n.getAttribute('tm-arg'),
-                value: n.innerText
-            }));
+    constructor(methodName, methodArguments, view) {
+        this._methodName = methodName;
+        this._methodArguments = methodArguments;
+        this._view = view;
     }
 
     execute(context) {
         try {
             const invocationResult = context.invoke(this._methodName, this._methodArguments);
             const result = this.handleResult(invocationResult);
-            if (result) this.showSuccess();
-            else this.showFailure();
+            if (result === true) this._view.showSuccess();
+            else this._view.showFailure();
         } catch (e) {
-            this.showError(e);
+            this._view.showError(e);
         }
     }
-
-    showSuccess() {
-        this._node.classList.add('success');
-    }
-
-    showFailure() {
-        this._node.classList.add('failure');
-    }
-
-    showError(e) {
-        this._node.classList.add('error');
-        const errorDisplay = document.createElement('div');
-        errorDisplay.innerHTML = `<span class="error">${e.toString()}</span>`;
-        errorDisplay.classList.add('error');
-        this._node.before(errorDisplay);
-    }
-
     handleResult(invocationResult) {
         return invocationResult;
     }

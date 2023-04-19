@@ -28,15 +28,16 @@ export class EndpointContext {
 
     invoke(name, parameters) {
         if (this._endpoints.hasOwnProperty(name))
-            this._endpoints[name](parameters);
+            return this._endpoints[name](parameters);
+        throw new Error(`Endpoint ${name} not found.`);
     }
 
     _initializeEndpoints(endpoints) {
         this._endpoints = {};
         for (const name of endpoints) {
             this._endpoints[name] = () => {
-                console.log('invoke');
-                throw new Error(`Endpoint: ${name}. Invocator is not implemented`);
+                //throw new Error(`Endpoint: ${name}. Invocator is not implemented`);
+                return true;
             }
         }
     }

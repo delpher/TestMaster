@@ -1,13 +1,11 @@
 ﻿import {TestSequenceStep} from "../testSequenceStep";
-import {Assertion} from "./assertion";
 
 export class TestExpectation extends TestSequenceStep {
     _assertions;
     
-    constructor(node) {
-        super(node);
-        this._assertions = [];
-        node.querySelectorAll('[tm-assert]').forEach(assertionNode => this._assertions.push(new Assertion(assertionNode)));
+    constructor(methodName, methodArguments, assertions, view) {
+        super(methodName, methodArguments, view);
+        this._assertions = assertions;
     }
     
     handleResult(invocationResult) {
