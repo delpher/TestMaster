@@ -36,8 +36,6 @@ public class MainWindowViewModel : INotifyPropertyChanged
         private set => SetField(ref _fullName, value);
     }
 
-    public object Content { get; } = new Model1();
-
     private void UpdateFullName()
     {
         FullName = $"{FirstName} {LastName}";

@@ -15,13 +15,13 @@ public static class TestAssistServer
         _instance.Stop();
     }
 
-    public static bool Register(string endpointPath, Func<object> handler)
+    public static void Register(string endpointPath, Func<object> handler)
     {
-        return _instance.Register(endpointPath, handler);
+        _instance.Register(endpointPath, handler);
     }
 
-    public static bool Register<TParameters>(string endpointPath, Func<TParameters, object> handler)
+    public static void Register<TParameters>(string endpointPath, Func<TParameters, object> handler)
     {
-        return _instance.Register(endpointPath, handler);
+        _instance.Register(endpointPath, handler);
     }
 }

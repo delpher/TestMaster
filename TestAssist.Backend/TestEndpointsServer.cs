@@ -15,7 +15,7 @@ public class TestEndpointsServer : HttpListenerServer
         _port = port;
         _endpoints = new ConcurrentDictionary<string, EndpointHandler>();
     }
-    
+
     public void Start()
     {
         Register("", EnumerateRegisteredEndpoints);
@@ -34,20 +34,9 @@ public class TestEndpointsServer : HttpListenerServer
 
     protected override void HandleRequest(ServerStartupArguments args, HttpListenerContext context)
     {
-        if (context.Request.HttpMethod == "OPTIONS")
-            HandleOptionsRequest(context);
-        else
-        {
-            var endpoints = ((TestingAssistServerStartupArguments)args).Endpoints;
-            var endpointPath = context.Request.Url?.AbsolutePath;
-            HandleEndpointRequest(endpoints, endpointPath?.TrimStart('/'), context);
-        }
-    }
-
-    private void HandleOptionsRequest(HttpListenerContext context)
-    {
-        AppendCorsHeaders(context);
-        context.Response.Close();
+        var endpoints = ((TestingAssistServerStartupArguments)args).Endpoints;
+        var endpointPath = context.Request.Url?.AbsolutePath;
+        HandleEndpointRequest(endpoints, endpointPath?.TrimStart('/'), context);
     }
 
     private static void HandleEndpointRequest(
@@ -62,16 +51,7 @@ public class TestEndpointsServer : HttpListenerServer
 
     private static void InvokeEndpoint(EndpointHandler endpointHandler, HttpListenerContext context)
     {
-        AppendCorsHeaders(context);
         endpointHandler.Invoke(context);
-    }
-
-    private static void AppendCorsHeaders(HttpListenerContext context)
-    {
-        context.Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With");
-        context.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST");
-        context.Response.AddHeader("Access-Control-Max-Age", "1728000");
-        context.Response.AppendHeader("Access-Control-Allow-Origin", "*");
     }
 
     private static void RespondNotFound(string endpointPath, HttpListenerContext context)

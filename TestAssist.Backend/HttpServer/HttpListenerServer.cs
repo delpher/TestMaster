@@ -35,6 +35,7 @@ public abstract class HttpListenerServer
             if (!cancellationToken.IsCancellationRequested)
             {
                 var context = server.GetContext();
+                CorsSupport.AllowCors(context);
                 ThreadPool.QueueUserWorkItem(_ => HandleRequest(args, context));
             }
         }

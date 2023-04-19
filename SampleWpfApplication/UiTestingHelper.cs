@@ -1,46 +1,46 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace SampleWpfApplication;
 
 public static class UiTestingHelper
 {
-    public static bool SetTextBoxValue(this FrameworkElement view, string elementName, string value)
+    public static bool SetValue(this TextBox textBox, string value)
     {
         try
         {
-            view.Dispatcher.VerifyAccess();
-            return SetTextBoxValueUnsafe(elementName, value, view);
+            textBox.Dispatcher.VerifyAccess();
+            return SetTextBoxValueUnsafe(textBox, value);
         }
         catch
         {
-            return view.Dispatcher.Invoke(() => SetTextBoxValueUnsafe(elementName, value, view));
+            return textBox.Dispatcher.Invoke(() => SetTextBoxValueUnsafe(textBox, value));
         }
     }
 
-    private static bool SetTextBoxValueUnsafe(string elementName, string value, FrameworkElement view)
+    private static bool SetTextBoxValueUnsafe(TextBox textBox, string value)
     {
-        var field = (TextBox)view.FindName(elementName);
-        field!.Text = value;
-        field!.RaiseEvent(new RoutedEventArgs(UIElement.LostFocusEvent));
+        textBox!.Text = value;
+        textBox!.RaiseEvent(new RoutedEventArgs(UIElement.LostFocusEvent));
         return true;
     }
 
-    public static string GetTextBlockValue(this FrameworkElement view, string elementName)
+    public static string GetText(this TextBlock textBlock)
     {
         try
         {
-            view.Dispatcher.VerifyAccess();
-            return GetTextBlockValueUnsafe(view, elementName);
+            textBlock.Dispatcher.VerifyAccess();
+            return GetTextBlockTextUnsafe(textBlock);
         }
         catch
         {
-            return view.Dispatcher.Invoke(() => GetTextBlockValueUnsafe(view, elementName));
+            return textBlock.Dispatcher.Invoke(() => GetTextBlockTextUnsafe(textBlock));
         }
     }
 
-    private static string GetTextBlockValueUnsafe(FrameworkElement view, string elementName)
+    private static string GetTextBlockTextUnsafe(TextBlock textBlock)
     {
-        return ((TextBlock)view.FindName(elementName))!.Text;
+        return textBlock!.Text;
     }
 }

@@ -23,16 +23,16 @@ public partial class MainWindow
 
     private object SetFirstName(string value)
     {
-        return this.SetTextBoxValue("FirstNameField", value);
+        return FirstNameField.SetValue(value);
     }
     
     private object SetLastName(string value)
     {
-        return this.SetTextBoxValue("LastNameField", value);
+        return LastNameField.SetValue(value);
     }
 
     private string GetFullName()
     {
-        return this.GetTextBlockValue("FullNameDisplay");
+        return FullNameDisplay.GetText();
     }
 }

@@ -35,7 +35,7 @@ public class TestAssistServerTests : IDisposable
         
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         (await response.Content.ReadFromJsonAsync<TestingServerError>())
-            .Message.Should().Be($"Endpoint 'not-registered/endpoint-path' is not registered.");
+            .Message.Should().Be("Endpoint 'not-registered/endpoint-path' is not registered.");
     }
 
     [Fact]
@@ -97,7 +97,8 @@ public class TestAssistServerTests : IDisposable
     {
         _request.Path = path;
         var responseMessage = await _client.GetAsync(_request.Uri);
-        VerifyContentType(responseMessage, "application/json");
+        VerifyCorsPolicy(responseMessage);
+        await VerifyContentType(responseMessage, "application/json");
         return responseMessage;
     }
 
@@ -105,13 +106,27 @@ public class TestAssistServerTests : IDisposable
     {
         _request.Path = path;
         var responseMessage = await _client.PostAsync(_request.Uri, new StringContent(System.Text.Json.JsonSerializer.Serialize(parameters)));
-        VerifyContentType(responseMessage, "application/json");
+        VerifyCorsPolicy(responseMessage);
+        await VerifyContentType(responseMessage, "application/json");
         return responseMessage;
     }
 
-    private static void VerifyContentType(HttpResponseMessage responseMessage, string contentType)
+    private static void VerifyCorsPolicy(HttpResponseMessage responseMessage)
     {
-        responseMessage.Content.Headers.ContentType?.MediaType.Should().Be(contentType);
+        responseMessage.Headers.GetValues("Access-Control-Allow-Headers")
+            .Should().Contain("Content-Type, Accept, X-Requested-With");
+
+        responseMessage.Headers.GetValues("Access-Control-Allow-Methods")
+            .Should().Contain("GET, POST");
+
+        responseMessage.Headers.GetValues("Access-Control-Allow-Origin")
+            .Should().Contain("*");
+    }
+
+    private static async Task VerifyContentType(HttpResponseMessage responseMessage, string contentType)
+    {
+        var content = await responseMessage.Content.ReadAsStringAsync();
+        responseMessage.Content.Headers.ContentType?.MediaType.Should().Be(contentType, $"Expected {content} to be of {contentType}");
     }
     
     private class TestParameters
