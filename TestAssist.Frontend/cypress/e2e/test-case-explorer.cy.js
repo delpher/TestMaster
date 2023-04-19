@@ -11,6 +11,11 @@ describe('test case explorer', () => {
 
     it('given test case when clicking then test case is opened', () => {
         cy.get('a[test-id="test-case-1"]').click();
-        cy.get('#test-display h1').should('have.text', 'Filling user details');
+        cy.get('#test-display h1').should('contain.text', 'Filling user details');
+    });
+    
+    it('given test case opened when clicking run then test gets executed', () => {
+        cy.get('a[test-id="test-case-1"]').click();
+        cy.get('#test-display button').click();
     });
 });

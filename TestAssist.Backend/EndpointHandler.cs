@@ -17,7 +17,8 @@ public abstract class EndpointHandler
         try
         {
             context.Response.StatusCode = (int)HttpStatusCode.OK;
-            ResponseHelper.WriteObject(context, InvokeCallback(context));
+            var result = InvokeCallback(context);
+            ResponseHelper.WriteObject(context, result);
         }
         catch (Exception exception)
         {

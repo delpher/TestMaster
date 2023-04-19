@@ -36,7 +36,13 @@ public abstract class HttpListenerServer
             {
                 var context = server.GetContext();
                 CorsSupport.AllowCors(context);
-                ThreadPool.QueueUserWorkItem(_ => HandleRequest(args, context));
+                if (context.Request.HttpMethod == "OPTIONS")
+                {
+                    Thread.Sleep(2000);
+                    context.Response.StatusCode = (int)HttpStatusCode.OK;
+                    context.Response.Close();
+                } else
+                    ThreadPool.QueueUserWorkItem(_ => HandleRequest(args, context));
             }
         }
     }
