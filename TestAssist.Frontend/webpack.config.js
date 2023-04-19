@@ -7,7 +7,7 @@ module.exports = {
     devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'test-assist.js',
+        filename: 'test-master.js',
     },
     module: {
         rules: [
