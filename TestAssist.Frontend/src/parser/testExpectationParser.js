@@ -1,14 +1,14 @@
 ﻿import {TestSequenceStepParser} from "./testSequenceStepParser";
 import {TestExpectation} from "../expectations/testExpectation";
 import {AssertionParser} from "./assertionParser";
+import {TestEndpointInvocatorParser} from "./testEndpointInvocatorParser";
 
 export class TestExpectationParser {
     static build(node) {
-        const methodName = TestSequenceStepParser._parseMethodName(node);
-        const methodArguments = TestSequenceStepParser._parseMethodArguments(node);
+        const endpointInvocator = TestEndpointInvocatorParser.parse(node);
         const view = TestSequenceStepParser._createView(node);
         const assertions = this._parseAssertions(node);
-        return new TestExpectation(methodName, methodArguments, assertions, view);
+        return new TestExpectation(endpointInvocator, assertions, view);
     }
 
     static _parseAssertions(node) {

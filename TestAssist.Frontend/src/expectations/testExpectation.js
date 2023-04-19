@@ -3,8 +3,8 @@
 export class TestExpectation extends TestSequenceStep {
     _assertions;
     
-    constructor(methodName, methodArguments, assertions, view) {
-        super(methodName, methodArguments, view);
+    constructor(endpointInvocator, assertions, view) {
+        super(endpointInvocator, view);
         this._assertions = assertions;
     }
     

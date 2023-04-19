@@ -19,5 +19,6 @@
         errorDisplay.innerHTML = `<span class="error">${error.toString()}</span>`;
         errorDisplay.classList.add('error');
         this._node.before(errorDisplay);
+        console.error(error);
     }
 }

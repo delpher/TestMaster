@@ -10,13 +10,4 @@
     <p tm-role="expect" tm-call="GetFullName">
         Expect full name to be: <span tm-assert="equal">first-name last-name</span>
     </p>
-    <!--<ul tm-role="expect" tm-call="GetFullName">
-        <li>value 1</li>
-        <li>value 2</li>
-    </ul>-->
-</div>
-<div tm-role="endpoints">
-    <tm-endpoint name="SetFirstName" method="POST" arguments="userName: {{userName}}"></tm-endpoint>
-    <tm-endpoint name="SetLastName" method="POST" arguments="userName: {{userName}}"></tm-endpoint>
-    <tm-endpoint name="GetFullName" method="GET"></tm-endpoint>
 </div>

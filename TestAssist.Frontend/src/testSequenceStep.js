@@ -1,18 +1,16 @@
 export class TestSequenceStep {
 
     _view;
-    _methodName;
-    _methodArguments;
+    _endpointInvocator;
 
-    constructor(methodName, methodArguments, view) {
-        this._methodName = methodName;
-        this._methodArguments = methodArguments;
+    constructor(endpointInvocator, view) {
+        this._endpointInvocator = endpointInvocator;
         this._view = view;
     }
 
     execute(context) {
         try {
-            const invocationResult = context.invoke(this._methodName, this._methodArguments);
+            const invocationResult = this._endpointInvocator.invoke(context);
             const result = this.handleResult(invocationResult);
             if (result === true) this._view.showSuccess();
             else this._view.showFailure();

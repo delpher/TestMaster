@@ -12436,8 +12436,8 @@ __webpack_require__.r(__webpack_exports__);
 class TestExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep {
     _assertions;
     
-    constructor(methodName, methodArguments, assertions, view) {
-        super(methodName, methodArguments, view);
+    constructor(endpointInvocator, assertions, view) {
+        super(endpointInvocator, view);
         this._assertions = assertions;
     }
     
@@ -12538,6 +12538,54 @@ class TestAssertParser {
 
 /***/ }),
 
+/***/ "./src/parser/testEndpointInvocatorParser.js":
+/*!***************************************************!*\
+  !*** ./src/parser/testEndpointInvocatorParser.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TestEndpointInvocatorParser": () => (/* binding */ TestEndpointInvocatorParser)
+/* harmony export */ });
+/* harmony import */ var _testEndpointInvocator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../testEndpointInvocator */ "./src/testEndpointInvocator.js");
+﻿
+
+class TestEndpointInvocatorParser {
+    static parse(node) {
+        const endpointName = this._parseEndpointName(node);
+        const endpointArguments = this._parseEndpointArguments(node);
+        
+        return new _testEndpointInvocator__WEBPACK_IMPORTED_MODULE_0__.TestEndpointInvocator(endpointName, endpointArguments);
+    }
+    
+    static _parseEndpointName(node) {
+        return node.getAttribute('tm-call');
+    }
+
+    static _parseEndpointArguments(node) {
+        const methodArguments = [];
+
+        node.querySelectorAll('span[tm-arg]')
+            .forEach(argNode =>
+                methodArguments.push(this._createArgument(argNode)));
+
+        return methodArguments;
+    }
+
+    static _createArgument(argNode) {
+        return {
+            name: argNode.getAttribute('tm-arg'),
+            value: argNode.innerText
+        };
+    }
+
+
+}
+
+/***/ }),
+
 /***/ "./src/parser/testExpectationParser.js":
 /*!*********************************************!*\
   !*** ./src/parser/testExpectationParser.js ***!
@@ -12552,17 +12600,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./testSequenceStepParser */ "./src/parser/testSequenceStepParser.js");
 /* harmony import */ var _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../expectations/testExpectation */ "./src/expectations/testExpectation.js");
 /* harmony import */ var _assertionParser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assertionParser */ "./src/parser/assertionParser.js");
+/* harmony import */ var _testEndpointInvocatorParser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./testEndpointInvocatorParser */ "./src/parser/testEndpointInvocatorParser.js");
 ﻿
+
 
 
 
 class TestExpectationParser {
     static build(node) {
-        const methodName = _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStepParser._parseMethodName(node);
-        const methodArguments = _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStepParser._parseMethodArguments(node);
+        const endpointInvocator = _testEndpointInvocatorParser__WEBPACK_IMPORTED_MODULE_3__.TestEndpointInvocatorParser.parse(node);
         const view = _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStepParser._createView(node);
         const assertions = this._parseAssertions(node);
-        return new _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_1__.TestExpectation(methodName, methodArguments, assertions, view);
+        return new _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_1__.TestExpectation(endpointInvocator, assertions, view);
     }
 
     static _parseAssertions(node) {
@@ -12672,40 +12721,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../testSequenceStep */ "./src/testSequenceStep.js");
 /* harmony import */ var _testSequenceStepView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../testSequenceStepView */ "./src/testSequenceStepView.js");
+/* harmony import */ var _testEndpointInvocatorParser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./testEndpointInvocatorParser */ "./src/parser/testEndpointInvocatorParser.js");
 ﻿
+
 
 
 class TestSequenceStepParser {
     static build(node) {
-        const methodName = this._parseMethodName(node);
-        const methodArguments = this._parseMethodArguments(node);
+        const endpointInvocator = _testEndpointInvocatorParser__WEBPACK_IMPORTED_MODULE_2__.TestEndpointInvocatorParser.parse(node);
         const view = this._createView(node);
-        return new _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep(methodName, methodArguments, view);
+        return new _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep(endpointInvocator, view);
     }
 
     static _createView(node) {
         return new _testSequenceStepView__WEBPACK_IMPORTED_MODULE_1__.TestSequenceStepView(node);
-    }
-
-    static _parseMethodName(node) {
-        return node.getAttribute('tm-call');
-    }
-
-    static _parseMethodArguments(node) {
-        const methodArguments = [];
-
-        node.querySelectorAll('span[tm-arg]')
-            .forEach(argNode =>
-                methodArguments.push(this._createArgument(argNode)));
-
-        return methodArguments;
-    }
-
-    static _createArgument(argNode) {
-        return {
-            name: argNode.getAttribute('tm-arg'),
-            value: argNode.innerText
-        };
     }
 }
 
@@ -12737,6 +12766,30 @@ class Test {
         this._setup.execute(context);
         this._act.execute(context);
         this._assert.execute(context);
+    }
+}
+
+/***/ }),
+
+/***/ "./src/testEndpointInvocator.js":
+/*!**************************************!*\
+  !*** ./src/testEndpointInvocator.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TestEndpointInvocator": () => (/* binding */ TestEndpointInvocator)
+/* harmony export */ });
+﻿class TestEndpointInvocator {
+    constructor(endpointName, endpointArguments) {
+        this._endpointName = endpointName;
+        this._endpointArguments = endpointArguments;
+    }
+    
+    invoke(context) {
+        return context.invoke(this._endpointName, this._endpointArguments);
     }
 }
 
@@ -12947,18 +13000,16 @@ __webpack_require__.r(__webpack_exports__);
 class TestSequenceStep {
 
     _view;
-    _methodName;
-    _methodArguments;
+    _endpointInvocator;
 
-    constructor(methodName, methodArguments, view) {
-        this._methodName = methodName;
-        this._methodArguments = methodArguments;
+    constructor(endpointInvocator, view) {
+        this._endpointInvocator = endpointInvocator;
         this._view = view;
     }
 
     execute(context) {
         try {
-            const invocationResult = context.invoke(this._methodName, this._methodArguments);
+            const invocationResult = this._endpointInvocator.invoke(context);
             const result = this.handleResult(invocationResult);
             if (result === true) this._view.showSuccess();
             else this._view.showFailure();
@@ -13005,6 +13056,7 @@ __webpack_require__.r(__webpack_exports__);
         errorDisplay.innerHTML = `<span class="error">${error.toString()}</span>`;
         errorDisplay.classList.add('error');
         this._node.before(errorDisplay);
+        console.error(error);
     }
 }
 
