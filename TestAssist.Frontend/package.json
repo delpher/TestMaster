@@ -19,6 +19,7 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "chai": "^4.3.7"
+    "chai": "^4.3.7",
+    "mustache": "^4.2.0"
   }
 }

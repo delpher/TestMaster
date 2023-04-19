@@ -8,9 +8,9 @@ export class TestRunner {
         this._testNode = testNode;
     }
     
-    run(context) {
+    async run(context) {
         const test = this._parseTest();
-        test.execute(context)
+        await test.execute(context)
     }
 
     _parseTest() {

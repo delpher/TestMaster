@@ -6,6 +6,10 @@ body {
     padding: 3rem;
 }
 
+[tm-role='endpoints'] {
+    display: none;
+}
+
 [tm-role='setup'] {
     border-color: gainsboro;
     border-width: 0.2rem;
@@ -13,8 +17,31 @@ body {
     padding: 1rem;
 }
 
-[tm-arg], [tm-assert] {
+[tm-role="test-name"] button {
+    background: none;
+    border: solid 2px silver;
+    color: black;
+    margin-left: 1rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    font-size: xx-large;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+[tm-role="test-name"] button:hover {
+    background: darkgreen;
+    border: solid 2px silver;
+    color: white;
+}
+
+[tm-arg] {
     color: darkred;
+    font-weight: bold;
+}
+
+[tm-role='expected'] {
+    color: darkgreen;
     font-weight: bold;
 }
 
@@ -23,8 +50,12 @@ body {
     font-size: larger;
 }
 
-.failure {
-    background: lightpink;
+.running:before {
+    content: '⌛';
+}
+
+.failure:before {
+    content: '❌'
 }
 
 .success:before {

@@ -1,5 +1,5 @@
-﻿import {EndpointContext} from "./endpointContext";
-import {TestRunner} from "./testRunner";
+﻿import {TestRunner} from "./testRunner";
+import {EndpointsParser} from "./backend/endpointsParser";
 
 class ContentsLoadError extends Error {
     constructor(response) {
@@ -12,12 +12,13 @@ export class TestExplorerComponent {
     _testContainer;
     _testDisplay;
     _loader;
-    _backendUrl;
+    _endpointsContext;
 
     init() {
-        this._casesContainer = document.querySelectorAll("[tm-role='test-cases']").item(0);
-        this._backendUrl = this._casesContainer.getAttribute('tm-backend');
+        this._endpointsContext = EndpointsParser.parse(document.querySelector("[tm-role='endpoints']"));
         
+        this._casesContainer = document.querySelectorAll("[tm-role='test-cases']").item(0);
+
         this._testDisplay = document.createElement('div');
         this._testDisplay.setAttribute('id', 'test-display');
         this._testContainer = this._createTestContainer(this._testDisplay);
@@ -26,7 +27,7 @@ export class TestExplorerComponent {
         this._loader.innerText = 'Loading test...';
         this._loader.style.display = 'none';
         this._casesContainer.after(this._loader);
-        
+
         this._initializeTestCases();
     }
 
@@ -47,29 +48,29 @@ export class TestExplorerComponent {
         });
     }
 
-    _loadTestCase(url) {
+    async _loadTestCase(url) {
         this._hideTestCases();
         this._showLoader();
-        fetch(url, {cache: "no-store"})
-            .then(response => {
-                if (response.ok) return response.text()
-                throw new ContentsLoadError(response)
-            })
-            .then(html => {
+        try {
+            const response = await fetch(url, {cache: "no-store"})
+            if (response.ok) {
+                const html = await response.text();
                 this._loadTestContents(html);
-                return EndpointContext.create(this._backendUrl);
-            })
-            .then(context => {
                 this._showTestContents();
-                this._runTest(context);
-            })
-            .catch(error => this._showError(error))
-            .finally(() => this._hideLoader());
+                this._initTest();
+            } else
+                this._showError(new ContentsLoadError(response));
+
+        } catch (error) {
+            this._showError(error);
+        } finally {
+            this._hideLoader()
+        }
     }
 
-    _runTest(context) {
+    _runTest() {
         const runner = new TestRunner(this._testDisplay);
-        runner.run(context);
+        return runner.run(this._endpointsContext);
     }
 
     _loadTestContents(html) {
@@ -83,10 +84,6 @@ export class TestExplorerComponent {
     _showTestCases() {
         this._testContainer.style.display = 'none';
         this._casesContainer.style.display = 'block';
-    }
-
-    _showTestContents() {
-        this._testContainer.style.display = 'block';
     }
 
     _createTestContainer(testDisplay) {
@@ -103,11 +100,23 @@ export class TestExplorerComponent {
         error.response && console.error(error.message, error.response);
     }
 
+    _showTestContents() {
+        this._testContainer.style.display = 'block';
+    }
+
     _showLoader() {
         this._loader.style.display = 'block';
     }
 
     _hideLoader() {
         this._loader.style.display = 'none';
+    }
+
+    _initTest() {
+        const testHeader = this._testContainer.querySelectorAll('[tm-role="test-name"]').item(0);
+        const runButton = document.createElement('button');
+        runButton.innerText = "Run test";
+        runButton.onclick = () => this._runTest()
+        testHeader.appendChild(runButton)
     }
 }

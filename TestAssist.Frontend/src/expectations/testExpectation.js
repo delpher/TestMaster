@@ -13,5 +13,6 @@ export class TestExpectation extends TestSequenceStep {
     
     handleResult(invocationResult) {
         assert[this._expectation](invocationResult, this._expectedValue);
+        return true;
     }
 }

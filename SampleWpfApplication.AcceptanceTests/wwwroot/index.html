@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>SampleWpfApplication Acceptance Tests</title>
-    <script src="scripts/test-assist.js" defer></script>
+    <script src="scripts/test-master.js" defer></script>
 </head>
 <body>
-    <div tm-role="test-cases" tm-backend="http://localhost:8080">
+    <div tm-role="test-cases">
         <h1>Test cases:</h1>
         <ul>
             <li><a test-id="test-case-1" href="full-name.spec.html">Editing user details</a></li>
         </ul>
+    </div>
+    <div tm-role="endpoints" tm-backend="http://localhost:8080">
+        <tm-endpoint name="SetFirstName" method="POST">"{{userName}}"</tm-endpoint>
+        <tm-endpoint name="SetLastName" method="POST">"{{userName}}"</tm-endpoint>
+        <tm-endpoint name="GetFullName" method="GET"></tm-endpoint>
     </div>
 </body>
 </html>

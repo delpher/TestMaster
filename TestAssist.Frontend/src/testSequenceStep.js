@@ -8,9 +8,10 @@ export class TestSequenceStep {
         this._view = view;
     }
 
-    execute(context) {
+    async execute(context) {
+        this._view.showRunning();
         try {
-            const invocationResult = this._endpointInvocator.invoke(context);
+            const invocationResult = await this._endpointInvocator.invoke(context);
             const result = this.handleResult(invocationResult);
             if (result === true) this._view.showSuccess();
             else this._view.showFailure();

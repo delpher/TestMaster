@@ -5,11 +5,18 @@
         this._node = node;
     }
     
+    showRunning() {
+        this._node.className = '';
+        this._node.classList.add('running');
+    }
+    
     showSuccess() {
+        this._node.className = '';
         this._node.classList.add('success');
     }
     
     showFailure() {
+        this._node.className = '';
         this._node.classList.add('failure');
     }
     
