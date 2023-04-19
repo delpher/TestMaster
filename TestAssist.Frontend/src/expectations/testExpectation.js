@@ -1,14 +1,17 @@
-﻿import {TestSequenceStep} from "../testSequenceStep";
+﻿import {assert} from "chai";
+import {TestSequenceStep} from "../testSequenceStep";
 
 export class TestExpectation extends TestSequenceStep {
-    _assertions;
+    _expectation;
+    _expectedValue;
     
-    constructor(endpointInvocator, assertions, view) {
+    constructor(endpointInvocator, view, expectation, expectedValue) {
         super(endpointInvocator, view);
-        this._assertions = assertions;
+        this._expectation = expectation;
+        this._expectedValue = expectedValue;
     }
     
     handleResult(invocationResult) {
-        this._assertions.forEach(assertion => assertion.execute(invocationResult));
+        assert[this._expectation](invocationResult, this._expectedValue);
     }
 }

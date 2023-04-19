@@ -7,7 +7,7 @@
     When editing user details aaaa
 </div>
 <div tm-role="assert">
-    <p tm-role="expect" tm-call="GetFullName">
-        Expect full name to be: <span tm-assert="equal">first-name last-name</span>
+    <p tm-role="expect" tm-call="GetFullName" tm-assert="equal">
+        Expect full name to be: <span tm-role="expected">first-name last-name</span>
     </p>
 </div>

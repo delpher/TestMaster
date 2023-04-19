@@ -12389,36 +12389,6 @@ class EndpointContext {
 
 /***/ }),
 
-/***/ "./src/expectations/assertion.js":
-/*!***************************************!*\
-  !*** ./src/expectations/assertion.js ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Assertion": () => (/* binding */ Assertion)
-/* harmony export */ });
-/* harmony import */ var chai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chai */ "./node_modules/chai/index.mjs");
-﻿
-
-class Assertion {
-    _assertion;
-    _expectedValue;
-    
-    constructor(assertion, expectedValue) {
-        this._assertion = assertion;
-        this._expectedValue = expectedValue;
-    }
-    
-    execute(value) {
-        chai__WEBPACK_IMPORTED_MODULE_0__.assert[this._assertion](value, this._expectedValue);
-    }
-}
-
-/***/ }),
-
 /***/ "./src/expectations/testExpectation.js":
 /*!*********************************************!*\
   !*** ./src/expectations/testExpectation.js ***!
@@ -12430,68 +12400,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TestExpectation": () => (/* binding */ TestExpectation)
 /* harmony export */ });
-/* harmony import */ var _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../testSequenceStep */ "./src/testSequenceStep.js");
+/* harmony import */ var chai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chai */ "./node_modules/chai/index.mjs");
+/* harmony import */ var _testSequenceStep__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../testSequenceStep */ "./src/testSequenceStep.js");
 ﻿
 
-class TestExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep {
-    _assertions;
+
+class TestExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_1__.TestSequenceStep {
+    _expectation;
+    _expectedValue;
     
-    constructor(endpointInvocator, assertions, view) {
+    constructor(endpointInvocator, view, expectation, expectedValue) {
         super(endpointInvocator, view);
-        this._assertions = assertions;
+        this._expectation = expectation;
+        this._expectedValue = expectedValue;
     }
     
     handleResult(invocationResult) {
-        this._assertions.forEach(assertion => assertion.execute(invocationResult));
+        chai__WEBPACK_IMPORTED_MODULE_0__.assert[this._expectation](invocationResult, this._expectedValue);
     }
 }
 
 /***/ }),
 
-/***/ "./src/expectations/unknownExpectation.js":
-/*!************************************************!*\
-  !*** ./src/expectations/unknownExpectation.js ***!
-  \************************************************/
+/***/ "./src/expectations/testUnknownExpectation.js":
+/*!****************************************************!*\
+  !*** ./src/expectations/testUnknownExpectation.js ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "UnknownExpectation": () => (/* binding */ UnknownExpectation)
+/* harmony export */   "TestUnknownExpectation": () => (/* binding */ TestUnknownExpectation)
 /* harmony export */ });
 /* harmony import */ var _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../testSequenceStep */ "./src/testSequenceStep.js");
 ﻿
 
-class UnknownExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep {
+class TestUnknownExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStep {
     constructor(methodName, methodArguments, view) {
         super(methodName, methodArguments, view);
     }
     execute() {
         throw new Error('Expectation syntax can not be recognized.');
-    }
-}
-
-/***/ }),
-
-/***/ "./src/parser/assertionParser.js":
-/*!***************************************!*\
-  !*** ./src/parser/assertionParser.js ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AssertionParser": () => (/* binding */ AssertionParser)
-/* harmony export */ });
-/* harmony import */ var _expectations_assertion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../expectations/assertion */ "./src/expectations/assertion.js");
-﻿
-
-class AssertionParser {
-    static parse(node) {
-        const assertion = node.getAttribute('tm-assert');
-        const expectedValue = node.innerText;
-        return new _expectations_assertion__WEBPACK_IMPORTED_MODULE_0__.Assertion(assertion, expectedValue);
     }
 }
 
@@ -12509,8 +12459,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TestAssertParser": () => (/* binding */ TestAssertParser)
 /* harmony export */ });
 /* harmony import */ var _testSequence__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../testSequence */ "./src/testSequence.js");
-/* harmony import */ var _expectations_unknownExpectation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../expectations/unknownExpectation */ "./src/expectations/unknownExpectation.js");
-/* harmony import */ var _testExpectationParser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./testExpectationParser */ "./src/parser/testExpectationParser.js");
+/* harmony import */ var _testExpectationParser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./testExpectationParser */ "./src/parser/testExpectationParser.js");
+/* harmony import */ var _expectations_testUnknownExpectation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../expectations/testUnknownExpectation */ "./src/expectations/testUnknownExpectation.js");
 ﻿
 
 
@@ -12529,9 +12479,9 @@ class TestAssertParser {
     static _createExpectation(node) {
         switch (node.nodeName.toLocaleLowerCase()) {
             case 'p':
-                return _testExpectationParser__WEBPACK_IMPORTED_MODULE_2__.TestExpectationParser.build(node);
+                return _testExpectationParser__WEBPACK_IMPORTED_MODULE_1__.TestExpectationParser.build(node);
             default:
-                return new _expectations_unknownExpectation__WEBPACK_IMPORTED_MODULE_1__.UnknownExpectation();
+                return new _expectations_testUnknownExpectation__WEBPACK_IMPORTED_MODULE_2__.TestUnknownExpectation();
         }
     }
 }
@@ -12598,34 +12548,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TestExpectationParser": () => (/* binding */ TestExpectationParser)
 /* harmony export */ });
 /* harmony import */ var _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./testSequenceStepParser */ "./src/parser/testSequenceStepParser.js");
-/* harmony import */ var _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../expectations/testExpectation */ "./src/expectations/testExpectation.js");
-/* harmony import */ var _assertionParser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assertionParser */ "./src/parser/assertionParser.js");
-/* harmony import */ var _testEndpointInvocatorParser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./testEndpointInvocatorParser */ "./src/parser/testEndpointInvocatorParser.js");
+/* harmony import */ var _testEndpointInvocatorParser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./testEndpointInvocatorParser */ "./src/parser/testEndpointInvocatorParser.js");
+/* harmony import */ var _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../expectations/testExpectation */ "./src/expectations/testExpectation.js");
 ﻿
-
 
 
 
 class TestExpectationParser {
     static build(node) {
-        const endpointInvocator = _testEndpointInvocatorParser__WEBPACK_IMPORTED_MODULE_3__.TestEndpointInvocatorParser.parse(node);
+        const endpointInvocator = _testEndpointInvocatorParser__WEBPACK_IMPORTED_MODULE_1__.TestEndpointInvocatorParser.parse(node);
         const view = _testSequenceStepParser__WEBPACK_IMPORTED_MODULE_0__.TestSequenceStepParser._createView(node);
-        const assertions = this._parseAssertions(node);
-        return new _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_1__.TestExpectation(endpointInvocator, assertions, view);
+        const expectation = this._parseExpectation(node);
+        const expectedValue = this._parseExpectedValue(node);
+        return new _expectations_testExpectation__WEBPACK_IMPORTED_MODULE_2__.TestExpectation(endpointInvocator, view, expectation, expectedValue);
     }
 
-    static _parseAssertions(node) {
-        const assertions = [];
-
-        node.querySelectorAll('[tm-assert]')
-            .forEach(assertionNode =>
-                assertions.push(this._parseAssertion(assertionNode)));
-
-        return assertions;
+    static _parseExpectation(node) {
+        return node.getAttribute("tm-assert");
     }
 
-    static _parseAssertion(assertionNode) {
-        return _assertionParser__WEBPACK_IMPORTED_MODULE_2__.AssertionParser.parse(assertionNode);
+    static _parseExpectedValue(node) {
+        const expectedValues = node.querySelectorAll('[tm-role="expected"]')
+        if (expectedValues.length > 1)
+            throw new Error("Only one expected value per assertion is allowed");
+        if (expectedValues.length === 0)
+            throw new Error("Expectation must have expected value specified");
+        return expectedValues.item(0).innerText;
     }
 }
 

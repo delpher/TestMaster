@@ -1,7 +1,7 @@
 ﻿import {TestSequence} from "../testSequence";
-import {UnknownExpectation} from "../expectations/unknownExpectation";
 
 import {TestExpectationParser} from "./testExpectationParser";
+import {TestUnknownExpectation} from "../expectations/testUnknownExpectation";
 
 export class TestAssertParser {
     static build(node) {
@@ -18,7 +18,7 @@ export class TestAssertParser {
             case 'p':
                 return TestExpectationParser.build(node);
             default:
-                return new UnknownExpectation();
+                return new TestUnknownExpectation();
         }
     }
 }

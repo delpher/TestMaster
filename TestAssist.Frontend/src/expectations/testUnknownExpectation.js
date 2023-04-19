@@ -1,6 +1,6 @@
 ﻿import {TestSequenceStep} from "../testSequenceStep";
 
-export class UnknownExpectation extends TestSequenceStep {
+export class TestUnknownExpectation extends TestSequenceStep {
     constructor(methodName, methodArguments, view) {
         super(methodName, methodArguments, view);
     }
