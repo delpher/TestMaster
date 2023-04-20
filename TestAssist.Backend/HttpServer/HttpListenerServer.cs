@@ -1,8 +1,9 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 
 namespace TestAssist.Backend.HttpServer;
 
-public abstract class HttpListenerServer
+public abstract class HttpListenerServer : IDisposable
 {
     private readonly Thread _listenerThread;
     private readonly CancellationTokenSource _cancellationTokenSource;
@@ -13,44 +14,64 @@ public abstract class HttpListenerServer
         _listenerThread = new Thread(RunHttpServer);
     }
 
-    protected void StartListenerThread(ServerStartupArguments arguments)
+    public void Start(int port)
     {
-        arguments.SetCancellationToken(_cancellationTokenSource.Token);
-        _listenerThread.Start(arguments);
+        var serverStartupArguments = new ServerStartupArguments(port);
+        serverStartupArguments.SetCancellationToken(_cancellationTokenSource.Token);
+        _listenerThread.Start(serverStartupArguments);
     }
-    
+
     private void RunHttpServer(object obj)
     {
-        var args = (ServerStartupArguments)obj;
-        var cancellationToken = args.CancellationToken;
-        var server = new HttpListener();
-        server.Prefixes.Add($"http://localhost:{args.Port}/");
+        var serverStartupArguments = (ServerStartupArguments)obj;
+        var cancellationToken = serverStartupArguments.CancellationToken;
+        var httpListener = new HttpListener();
 
-        server.Start();
+        httpListener.Prefixes.Add($"http://localhost:{serverStartupArguments.Port}/");
+        httpListener.Start();
 
-        cancellationToken.Register(() => server.Stop());
+        cancellationToken.Register(() => httpListener.Close());
 
-        while (!cancellationToken.IsCancellationRequested)
+        while (!cancellationToken.IsCancellationRequested && httpListener.IsListening)
         {
-            if (!cancellationToken.IsCancellationRequested)
+            try
             {
-                var context = server.GetContext();
-                CorsSupport.AllowCors(context);
-                if (context.Request.HttpMethod == "OPTIONS")
-                {
-                    Thread.Sleep(2000);
-                    context.Response.StatusCode = (int)HttpStatusCode.OK;
-                    context.Response.Close();
-                } else
-                    ThreadPool.QueueUserWorkItem(_ => HandleRequest(args, context));
+                var asyncResult = httpListener.BeginGetContext(OnContextReceived, httpListener);
+                WaitHandle.WaitAny(new[] { cancellationToken.WaitHandle, asyncResult.AsyncWaitHandle });
+            }
+            catch (HttpListenerException ex)
+            {
+                if (ex.ErrorCode != 995)
+                    throw;
             }
         }
     }
 
-    protected abstract void HandleRequest(ServerStartupArguments args, HttpListenerContext context);
+    private void OnContextReceived(IAsyncResult asyncResult)
+    {
+        try
+        {
+            var httpListener = (HttpListener)asyncResult.AsyncState;
+            Debug.Assert(httpListener != null, nameof(httpListener) + " != null");
+            HandleRequest(httpListener.EndGetContext(asyncResult));
+        }
+        catch (HttpListenerException ex)
+        {
+            if (ex.ErrorCode != 995)
+                throw;
+        }
+    }
+
+    protected abstract void HandleRequest(HttpListenerContext context);
 
     public void Stop()
     {
         _cancellationTokenSource.Cancel();
+        _listenerThread.Join();
+    }
+
+    public void Dispose()
+    {
+        _cancellationTokenSource?.Dispose();
     }
 }

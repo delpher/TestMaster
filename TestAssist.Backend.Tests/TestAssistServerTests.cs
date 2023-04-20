@@ -10,11 +10,12 @@ public class TestAssistServerTests : IDisposable
     private readonly UriBuilder _request;
     private readonly TestEndpointsServer _server;
 
+
     public TestAssistServerTests()
     {
-        var port = new Random().Next(8080, 8999);
-        _server = new TestEndpointsServer(port);
-        _server.Start();
+        var port = new Random().Next(8000, 8999);
+        _server = new TestEndpointsServer();
+        _server.Start(port);
         _client = new HttpClient();
         _request = new UriBuilder($"http://localhost:{port}");
     }
@@ -123,14 +124,14 @@ public class TestAssistServerTests : IDisposable
 
     private static void VerifyCorsPolicy(HttpResponseMessage responseMessage)
     {
-        // responseMessage.Headers.GetValues("Access-Control-Allow-Headers")
-        //     .Should().Contain("Content-Type, Accept, X-Requested-With");
+        responseMessage.Headers.GetValues("Access-Control-Allow-Headers")
+            .Should().Contain("Content-Type, Accept, X-Requested-With");
 
-        // responseMessage.Headers.GetValues("Access-Control-Allow-Methods")
-        //     .Should().Contain("GET, POST, OPTIONS");
-        //
-        // responseMessage.Headers.GetValues("Access-Control-Allow-Origin")
-        //     .Should().Contain("*");
+        responseMessage.Headers.GetValues("Access-Control-Allow-Methods")
+            .Should().Contain("GET, POST");
+        
+        responseMessage.Headers.GetValues("Access-Control-Allow-Origin")
+            .Should().Contain("*");
     }
 
     private static async Task VerifyContentType(HttpResponseMessage responseMessage, string contentType)
@@ -155,5 +156,6 @@ public class TestAssistServerTests : IDisposable
     {
         _client?.Dispose();
         _server.Stop();
+        _server.Dispose();
     }
 }

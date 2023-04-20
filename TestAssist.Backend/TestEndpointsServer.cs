@@ -6,22 +6,14 @@ namespace TestAssist.Backend;
 
 public class TestEndpointsServer : HttpListenerServer
 {
-    private readonly int _port;
-
     private readonly ConcurrentDictionary<string, EndpointHandler> _endpoints;
 
-    public TestEndpointsServer(int port)
+    public TestEndpointsServer()
     {
-        _port = port;
         _endpoints = new ConcurrentDictionary<string, EndpointHandler>();
-    }
-
-    public void Start()
-    {
         Register("", EnumerateRegisteredEndpoints);
-        StartListenerThread(new TestingAssistServerStartupArguments(_port, _endpoints));
     }
-
+    
     public bool Register(string endpointPath, Func<object> handler)
     {
         return _endpoints.TryAdd(endpointPath, new ParameterlessEndpointHandler(endpointPath, handler));
@@ -32,11 +24,16 @@ public class TestEndpointsServer : HttpListenerServer
         return _endpoints.TryAdd(endpointPath, new ParametrizedEndpointHandler<TParameters>(endpointPath, handler));
     }
 
-    protected override void HandleRequest(ServerStartupArguments args, HttpListenerContext context)
+    protected override void HandleRequest(HttpListenerContext context)
     {
-        var endpoints = ((TestingAssistServerStartupArguments)args).Endpoints;
-        var endpointPath = context.Request.Url?.AbsolutePath;
-        HandleEndpointRequest(endpoints, endpointPath?.TrimStart('/'), context);
+        CorsSupport.AllowCors(context);
+        if (context.Request.HttpMethod == "OPTIONS")
+            context.Response.Close();
+        else
+        {
+            var endpointPath = context.Request.Url?.AbsolutePath;
+            HandleEndpointRequest(_endpoints, endpointPath?.TrimStart('/'), context);
+        }
     }
 
     private static void HandleEndpointRequest(

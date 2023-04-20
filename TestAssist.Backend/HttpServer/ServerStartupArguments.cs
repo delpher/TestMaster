@@ -5,7 +5,7 @@ public class ServerStartupArguments
     public int Port { get; }
     public CancellationToken CancellationToken { get; private set; }
 
-    protected ServerStartupArguments(int port)
+    public ServerStartupArguments(int port)
     {
         Port = port;
     }

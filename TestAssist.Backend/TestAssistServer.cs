@@ -1,4 +1,6 @@
-﻿namespace TestAssist.Backend;
+﻿using TestAssist.Backend.HttpServer;
+
+namespace TestAssist.Backend;
 
 public static class TestAssistServer
 {
@@ -6,8 +8,8 @@ public static class TestAssistServer
 
     public static void StartServer(int port)
     {
-        _instance = new TestEndpointsServer(port);
-        _instance.Start();
+        _instance = new TestEndpointsServer();
+        _instance.Start(port);
     }
 
     public static void StopServer()
