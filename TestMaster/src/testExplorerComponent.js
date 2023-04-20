@@ -1,5 +1,5 @@
-﻿import {TestRunner} from "./testRunner";
-import {EndpointsParser} from "./backend/endpointsParser";
+﻿import {TestRunner} from './testRunner';
+import {EndpointsParser} from './backend/endpointsParser';
 
 class ContentsLoadError extends Error {
     constructor(response) {
@@ -33,7 +33,8 @@ export class TestExplorerComponent {
 
     _createBackLink() {
         const backLink = document.createElement('a');
-        backLink.href = "javascript:void(0)";
+        backLink.id = 'back-link';
+        backLink.href = 'javascript:void(0)';
         backLink.innerHTML = '&larr; back to test cases';
         backLink.onclick = () => this._showTestCases();
         return backLink;
@@ -43,7 +44,7 @@ export class TestExplorerComponent {
         const links = document.querySelectorAll("[tm-role='test-cases'] a");
         links.forEach(anchor => {
             const testCaseUrl = anchor.href;
-            anchor.href = "javascript:void(0)";
+            anchor.href = 'javascript:void(0)';
             anchor.onclick = () => this._loadTestCase(testCaseUrl);
         });
     }
@@ -52,12 +53,12 @@ export class TestExplorerComponent {
         this._hideTestCases();
         this._showLoader();
         try {
-            const response = await fetch(url, {cache: "no-store"})
+            const response = await fetch(url, {cache: 'no-store'})
             if (response.ok) {
                 const html = await response.text();
                 this._loadTestContents(html);
                 this._showTestContents();
-                this._initTest();
+                this._appendRunTestButton();
             } else
                 this._showError(new ContentsLoadError(response));
 
@@ -112,10 +113,11 @@ export class TestExplorerComponent {
         this._loader.style.display = 'none';
     }
 
-    _initTest() {
+    _appendRunTestButton() {
         const testHeader = this._testContainer.querySelectorAll('[tm-role="test-name"]').item(0);
         const runButton = document.createElement('button');
-        runButton.innerText = "Run test";
+        runButton.id = 'run-test';
+        runButton.innerText = 'Run test';
         runButton.onclick = () => this._runTest()
         testHeader.appendChild(runButton)
     }
