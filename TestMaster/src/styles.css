@@ -63,10 +63,13 @@ body {
     content: '✅'
 }
 
-.error {
-    padding: 0.5rem;
-    background: lightgoldenrodyellow;
-    line-height: 1.5rem;
+p.error:before {
+    content: '❌'
+}
+
+span.error {
+    color: darkred;
+    padding-left: 2rem;
 }
 
 span.error {

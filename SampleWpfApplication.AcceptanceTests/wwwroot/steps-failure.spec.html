@@ -1,0 +1,15 @@
+<h1 tm-role="test-name">Step failures</h1>
+<div tm-role="setup">
+    <p>Given test steps report fail</p>
+    <p tm-call="ReturnFailure">Setup step fails</p>
+</div>
+<div tm-role="act">
+    <p>When running test:</p>
+    <p tm-call="ReturnFailure">Act step fails</p>
+</div>
+<div tm-role="assert">
+    <p>Then:</p>
+    <p tm-role="expect" tm-call="ReturnFailure" tm-assert="equal">
+        Expectation step fail because expects step to return <span tm-role="expected">true</span>
+    </p>
+</div>

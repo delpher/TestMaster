@@ -1,4 +1,4 @@
-describe('test case explorer', () => {
+describe('test master acceptance tests', () => {
 
     beforeEach(() => {
         cy.visit('http://localhost:5000');
@@ -37,12 +37,21 @@ describe('test case explorer', () => {
                'Error: Failed to load test case contents. 404 Not Found');
     });
     
-    xit('given test executed when test setup step fails then step marked as failed', () => {
-        openTestCase('Steps failure tests');
+    it('given test executed when test step fails then step marked as failed', () => {
+        openTestCase('Steps failures');
         runOpenedTest();
         
-        cy.get('[tm-call="SetupReturnFailure"]').should('have.class', 'failure');
-        cy.get('[tm-call="SetupReturnFailure"]').should('have.css', 'background-color', 'red');
+        cy.get('[tm-call="ReturnFailure"]')
+            .contains('Setup step fails')
+            .should('have.class', 'failure');
+
+        cy.get('[tm-call="ReturnFailure"]')
+            .contains('Act step fails')
+            .should('have.class', 'failure');
+        
+        cy.get('[tm-role="expect"]')
+            .contains('Expectation step fail')
+            .should('have.class', 'error');
     });
     
     function runOpenedTest() {

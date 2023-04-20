@@ -1,0 +1,9 @@
+﻿<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run Test Environment" type="CompoundRunConfigurationType">
+    <toRun name="SampleWpfApplication" type="DotNetProject" />
+    <toRun name="SampleWpfApplication.AcceptanceTests" type="DotNetProject" />
+    <toRun name="autobuild" type="js.build_tools.npm" />
+    <toRun name="test" type="js.build_tools.npm" />
+    <method v="2" />
+  </configuration>
+</component>

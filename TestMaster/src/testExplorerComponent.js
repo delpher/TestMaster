@@ -13,6 +13,7 @@ export class TestExplorerComponent {
     _testDisplay;
     _loader;
     _endpointsContext;
+    _testRunner;
 
     init() {
         this._endpointsContext = EndpointsParser.parse(document.querySelector("[tm-role='endpoints']"));
@@ -59,6 +60,7 @@ export class TestExplorerComponent {
                 this._loadTestContents(html);
                 this._showTestContents();
                 this._appendRunTestButton();
+                this._initializeTest();
             } else
                 this._showError(new ContentsLoadError(response));
 
@@ -70,8 +72,7 @@ export class TestExplorerComponent {
     }
 
     _runTest() {
-        const runner = new TestRunner(this._testDisplay);
-        return runner.run(this._endpointsContext);
+        return this._testRunner.run(this._endpointsContext);
     }
 
     _loadTestContents(html) {
@@ -120,5 +121,9 @@ export class TestExplorerComponent {
         runButton.innerText = 'Run test';
         runButton.onclick = () => this._runTest()
         testHeader.appendChild(runButton)
+    }
+
+    _initializeTest() {
+        this._testRunner = new TestRunner(this._testDisplay);
     }
 }

@@ -6,15 +6,15 @@ export class TestRunner {
     
     constructor(testNode) {
         this._testNode = testNode;
-    }
-    
-    async run(context) {
-        const test = this._parseTest();
-        await test.execute(context)
+        this._test = this._parseTest();
     }
 
     _parseTest() {
         return TestParser.build(this._testNode);
+    }
+
+    async run(context) {
+        await this._test.execute(context)
     }
 }
 
