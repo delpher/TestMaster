@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TestAssist.Backend\TestAssist.Backend.csproj" />
+      <ProjectReference Include="..\TestAssist\TestAssist.csproj" />
     </ItemGroup>
 
 </Project>

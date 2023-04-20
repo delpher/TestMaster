@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace TestAssist.Backend.HttpServer;
+namespace TestAssist.HttpServer;
 
 public static class CorsSupport
 {

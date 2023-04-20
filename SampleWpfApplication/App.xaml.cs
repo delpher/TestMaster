@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using TestAssist.Backend;
+using TestAssist;
 
 namespace SampleWpfApplication;
 

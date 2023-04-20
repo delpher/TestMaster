@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 
-namespace TestAssist.Backend;
+namespace TestAssist;
 
 public class ParametrizedEndpointHandler<TParameters> : EndpointHandler
 {

@@ -1,7 +1,7 @@
 ﻿using System.Net;
-using TestAssist.Backend.HttpServer;
+using TestAssist.HttpServer;
 
-namespace TestAssist.Backend;
+namespace TestAssist;
 
 public abstract class EndpointHandler
 {

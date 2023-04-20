@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.Json;
 
-namespace TestAssist.Backend.HttpServer;
+namespace TestAssist.HttpServer;
 
 internal static class ResponseHelper
 {

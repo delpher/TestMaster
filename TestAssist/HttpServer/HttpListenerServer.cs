@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Net;
 
-namespace TestAssist.Backend.HttpServer;
+namespace TestAssist.HttpServer;
 
 public abstract class HttpListenerServer : IDisposable
 {

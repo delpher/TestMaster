@@ -2,7 +2,7 @@ using System.Net;
 using System.Net.Http.Json;
 using FluentAssertions;
 
-namespace TestAssist.Backend.Tests;
+namespace TestAssist.Tests;
 
 public class TestAssistServerTests : IDisposable
 {

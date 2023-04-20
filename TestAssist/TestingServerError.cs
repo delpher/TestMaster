@@ -1,4 +1,4 @@
-﻿namespace TestAssist.Backend;
+﻿namespace TestAssist;
 
 public class TestingServerError
 {

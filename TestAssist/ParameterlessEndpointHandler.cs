@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace TestAssist.Backend;
+namespace TestAssist;
 
 public class ParameterlessEndpointHandler : EndpointHandler
 {

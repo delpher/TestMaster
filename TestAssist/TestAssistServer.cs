@@ -1,6 +1,6 @@
-﻿using TestAssist.Backend.HttpServer;
+﻿using TestAssist.HttpServer;
 
-namespace TestAssist.Backend;
+namespace TestAssist;
 
 public static class TestAssistServer
 {

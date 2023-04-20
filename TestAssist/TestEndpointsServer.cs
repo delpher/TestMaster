@@ -1,8 +1,8 @@
 ﻿using System.Collections.Concurrent;
 using System.Net;
-using TestAssist.Backend.HttpServer;
+using TestAssist.HttpServer;
 
-namespace TestAssist.Backend;
+namespace TestAssist;
 
 public class TestEndpointsServer : HttpListenerServer
 {
