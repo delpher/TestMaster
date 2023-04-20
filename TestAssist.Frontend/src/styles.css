@@ -6,20 +6,21 @@ body {
     padding: 3rem;
 }
 
-[tm-role='endpoints'] {
-    display: none;
+[tm-role="setup"] p:first-child,
+[tm-role="act"] p:first-child,
+[tm-role="assert"] p:first-child {
+    font-size: larger;
+    font-weight: bold;
 }
 
-[tm-role='setup'] {
-    border-color: gainsboro;
-    border-width: 0.2rem;
-    border-style: solid;
-    padding: 1rem;
+[tm-role='endpoints'] {
+    display: none;
 }
 
 [tm-role="test-name"] button {
     background: none;
     border: solid 2px silver;
+    border-radius: 3px;
     color: black;
     margin-left: 1rem;
     margin-top: 0.2rem;
