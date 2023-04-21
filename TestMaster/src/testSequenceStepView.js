@@ -34,6 +34,10 @@
     showError(error) {
         this._node.className = '';
         this._node.classList.add('error');
+        this.displayErrorMessage(error);
+    }
+
+    displayErrorMessage(error) {
         this._errorDisplay.innerHTML = error.toString();
         this._errorDisplay.style.display = 'inline';
         console.error(error);

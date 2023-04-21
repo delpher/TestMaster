@@ -51,7 +51,44 @@ describe('test master acceptance tests', () => {
         
         cy.get('[tm-role="expect"]')
             .contains('Expectation step fail')
+            .should('have.class', 'failure');
+    });
+    
+    it('given test executed when test step throws exception then error is displayed', () => {
+       openTestCase('Steps exceptions');
+       runOpenedTest();
+
+
+        cy.get('[tm-call="ThrowException"]')
+            .contains('Setup step throws exception')
+            .should('have.class', 'error')
+
+        cy.get('[tm-call="ThrowException"]')
+            .contains('Setup step throws exception')
+            .find('.error')
+            .should('contain.text', 
+                'Exception was thrown invoking \'ThrowException\' System.InvalidOperationException: Test exception message')
+
+        cy.get('[tm-call="ThrowException"]')
+            .contains('Act step throws exception')
             .should('have.class', 'error');
+
+        cy.get('[tm-call="ThrowException"]')
+            .contains('Act step throws exception')
+            .find('.error')
+            .should('contain.text', 
+                'Exception was thrown invoking \'ThrowException\' System.InvalidOperationException: Test exception message')
+
+        cy.get('[tm-role="expect"]')
+            .contains('Expectation step throws exception')
+            .should('have.class', 'error');
+
+        cy.get('[tm-role="expect"]')
+            .contains('Expectation step throws exception')
+            .find('.error')
+            .should('contain.text', 
+                'Exception was thrown invoking \'ThrowException\' System.InvalidOperationException: Test exception message')
+            
     });
     
     function runOpenedTest() {

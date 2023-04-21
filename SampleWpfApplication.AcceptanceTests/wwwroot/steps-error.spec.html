@@ -1,0 +1,15 @@
+<h1 tm-role="test-name">Step exceptions</h1>
+<div tm-role="setup">
+    <p>Given test steps:</p>
+    <p tm-call="ThrowException">Setup step throws exception</p>
+</div>
+<div tm-role="act">
+    <p>When running test:</p>
+    <p tm-call="ThrowException">Act step throws exception</p>
+</div>
+<div tm-role="assert">
+    <p>Then:</p>
+    <p tm-role="expect" tm-call="ThrowException" tm-assert="equal">
+        Expectation step throws exception other than AssertionError <span tm-role="expected">true</span>
+    </p>
+</div>

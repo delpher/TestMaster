@@ -1,4 +1,4 @@
-﻿import {assert} from "chai";
+﻿import {assert, AssertionError} from "chai";
 import {TestSequenceStep} from "../testSequenceStep";
 
 export class TestExpectation extends TestSequenceStep {
@@ -12,7 +12,15 @@ export class TestExpectation extends TestSequenceStep {
     }
     
     handleResult(invocationResult) {
-        assert[this._expectation](invocationResult, this._expectedValue);
+        try {
+            assert[this._expectation](invocationResult, this._expectedValue);
+        } catch (error) {
+            if (error instanceof AssertionError) {
+                this._view.displayErrorMessage(error);
+                return false;
+            }
+            throw error;
+        }
         return true;
     }
 }

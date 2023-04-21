@@ -1,4 +1,10 @@
-﻿import Mustache from "mustache";
+﻿import Mustache from 'mustache';
+
+export class BackendEndpointError extends Error {
+    constructor(errorResult) {
+        super(`${errorResult['Message']} ${errorResult['Exception']}`);
+    }
+}
 
 export class Endpoint {
     _backendUrl;
@@ -14,28 +20,34 @@ export class Endpoint {
     }
     
     async invoke(parameters) {
+        const response = await this._getResponse(parameters);
+        const json = await response.json();
+        if (response.ok)
+            return json;
+        else
+            throw new BackendEndpointError(json);
+    }
+
+    async _getResponse(parameters) {
         const requestUrl = `${this._backendUrl}/${this._name}`;
-        
-        if (this._method === "GET") {
-            const response = await fetch(requestUrl);
-            return await response.json();
-        } else if (this._method === "POST") {
-            const data = {};
-            for (let parameter of parameters)
-                data[parameter.name] = parameter.value;
-            
-            const requestContent = Mustache.render(this._dataTemplate, data);
-            
-            const response = await fetch(requestUrl, {
-                method: this._method,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: requestContent
-            });
-            
-            return await response.json();
+
+        switch (this._method) {
+            case 'GET':
+                return await fetch(requestUrl);
+            case 'POST':
+                const data = {};
+                for (let parameter of parameters)
+                    data[parameter.name] = parameter.value;
+
+                const requestContent = Mustache.render(this._dataTemplate, data);
+
+                return await fetch(requestUrl, {
+                    method: this._method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: requestContent
+                });
         }
-        
     }
 }

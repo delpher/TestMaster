@@ -12336,10 +12336,17 @@ return typeDetect;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BackendEndpointError": () => (/* binding */ BackendEndpointError),
 /* harmony export */   "Endpoint": () => (/* binding */ Endpoint)
 /* harmony export */ });
 /* harmony import */ var mustache__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mustache */ "./node_modules/mustache/mustache.mjs");
 ﻿
+
+class BackendEndpointError extends Error {
+    constructor(errorResult) {
+        super(`${errorResult['Message']} ${errorResult['Exception']}`);
+    }
+}
 
 class Endpoint {
     _backendUrl;
@@ -12355,29 +12362,35 @@ class Endpoint {
     }
     
     async invoke(parameters) {
+        const response = await this._getResponse(parameters);
+        const json = await response.json();
+        if (response.ok)
+            return json;
+        else
+            throw new BackendEndpointError(json);
+    }
+
+    async _getResponse(parameters) {
         const requestUrl = `${this._backendUrl}/${this._name}`;
-        
-        if (this._method === "GET") {
-            const response = await fetch(requestUrl);
-            return await response.json();
-        } else if (this._method === "POST") {
-            const data = {};
-            for (let parameter of parameters)
-                data[parameter.name] = parameter.value;
-            
-            const requestContent = mustache__WEBPACK_IMPORTED_MODULE_0__["default"].render(this._dataTemplate, data);
-            
-            const response = await fetch(requestUrl, {
-                method: this._method,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: requestContent
-            });
-            
-            return await response.json();
+
+        switch (this._method) {
+            case 'GET':
+                return await fetch(requestUrl);
+            case 'POST':
+                const data = {};
+                for (let parameter of parameters)
+                    data[parameter.name] = parameter.value;
+
+                const requestContent = mustache__WEBPACK_IMPORTED_MODULE_0__["default"].render(this._dataTemplate, data);
+
+                return await fetch(requestUrl, {
+                    method: this._method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: requestContent
+                });
         }
-        
     }
 }
 
@@ -12475,7 +12488,15 @@ class TestExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_1__.Tes
     }
     
     handleResult(invocationResult) {
-        chai__WEBPACK_IMPORTED_MODULE_0__.assert[this._expectation](invocationResult, this._expectedValue);
+        try {
+            chai__WEBPACK_IMPORTED_MODULE_0__.assert[this._expectation](invocationResult, this._expectedValue);
+        } catch (error) {
+            if (error instanceof chai__WEBPACK_IMPORTED_MODULE_0__.AssertionError) {
+                this._view.displayErrorMessage(error);
+                return false;
+            }
+            throw error;
+        }
         return true;
     }
 }
@@ -13097,6 +13118,10 @@ __webpack_require__.r(__webpack_exports__);
     showError(error) {
         this._node.className = '';
         this._node.classList.add('error');
+        this.displayErrorMessage(error);
+    }
+
+    displayErrorMessage(error) {
         this._errorDisplay.innerHTML = error.toString();
         this._errorDisplay.style.display = 'inline';
         console.error(error);
