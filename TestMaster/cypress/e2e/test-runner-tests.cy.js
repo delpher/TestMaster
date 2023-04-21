@@ -98,6 +98,5 @@ describe('test master general acceptance tests', () => {
         cy.get('[tm-call="ReturnSuccess"]')
             .contains('Assert step succeeded')
             .should('have.class', 'success');
-
     });
 });

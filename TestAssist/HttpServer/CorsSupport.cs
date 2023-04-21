@@ -4,11 +4,11 @@ namespace TestAssist.HttpServer;
 
 public static class CorsSupport
 {
-    public static void AllowCors(HttpListenerContext context) 
+    public static void AllowCors(HttpListenerResponse response) 
     {
-        context.Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With");
-        context.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST");
-        context.Response.AddHeader("Access-Control-Max-Age", "1728000");
-        context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+        response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With");
+        response.AddHeader("Access-Control-Allow-Methods", "GET, POST");
+        response.AddHeader("Access-Control-Max-Age", "1728000");
+        response.AddHeader("Access-Control-Allow-Origin", "*");
     }
 }

@@ -10,8 +10,20 @@ Accept: application/json
 
 ###
 
+#@name Open User Details Example 
+GET {{testEndpoint}}/Index/UserDetailsExample
+Accept: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+###
+
 #@name Set last name
-POST {{testEndpoint}}/SetLastName
+POST {{testEndpoint}}/UserDetails/SetLastName
 Content-Type: application/json
 
 "Onashchuk"
@@ -29,7 +41,7 @@ Content-Type: application/json
 ###
 
 #@name Set first name
-POST {{testEndpoint}}/SetFirstName
+POST {{testEndpoint}}/UserDetails/SetFirstName
 Content-Type: application/json
 
 "Oleksii"
@@ -46,26 +58,8 @@ Content-Type: application/json
 
 ###
 
-#@name Set address
-POST {{testEndpoint}}/SetAddress
-Content-Type: application/json
-
-"Not specified"
-
-> {%
-    client.test("Request executed successfully", function() {
-        client.assert(response.status === 200, "Response status is not 200");
-    });
-
-    client.test("Headers option exists", function() {
-        client.assert(response.body === true, "Call to setup method failed");
-    });
-%}
-
-###
-
 #@name Get full name
-GET {{testEndpoint}}/GetFullName
+GET {{testEndpoint}}/UserDetails/GetFullName
 Accept: application/json
 
 > {%

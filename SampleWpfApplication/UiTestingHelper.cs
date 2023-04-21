@@ -1,31 +1,26 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
+using System.Windows.Data;
 
 namespace SampleWpfApplication;
 
 public static class UiTestingHelper
 {
-    public static bool SetValue(this TextBox textBox, string value)
+    public static void SetValue(this TextBox textBox, string value)
     {
         try
         {
             textBox.Dispatcher.VerifyAccess();
-            return SetTextBoxValueUnsafe(textBox, value);
+            textBox.Text = value;
+            BindingOperations.GetBindingExpression(textBox, TextBox.TextProperty)?.UpdateSource();
+            textBox.RaiseEvent(new RoutedEventArgs(UIElement.LostFocusEvent));
         }
         catch
         {
-            return textBox.Dispatcher.Invoke(() => SetTextBoxValueUnsafe(textBox, value));
+            textBox.Dispatcher.Invoke(() => SetValue(textBox, value));
         }
     }
-
-    private static bool SetTextBoxValueUnsafe(TextBox textBox, string value)
-    {
-        textBox!.Text = value;
-        textBox!.RaiseEvent(new RoutedEventArgs(UIElement.LostFocusEvent));
-        return true;
-    }
-
+    
     public static string GetText(this TextBlock textBlock)
     {
         try

@@ -77,3 +77,15 @@ span.error {
     font-size: smaller;
     font-style: italic;
 }
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+}
+
+table th, table td {
+    border: solid 2px black;
+    padding-left: 1rem;
+}

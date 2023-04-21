@@ -2,9 +2,9 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace SampleWpfApplication;
+namespace SampleWpfApplication.Pages;
 
-public class MainWindowViewModel : INotifyPropertyChanged
+public class UserDetailsViewModel : INotifyPropertyChanged
 {
     private string _firstName;
     private string _lastName;

@@ -52,6 +52,7 @@ public abstract class HttpListenerServer : IDisposable
         try
         {
             var httpListener = (HttpListener)asyncResult.AsyncState;
+            if (httpListener is not { IsListening: true }) return;
             Debug.Assert(httpListener != null, nameof(httpListener) + " != null");
             HandleRequest(httpListener.EndGetContext(asyncResult));
         }

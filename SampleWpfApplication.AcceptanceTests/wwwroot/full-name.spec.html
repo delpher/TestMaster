@@ -1,15 +1,16 @@
 <h1 tm-role="test-name">Filling user details</h1>
 <div tm-role="setup">
-    <p>Given form is blank</p>
+    <p >Given:</p>
+    <p tm-call="Index/UserDetailsExample">form is blank</p>
 </div>
 <div tm-role="act">
     <p>When:</p>
-    <p tm-call="SetFirstName">entering first name: <span tm-arg="userName">first-name</span></p>
-    <p tm-call="SetLastName">entering last name: <span tm-arg="userName">last-name</span></p>
+    <p tm-call="UserDetails/SetFirstName">entering first name: <span tm-arg="userName">"FirstName"</span></p>
+    <p tm-call="UserDetails/SetLastName">entering last name: <span tm-arg="userName">"LastName"</span></p>
 </div>
 <div tm-role="assert">
     <p>Then:</p>
-    <p tm-role="expect" tm-call="GetFullName" tm-assert="assert.equal($actual, $expected)">
-        Expect full name to be: <span tm-role="expected">"first-name last-name"</span>
+    <p tm-role="expect" tm-call="UserDetails/GetFullName" tm-assert="assert.equal($actual, $expected)">
+        Expect full name to be: <span tm-role="expected">"FirstName LastName"</span>
     </p>
 </div>

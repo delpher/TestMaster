@@ -9,7 +9,14 @@
 </div>
 <div tm-role="assert">
     <p>Then:</p>
-    <p tm-role="expect" tm-call="ReturnSuccess" tm-assert="assert.equal($expected, $actual)">
-        Equal assertion succeeds because returned value is <span tm-role="expected">true</span>
+    <p tm-role="expect" tm-call="ReturnSuccess" tm-assert="assert.equal($actual, $expected)">
+        Expectation succeeds because returned value is <span tm-role="expected">true</span>
+    </p>
+    <p tm-role="expect" tm-call="ReturnSuccess" tm-assert="assert.notEqual($actual, $expected)">
+        Expectation fails because returned value is <span tm-role="expected">true</span> but expected false
+    </p>
+    <p tm-role="expect" tm-call="ThrowException" tm-assert="assert.equal($actual, $expected)">
+        Expectation error because expected value to be <span tm-role="expected">true</span> but
+        backend throwed exception
     </p>
 </div>

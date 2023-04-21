@@ -17,10 +17,13 @@ export class TestExpectationParser {
 
     static _parseExpectedValue(node) {
         const expectedValues = node.querySelectorAll('[tm-role="expected"]')
+        
         if (expectedValues.length > 1)
             throw new Error("Only one expected value per assertion is allowed");
+        
         if (expectedValues.length === 0)
             throw new Error("Expectation must have expected value specified");
+        
         return JSON.parse(expectedValues.item(0).innerText);
     }
 }

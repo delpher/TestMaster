@@ -16,8 +16,8 @@ public abstract class EndpointHandler
     {
         try
         {
+            var result = InvokeImplementation(context);
             context.Response.StatusCode = (int)HttpStatusCode.OK;
-            var result = InvokeCallback(context);
             ResponseHelper.WriteObject(context, result);
         }
         catch (Exception exception)
@@ -27,7 +27,7 @@ public abstract class EndpointHandler
         }
     }
 
-    protected abstract object InvokeCallback(HttpListenerContext context);
+    protected abstract object InvokeImplementation(HttpListenerContext context);
 
     private TestingServerError MakeError(Exception exception)
     {

@@ -5,7 +5,20 @@
    
    it('given single expectation when verifying then expectation gets executed', () => {
       cy.runTestCase('Single expectation');
-      cy.contains('Equal assertion succeeds because returned value is true')
+      
+      cy.contains('Expectation succeeds')
           .should('have.class', 'success');
+      
+      cy.contains('Expectation fails')
+          .should('have.class', 'failure')
+          .and('contain.text', 'AssertionError: expected true to not equal true');
+      
+      cy.contains('Expectation error')
+          .should('have.class', 'error');
+      
+       cy.contains('Expectation error')
+           .find('.error')
+           .should('contain.text', 'Error: Exception was thrown');
+      
    });
 });

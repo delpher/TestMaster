@@ -16,17 +16,24 @@ public class TestEndpointsServer : HttpListenerServer
     
     public bool Register(string endpointPath, Func<object> handler)
     {
-        return _endpoints.TryAdd(endpointPath, new ParameterlessEndpointHandler(endpointPath, handler));
+        return RegisterEndpointHandler(endpointPath, new ParameterlessEndpointHandler(endpointPath, handler));
     }
 
     public bool Register<TParameters>(string endpointPath, Func<TParameters, object> handler)
     {
-        return _endpoints.TryAdd(endpointPath, new ParametrizedEndpointHandler<TParameters>(endpointPath, handler));
+        return RegisterEndpointHandler(endpointPath, new ParametrizedEndpointHandler<TParameters>(endpointPath, handler));
+    }
+
+    private bool RegisterEndpointHandler(string endpointPath, EndpointHandler endpointHandler)
+    {
+        if (_endpoints.ContainsKey(endpointPath)) _endpoints.Remove(endpointPath, out _);
+        return _endpoints.TryAdd(endpointPath, endpointHandler);
     }
 
     protected override void HandleRequest(HttpListenerContext context)
     {
-        CorsSupport.AllowCors(context);
+        CorsSupport.AllowCors(context.Response);
+        CacheControl.DisableCache(context.Response);
         if (context.Request.HttpMethod == "OPTIONS")
             context.Response.Close();
         else
@@ -56,6 +63,11 @@ public class TestEndpointsServer : HttpListenerServer
         context.Response.StatusCode = (int)HttpStatusCode.NotFound;
         context.Response.StatusDescription = "Not found";
         ResponseHelper.WriteObject(context, new TestingServerError($"Endpoint '{endpointPath}' is not registered."));
+    }
+
+    public bool Remove(string endpointPath)
+    {
+        return _endpoints.TryRemove(endpointPath, out _);
     }
 
     private object EnumerateRegisteredEndpoints()

@@ -1,6 +1,4 @@
-﻿using TestAssist.HttpServer;
-
-namespace TestAssist;
+﻿namespace TestAssist;
 
 public static class TestAssistServer
 {
@@ -25,5 +23,10 @@ public static class TestAssistServer
     public static void Register<TParameters>(string endpointPath, Func<TParameters, object> handler)
     {
         _instance.Register(endpointPath, handler);
+    }
+
+    public static void Remove(string endpointPath)
+    {
+        _instance.Remove(endpointPath);
     }
 }

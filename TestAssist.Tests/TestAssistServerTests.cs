@@ -103,7 +103,28 @@ public class TestAssistServerTests : IDisposable
         var response = await _client.SendAsync(new HttpRequestMessage(HttpMethod.Options, _request.Uri));
         response.StatusCode.Should().Be(HttpStatusCode.OK);
     }
-    
+
+    [Fact]
+    public async Task Given_Endpoint_Registered_Twice_When_Invoking_Callback_Then_Only_Last_Registered_Callback_Gets_Invoked()
+    {
+        _server.Register("endpoint/path", () => "first").Should().BeTrue();
+        _server.Register("endpoint/path", () => "last").Should().BeTrue();
+        
+        var responseMessage = await SendRequestAsync("endpoint/path", new TestParameters { TestValue = "test value" });
+
+        (await responseMessage.Content.ReadFromJsonAsync<string>()).Should().Be("last");
+    }
+
+    [Fact]
+    public async Task Given_Endpoint_Registered_Then_Removed_When_Invoked_Then_Not_Found_Response_Returns()
+    {
+        _server.Register("endpoint/path", () => "first").Should().BeTrue();
+        _server.Remove("endpoint/path").Should().BeTrue();
+        
+        var responseMessage = await SendRequestAsync("endpoint/path", new TestParameters { TestValue = "test value" });
+        responseMessage.StatusCode.Should().Be(HttpStatusCode.NotFound);
+    }
+
     private async Task<HttpResponseMessage> SendRequestAsync(string path)
     {
         _request.Path = path;
@@ -157,5 +178,13 @@ public class TestAssistServerTests : IDisposable
         _client?.Dispose();
         _server.Stop();
         _server.Dispose();
+    }
+}
+
+public class TestInvocationTarget
+{
+    public object TestMethod()
+    {
+        return true;
     }
 }

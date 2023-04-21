@@ -37,7 +37,7 @@ export class Endpoint {
             case 'POST':
                 const data = {};
                 for (let parameter of parameters)
-                    data[parameter.name] = parameter.value;
+                    data[parameter.name] = JSON.parse(parameter.value);
 
                 const requestContent = Mustache.render(this._dataTemplate, data);
 
