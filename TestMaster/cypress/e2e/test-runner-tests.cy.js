@@ -83,4 +83,21 @@ describe('test master general acceptance tests', () => {
             .should('contain.text',
                 'Exception was thrown invoking \'ThrowException\' System.InvalidOperationException: Test exception message')
     });
+
+    it('given test executed when test step succeeds then step marked as succeeded', () => {
+        cy.runTestCase('Steps success');
+
+        cy.get('[tm-call="ReturnSuccess"]')
+            .contains('Setup step succeeded')
+            .should('have.class', 'success');
+
+        cy.get('[tm-call="ReturnSuccess"]')
+            .contains('Act step succeeded')
+            .should('have.class', 'success');
+
+        cy.get('[tm-call="ReturnSuccess"]')
+            .contains('Assert step succeeded')
+            .should('have.class', 'success');
+
+    });
 });

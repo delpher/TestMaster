@@ -21,6 +21,6 @@ export class TestExpectationParser {
             throw new Error("Only one expected value per assertion is allowed");
         if (expectedValues.length === 0)
             throw new Error("Expectation must have expected value specified");
-        return expectedValues.item(0).innerText;
+        return JSON.parse(expectedValues.item(0).innerText);
     }
 }

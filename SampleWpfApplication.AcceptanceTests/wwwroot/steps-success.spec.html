@@ -1,0 +1,15 @@
+<h1 tm-role="test-name">Step success</h1>
+<div tm-role="setup">
+    <p>Given test steps report success</p>
+    <p tm-call="ReturnSuccess">Setup step succeeded</p>
+</div>
+<div tm-role="act">
+    <p>When running test:</p>
+    <p tm-call="ReturnSuccess">Act step succeeded</p>
+</div>
+<div tm-role="assert">
+    <p>Then:</p>
+    <p tm-role="expect" tm-call="ReturnSuccess" tm-assert="assert.equal($actual, $expected)">
+        Assert step succeeded <span tm-role="expected">true</span>
+    </p>
+</div>

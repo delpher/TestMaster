@@ -9711,7 +9711,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\n[tm-role=\"setup\"] p:first-child,\r\n[tm-role=\"act\"] p:first-child,\r\n[tm-role=\"assert\"] p:first-child {\r\n    font-size: larger;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='endpoints'] {\r\n    display: none;\r\n}\r\n\r\n[tm-role=\"test-name\"] button {\r\n    background: none;\r\n    border: solid 2px silver;\r\n    border-radius: 3px;\r\n    color: black;\r\n    margin-left: 1rem;\r\n    margin-top: 0.2rem;\r\n    margin-bottom: 0.2rem;\r\n    font-size: xx-large;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n}\r\n\r\n[tm-role=\"test-name\"] button:hover {\r\n    background: darkgreen;\r\n    border: solid 2px silver;\r\n    color: white;\r\n}\r\n\r\n[tm-arg] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='expected'] {\r\n    color: darkgreen;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n.running:before {\r\n    content: '⌛';\r\n}\r\n\r\n.failure:before {\r\n    content: '❌'\r\n}\r\n\r\n.success:before {\r\n    content: '✅'\r\n}\r\n\r\np.error:before {\r\n    content: '❌'\r\n}\r\n\r\nspan.error {\r\n    color: darkred;\r\n    padding-left: 2rem;\r\n}\r\n\r\nspan.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}", "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,gEAAgE;AACpE;;AAEA;IACI,aAAa;AACjB;;AAEA;;;IAGI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,wBAAwB;IACxB,kBAAkB;IAClB,YAAY;IACZ,iBAAiB;IACjB,kBAAkB;IAClB,qBAAqB;IACrB,mBAAmB;IACnB,iBAAiB;IACjB,eAAe;AACnB;;AAEA;IACI,qBAAqB;IACrB,wBAAwB;IACxB,YAAY;AAChB;;AAEA;IACI,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI;AACJ;;AAEA;IACI;AACJ;;AAEA;IACI;AACJ;;AAEA;IACI,cAAc;IACd,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;AACtB","sourcesContent":["html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\n[tm-role=\"setup\"] p:first-child,\r\n[tm-role=\"act\"] p:first-child,\r\n[tm-role=\"assert\"] p:first-child {\r\n    font-size: larger;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='endpoints'] {\r\n    display: none;\r\n}\r\n\r\n[tm-role=\"test-name\"] button {\r\n    background: none;\r\n    border: solid 2px silver;\r\n    border-radius: 3px;\r\n    color: black;\r\n    margin-left: 1rem;\r\n    margin-top: 0.2rem;\r\n    margin-bottom: 0.2rem;\r\n    font-size: xx-large;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n}\r\n\r\n[tm-role=\"test-name\"] button:hover {\r\n    background: darkgreen;\r\n    border: solid 2px silver;\r\n    color: white;\r\n}\r\n\r\n[tm-arg] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='expected'] {\r\n    color: darkgreen;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n.running:before {\r\n    content: '⌛';\r\n}\r\n\r\n.failure:before {\r\n    content: '❌'\r\n}\r\n\r\n.success:before {\r\n    content: '✅'\r\n}\r\n\r\np.error:before {\r\n    content: '❌'\r\n}\r\n\r\nspan.error {\r\n    color: darkred;\r\n    padding-left: 2rem;\r\n}\r\n\r\nspan.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\n[tm-role=\"setup\"] p:first-child,\r\n[tm-role=\"act\"] p:first-child,\r\n[tm-role=\"assert\"] p:first-child {\r\n    font-size: larger;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='endpoints'] {\r\n    display: none;\r\n}\r\n\r\n[tm-role=\"test-name\"] button {\r\n    background: none;\r\n    border: solid 2px black;\r\n    border-radius: 5px;\r\n    padding: 0.3rem 1rem 0.3rem 1rem;\r\n    color: black;\r\n    margin-left: 1rem;\r\n    margin-top: 0.2rem;\r\n    margin-bottom: 0.2rem;\r\n    font-size: xx-large;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n    transition-property: background-color;\r\n    transition-duration: 0.3s;\r\n}\r\n\r\n[tm-role=\"test-name\"] button:hover {\r\n    background: rgba(0,255,0,0.5);\r\n}\r\n\r\n[tm-arg] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='expected'] {\r\n    color: darkgreen;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n.running:before {\r\n    content: '⌛';\r\n}\r\n\r\n.failure:before {\r\n    content: '❌'\r\n}\r\n\r\n.success:before {\r\n    content: '✅'\r\n}\r\n\r\np.error:before {\r\n    content: '❌'\r\n}\r\n\r\nspan.error {\r\n    color: darkred;\r\n    padding-left: 2rem;\r\n}\r\n\r\nspan.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}", "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,gEAAgE;AACpE;;AAEA;IACI,aAAa;AACjB;;AAEA;;;IAGI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;IACvB,kBAAkB;IAClB,gCAAgC;IAChC,YAAY;IACZ,iBAAiB;IACjB,kBAAkB;IAClB,qBAAqB;IACrB,mBAAmB;IACnB,iBAAiB;IACjB,eAAe;IACf,qCAAqC;IACrC,yBAAyB;AAC7B;;AAEA;IACI,6BAA6B;AACjC;;AAEA;IACI,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI;AACJ;;AAEA;IACI;AACJ;;AAEA;IACI;AACJ;;AAEA;IACI,cAAc;IACd,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;AACtB","sourcesContent":["html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\n[tm-role=\"setup\"] p:first-child,\r\n[tm-role=\"act\"] p:first-child,\r\n[tm-role=\"assert\"] p:first-child {\r\n    font-size: larger;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='endpoints'] {\r\n    display: none;\r\n}\r\n\r\n[tm-role=\"test-name\"] button {\r\n    background: none;\r\n    border: solid 2px black;\r\n    border-radius: 5px;\r\n    padding: 0.3rem 1rem 0.3rem 1rem;\r\n    color: black;\r\n    margin-left: 1rem;\r\n    margin-top: 0.2rem;\r\n    margin-bottom: 0.2rem;\r\n    font-size: xx-large;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n    transition-property: background-color;\r\n    transition-duration: 0.3s;\r\n}\r\n\r\n[tm-role=\"test-name\"] button:hover {\r\n    background: rgba(0,255,0,0.5);\r\n}\r\n\r\n[tm-arg] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='expected'] {\r\n    color: darkgreen;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n.running:before {\r\n    content: '⌛';\r\n}\r\n\r\n.failure:before {\r\n    content: '❌'\r\n}\r\n\r\n.success:before {\r\n    content: '✅'\r\n}\r\n\r\np.error:before {\r\n    content: '❌'\r\n}\r\n\r\nspan.error {\r\n    color: darkred;\r\n    padding-left: 2rem;\r\n}\r\n\r\nspan.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12480,24 +12480,41 @@ __webpack_require__.r(__webpack_exports__);
 class TestExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_1__.TestSequenceStep {
     _expectation;
     _expectedValue;
+    _assert;
     
     constructor(endpointInvocator, view, expectation, expectedValue) {
         super(endpointInvocator, view);
+        this._assert = chai__WEBPACK_IMPORTED_MODULE_0__.assert;
         this._expectation = expectation;
         this._expectedValue = expectedValue;
     }
     
     handleResult(invocationResult) {
         try {
-            chai__WEBPACK_IMPORTED_MODULE_0__.assert[this._expectation](invocationResult, this._expectedValue);
+            this._runExpectation(invocationResult);
+            return true;
         } catch (error) {
-            if (error instanceof chai__WEBPACK_IMPORTED_MODULE_0__.AssertionError) {
-                this._view.displayErrorMessage(error);
-                return false;
-            }
-            throw error;
+            return this._handleError(error);
         }
-        return true;
+    }
+
+    _handleError(error) {
+        if (error instanceof chai__WEBPACK_IMPORTED_MODULE_0__.AssertionError) {
+            this._view.displayErrorMessage(error);
+            return false;
+        }
+        throw error;
+    }
+
+    _runExpectation(invocationResult) {
+        let functionBody = `
+                var $actual = arguments[0];
+                var $expected = this._expectedValue;
+                this._${this._expectation};`;
+
+        let assertionFunc = new Function(functionBody);
+
+        return assertionFunc.call(this, invocationResult);
     }
 }
 
@@ -12654,7 +12671,7 @@ class TestExpectationParser {
             throw new Error("Only one expected value per assertion is allowed");
         if (expectedValues.length === 0)
             throw new Error("Expectation must have expected value specified");
-        return expectedValues.item(0).innerText;
+        return JSON.parse(expectedValues.item(0).innerText);
     }
 }
 

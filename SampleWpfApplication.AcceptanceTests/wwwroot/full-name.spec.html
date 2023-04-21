@@ -9,7 +9,7 @@
 </div>
 <div tm-role="assert">
     <p>Then:</p>
-    <p tm-role="expect" tm-call="GetFullName" tm-assert="equal">
-        Expect full name to be: <span tm-role="expected">first-name last-name</span>
+    <p tm-role="expect" tm-call="GetFullName" tm-assert="assert.equal($actual, $expected)">
+        Expect full name to be: <span tm-role="expected">"first-name last-name"</span>
     </p>
 </div>

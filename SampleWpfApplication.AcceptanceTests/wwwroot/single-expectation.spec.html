@@ -1,0 +1,15 @@
+<h1 tm-role="test-name">Single expectation</h1>
+<div tm-role="setup">
+    <p>Given:</p>
+    <p>Test contains single expectation</p>
+</div>
+<div tm-role="act">
+    <p>When:</p>
+    <p>Running test</p>
+</div>
+<div tm-role="assert">
+    <p>Then:</p>
+    <p tm-role="expect" tm-call="ReturnSuccess" tm-assert="assert.equal($expected, $actual)">
+        Equal assertion succeeds because returned value is <span tm-role="expected">true</span>
+    </p>
+</div>

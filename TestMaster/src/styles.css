@@ -19,8 +19,9 @@ body {
 
 [tm-role="test-name"] button {
     background: none;
-    border: solid 2px silver;
-    border-radius: 3px;
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 0.3rem 1rem 0.3rem 1rem;
     color: black;
     margin-left: 1rem;
     margin-top: 0.2rem;
@@ -28,12 +29,12 @@ body {
     font-size: xx-large;
     font-weight: bold;
     cursor: pointer;
+    transition-property: background-color;
+    transition-duration: 0.3s;
 }
 
 [tm-role="test-name"] button:hover {
-    background: darkgreen;
-    border: solid 2px silver;
-    color: white;
+    background: rgba(0,255,0,0.5);
 }
 
 [tm-arg] {

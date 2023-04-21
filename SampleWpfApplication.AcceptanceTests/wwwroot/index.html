@@ -13,6 +13,12 @@
             <li><a href="missing-test-case.spec.html">Test case file missing</a></li>
             <li><a href="steps-failure.spec.html">Steps failures</a></li>
             <li><a href="steps-error.spec.html">Steps exceptions</a></li>
+            <li><a href="steps-success.spec.html">Steps success</a></li>
+            <li>Expectation specs
+                <ul>
+                    <li><a href="single-expectation.spec.html">Single expectation</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div tm-role="endpoints" tm-backend="http://localhost:8080">
@@ -20,6 +26,7 @@
         <tm-endpoint name="SetLastName" method="POST">"{{userName}}"</tm-endpoint>
         <tm-endpoint name="GetFullName" method="GET"></tm-endpoint>
         <tm-endpoint name="ReturnFailure" method="POST"></tm-endpoint>
+        <tm-endpoint name="ReturnSuccess" method="POST"></tm-endpoint>
         <tm-endpoint name="ThrowException" method="GET"></tm-endpoint>
     </div>
 </body>
