@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('runOpenedTest', () => {
+    cy.get('#test-display button#run-test').click();
+});
+
+Cypress.Commands.add('openTestCase', title => {
+    cy.get('a').contains(title).click();
+});
+
+Cypress.Commands.add('runTestCase', title => {
+    cy.openTestCase(title);
+    cy.runOpenedTest();
+})
