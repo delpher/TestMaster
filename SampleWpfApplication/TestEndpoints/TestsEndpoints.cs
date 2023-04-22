@@ -3,7 +3,7 @@ using TestAssist;
 
 namespace SampleWpfApplication.TestEndpoints;
 
-public class AcceptanceTestsEndpoints
+public class TestsEndpoints
 {
     public static void Register()
     {
