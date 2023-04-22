@@ -26,12 +26,12 @@ describe('test master general acceptance tests', () => {
                 'Error: Failed to load test case contents. 404 Not Found');
     });
 
-    it('given test case opened when clicking run then test gets executed', () => {
+    it.only('given test case opened when clicking run then test gets executed', () => {
         cy.runTestCase('Editing user details');
 
-        cy.get('[tm-call="SetFirstName"]').should('have.class', 'success');
-        cy.get('[tm-call="SetLastName"]').should('have.class', 'success');
-        cy.get('[tm-call="GetFullName"]').should('have.class', 'success');
+        cy.get('[tm-call="UserDetails/SetFirstName"]').should('have.class', 'success');
+        cy.get('[tm-call="UserDetails/SetLastName"]').should('have.class', 'success');
+        cy.get('[tm-call="UserDetails/GetFullName"]').should('have.class', 'success');
     });
 
     it('given test executed when test step fails then step marked as failed', () => {

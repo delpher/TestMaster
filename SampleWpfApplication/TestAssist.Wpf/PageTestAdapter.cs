@@ -16,8 +16,6 @@ public abstract class PageTestAdapter<T> : FrameworkElementTestAdapter<T> where 
     {
         RemoveEndpoints();
     }
-
-    protected abstract override void RegisterEndpoints(T element);
-
+    
     protected abstract void RemoveEndpoints();
 }

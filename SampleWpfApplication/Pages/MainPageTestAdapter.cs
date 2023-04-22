@@ -13,16 +13,11 @@ public class MainPageTestAdapter : PageTestAdapter<MainPage>
 
     private object OpenUserDetailsExample(MainPage element)
     {
-        try
-        {
-            element.UserDetailsExample.Dispatcher.VerifyAccess();
-            element.UserDetailsExample.DoClick();
-            return true;
-        }
-        catch (InvalidOperationException)
-        {
-            return element.UserDetailsExample.Dispatcher.Invoke(OpenUserDetailsExample);
-        }
+        if (!element.Dispatcher.CheckAccess())
+            return element.Dispatcher.Invoke(() => OpenUserDetailsExample(element));
+        
+        element.UserDetailsExample.DoClick();
+        return true;
     }
 
     protected override void RemoveEndpoints()

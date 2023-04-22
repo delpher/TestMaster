@@ -21,18 +21,25 @@ public class UserDetailsTestAdapter : PageTestAdapter<UserDetails>
 
     private object SetFirstName(UserDetails userDetails, string value)
     {
-        userDetails.FirstNameField.SetValue(value);
-        return userDetails.Dispatcher.Invoke(() => ((UserDetailsViewModel)userDetails.DataContext).FirstName == value);
+        userDetails.FirstNameField.SetTextBoxValue(value);
+        return GetDataContext(userDetails).FirstName == value;
     }
 
     private object SetLastName(UserDetails userDetails, string value)
     {
-        userDetails.LastNameField.SetValue(value);
-        return userDetails.Dispatcher.Invoke(() => ((UserDetailsViewModel)userDetails.DataContext).LastName == value);
+        userDetails.LastNameField.SetTextBoxValue(value);
+        return GetDataContext(userDetails).LastName == value;
+    }
+
+    private UserDetailsViewModel GetDataContext(UserDetails userDetails)
+    {
+        if (userDetails.Dispatcher.CheckAccess())
+            return (UserDetailsViewModel)userDetails.DataContext;
+        return userDetails.Dispatcher.Invoke(() => GetDataContext(userDetails));
     }
 
     private string GetFullName(UserDetails userDetails)
     {
-        return userDetails.FullNameDisplay.GetText();
+        return userDetails.FullNameDisplay.GetTextBlockText();
     }
 }

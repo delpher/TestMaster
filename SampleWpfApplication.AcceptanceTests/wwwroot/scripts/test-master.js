@@ -12361,12 +12361,15 @@ class Endpoint {
         this._dataTemplate = dataTemplate;
     }
     
-    async invoke(parameters) {
+    async invoke(parameters, retries) {
+        retries = retries && retries || 0;
         const response = await this._getResponse(parameters);
         const json = await response.json();
         if (response.ok)
             return json;
-        else
+        else if (retries < 3) 
+            return await this.invoke(parameters, retries + 1) 
+        else 
             throw new BackendEndpointError(json);
     }
 

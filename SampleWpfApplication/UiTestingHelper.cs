@@ -6,36 +6,25 @@ namespace SampleWpfApplication;
 
 public static class UiTestingHelper
 {
-    public static void SetValue(this TextBox textBox, string value)
+    public static void SetTextBoxValue(this TextBox textBox, string value)
     {
-        try
+        if (!textBox.Dispatcher.CheckAccess())
         {
-            textBox.Dispatcher.VerifyAccess();
-            textBox.Text = value;
-            BindingOperations.GetBindingExpression(textBox, TextBox.TextProperty)?.UpdateSource();
-            textBox.RaiseEvent(new RoutedEventArgs(UIElement.LostFocusEvent));
+            textBox.Dispatcher.Invoke(() => SetTextBoxValue(textBox, value));
+            return;
         }
-        catch
-        {
-            textBox.Dispatcher.Invoke(() => SetValue(textBox, value));
-        }
+
+        textBox.Text = value;
+        BindingOperations.GetBindingExpression(textBox, TextBox.TextProperty)?.UpdateSource();
+        textBox.RaiseEvent(new RoutedEventArgs(UIElement.LostFocusEvent));
     }
     
-    public static string GetText(this TextBlock textBlock)
+    public static string GetTextBlockText(this TextBlock textBlock)
     {
-        try
-        {
-            textBlock.Dispatcher.VerifyAccess();
-            return GetTextBlockTextUnsafe(textBlock);
-        }
-        catch
-        {
-            return textBlock.Dispatcher.Invoke(() => GetTextBlockTextUnsafe(textBlock));
-        }
-    }
-
-    private static string GetTextBlockTextUnsafe(TextBlock textBlock)
-    {
+        if (!textBlock.Dispatcher.CheckAccess())
+            return textBlock.Dispatcher.Invoke(() => GetTextBlockText(textBlock));
+        
+        textBlock.Dispatcher.VerifyAccess();
         return textBlock!.Text;
     }
 }

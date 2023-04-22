@@ -1,10 +1,11 @@
 <h1 tm-role="test-name">Filling user details</h1>
 <div tm-role="setup">
-    <p >Given:</p>
-    <p tm-call="Index/UserDetailsExample">form is blank</p>
+    <p>Given:</p>
+    <p tm-call="Index">User is at the index page</p>
 </div>
 <div tm-role="act">
     <p>When:</p>
+    <p tm-call="Index/UserDetailsExample">User details are opened</p>
     <p tm-call="UserDetails/SetFirstName">entering first name: <span tm-arg="userName">"FirstName"</span></p>
     <p tm-call="UserDetails/SetLastName">entering last name: <span tm-arg="userName">"LastName"</span></p>
 </div>
