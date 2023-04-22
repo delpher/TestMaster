@@ -26,7 +26,7 @@ describe('test master general acceptance tests', () => {
                 'Error: Failed to load test case contents. 404 Not Found');
     });
 
-    it.only('given test case opened when clicking run then test gets executed', () => {
+    it('given test case opened when clicking run then test gets executed', () => {
         cy.runTestCase('Editing user details');
 
         cy.get('[tm-call="UserDetails/SetFirstName"]').should('have.class', 'success');
