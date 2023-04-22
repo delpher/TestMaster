@@ -12327,6 +12327,25 @@ return typeDetect;
 
 /***/ }),
 
+/***/ "./src/backend/backendEndpointError.js":
+/*!*********************************************!*\
+  !*** ./src/backend/backendEndpointError.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BackendEndpointError": () => (/* binding */ BackendEndpointError)
+/* harmony export */ });
+﻿class BackendEndpointError extends Error {
+    constructor(errorResult) {
+        super(`${errorResult['Message']} ${errorResult['Exception']}`);
+    }
+}
+
+/***/ }),
+
 /***/ "./src/backend/endpoint.js":
 /*!*********************************!*\
   !*** ./src/backend/endpoint.js ***!
@@ -12336,29 +12355,18 @@ return typeDetect;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BackendEndpointError": () => (/* binding */ BackendEndpointError),
 /* harmony export */   "Endpoint": () => (/* binding */ Endpoint)
 /* harmony export */ });
-/* harmony import */ var mustache__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mustache */ "./node_modules/mustache/mustache.mjs");
+/* harmony import */ var _backendEndpointError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./backendEndpointError */ "./src/backend/backendEndpointError.js");
 ﻿
-
-class BackendEndpointError extends Error {
-    constructor(errorResult) {
-        super(`${errorResult['Message']} ${errorResult['Exception']}`);
-    }
-}
 
 class Endpoint {
     _backendUrl;
     _name;
-    _method;
-    _dataTemplate;
     
-    constructor(backendUrl, name, method, dataTemplate) {
+    constructor(backendUrl, name) {
         this._backendUrl = backendUrl;
         this._name = name;
-        this._method = method;
-        this._dataTemplate = dataTemplate;
     }
     
     async invoke(parameters, retries) {
@@ -12370,30 +12378,16 @@ class Endpoint {
         else if (retries < 3) 
             return await this.invoke(parameters, retries + 1) 
         else 
-            throw new BackendEndpointError(json);
+            throw new _backendEndpointError__WEBPACK_IMPORTED_MODULE_0__.BackendEndpointError(json);
     }
 
     async _getResponse(parameters) {
         const requestUrl = `${this._backendUrl}/${this._name}`;
+        return await this.invokeBackendEndpoint(parameters, requestUrl);
+    }
 
-        switch (this._method) {
-            case 'GET':
-                return await fetch(requestUrl);
-            case 'POST':
-                const data = {};
-                for (let parameter of parameters)
-                    data[parameter.name] = JSON.parse(parameter.value);
-
-                const requestContent = mustache__WEBPACK_IMPORTED_MODULE_0__["default"].render(this._dataTemplate, data);
-
-                return await fetch(requestUrl, {
-                    method: this._method,
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: requestContent
-                });
-        }
+    async invokeBackendEndpoint(parameters, requestUrl) {
+        throw new Error('Abstract method invocation');
     }
 }
 
@@ -12426,6 +12420,39 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/backend/endpointParser.js":
+/*!***************************************!*\
+  !*** ./src/backend/endpointParser.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "EndpointParser": () => (/* binding */ EndpointParser)
+/* harmony export */ });
+/* harmony import */ var _parameterlessEndpoint__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./parameterlessEndpoint */ "./src/backend/parameterlessEndpoint.js");
+/* harmony import */ var _parametrizedEndpoint__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parametrizedEndpoint */ "./src/backend/parametrizedEndpoint.js");
+﻿
+
+
+class EndpointParser {
+    static parse(backendUrl, node) {
+        const name = node.getAttribute('name');
+        const method = node.getAttribute('method');
+        switch (method) {
+            case 'GET':
+                return new _parameterlessEndpoint__WEBPACK_IMPORTED_MODULE_0__.ParameterlessEndpoint(backendUrl, name);
+            case 'POST':
+                return new _parametrizedEndpoint__WEBPACK_IMPORTED_MODULE_1__.ParametrizedEndpoint(backendUrl, name, node.innerText);
+            default:
+                throw new Error(`Method ${method} for endpoint is not supported.`);
+        }
+    }
+}
+
+/***/ }),
+
 /***/ "./src/backend/endpointsParser.js":
 /*!****************************************!*\
   !*** ./src/backend/endpointsParser.js ***!
@@ -12438,18 +12465,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EndpointsParser": () => (/* binding */ EndpointsParser)
 /* harmony export */ });
 /* harmony import */ var _endpointContext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./endpointContext */ "./src/backend/endpointContext.js");
-/* harmony import */ var _endpoint__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./endpoint */ "./src/backend/endpoint.js");
+/* harmony import */ var _endpointParser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./endpointParser */ "./src/backend/endpointParser.js");
 ﻿
 
-
-class EndpointParser {
-    static parse(backendUrl, node) {
-        const name = node.getAttribute('name');
-        const method = node.getAttribute('method');
-        const dataTemplate = node.innerText;
-        return new _endpoint__WEBPACK_IMPORTED_MODULE_1__.Endpoint(backendUrl, name, method, dataTemplate);
-    }
-}
 
 class EndpointsParser {
     static parse(node) {
@@ -12457,8 +12475,72 @@ class EndpointsParser {
         const endpoints = [];
         const backendUrl = node.getAttribute('tm-backend');
         for (let endpointNode of endpointNodes)
-            endpoints.push(EndpointParser.parse(backendUrl, endpointNode));
+            endpoints.push(_endpointParser__WEBPACK_IMPORTED_MODULE_1__.EndpointParser.parse(backendUrl, endpointNode));
         return new _endpointContext__WEBPACK_IMPORTED_MODULE_0__.EndpointContext(endpoints);
+    }
+}
+
+/***/ }),
+
+/***/ "./src/backend/parameterlessEndpoint.js":
+/*!**********************************************!*\
+  !*** ./src/backend/parameterlessEndpoint.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ParameterlessEndpoint": () => (/* binding */ ParameterlessEndpoint)
+/* harmony export */ });
+/* harmony import */ var _endpoint__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./endpoint */ "./src/backend/endpoint.js");
+﻿
+
+class ParameterlessEndpoint extends _endpoint__WEBPACK_IMPORTED_MODULE_0__.Endpoint {
+    async invokeBackendEndpoint(parameters, requestUrl) {
+        return await fetch(requestUrl);
+    }
+}
+
+/***/ }),
+
+/***/ "./src/backend/parametrizedEndpoint.js":
+/*!*********************************************!*\
+  !*** ./src/backend/parametrizedEndpoint.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ParametrizedEndpoint": () => (/* binding */ ParametrizedEndpoint)
+/* harmony export */ });
+/* harmony import */ var _endpoint__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./endpoint */ "./src/backend/endpoint.js");
+/* harmony import */ var mustache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mustache */ "./node_modules/mustache/mustache.mjs");
+﻿
+
+
+class ParametrizedEndpoint extends _endpoint__WEBPACK_IMPORTED_MODULE_0__.Endpoint {
+    _dataTemplate;
+    
+    constructor(backendUrl, name, dataTemplate) {
+        super(backendUrl, name);
+        this._dataTemplate = dataTemplate;
+    }
+    async invokeBackendEndpoint(parameters, requestUrl) {
+        const data = {};
+        for (let parameter of parameters)
+            data[parameter.name] = JSON.parse(parameter.value);
+
+        const requestContent = mustache__WEBPACK_IMPORTED_MODULE_1__["default"].render(this._dataTemplate, data);
+
+        return await fetch(requestUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: requestContent
+        });
     }
 }
 

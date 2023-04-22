@@ -1,14 +1,5 @@
-﻿import {EndpointContext} from "./endpointContext";
-import {Endpoint} from "./endpoint";
-
-class EndpointParser {
-    static parse(backendUrl, node) {
-        const name = node.getAttribute('name');
-        const method = node.getAttribute('method');
-        const dataTemplate = node.innerText;
-        return new Endpoint(backendUrl, name, method, dataTemplate);
-    }
-}
+﻿import {EndpointContext} from './endpointContext';
+import {EndpointParser} from './endpointParser';
 
 export class EndpointsParser {
     static parse(node) {
