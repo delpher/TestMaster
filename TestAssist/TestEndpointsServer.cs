@@ -1,10 +1,11 @@
 ﻿using System.Collections.Concurrent;
 using System.Net;
+using Microsoft.AspNetCore.Http;
 using TestAssist.HttpServer;
 
 namespace TestAssist;
 
-public class TestEndpointsServer : HttpListenerServer
+public class TestEndpointsServer : HttpServer.HttpServer
 {
     private readonly ConcurrentDictionary<string, EndpointHandler> _endpoints;
 
@@ -16,10 +17,20 @@ public class TestEndpointsServer : HttpListenerServer
     
     public bool Register(string endpointPath, Func<object> handler)
     {
+        return Register(endpointPath, () => Task.FromResult(handler()));
+    }
+    
+    public bool Register(string endpointPath, Func<Task<object>> handler)
+    {
         return RegisterEndpointHandler(endpointPath, new ParameterlessEndpointHandler(endpointPath, handler));
     }
 
     public bool Register<TParameters>(string endpointPath, Func<TParameters, object> handler)
+    {
+        return Register<TParameters>(endpointPath, parameters => Task.FromResult(handler(parameters)));
+    }
+    
+    public bool Register<TParameters>(string endpointPath, Func<TParameters, Task<object>> handler)
     {
         return RegisterEndpointHandler(endpointPath, new ParametrizedEndpointHandler<TParameters>(endpointPath, handler));
     }
@@ -30,41 +41,29 @@ public class TestEndpointsServer : HttpListenerServer
         return _endpoints.TryAdd(endpointPath, endpointHandler);
     }
 
-    protected override void HandleRequest(HttpListenerContext context)
+    protected override async Task HandleRequest(HttpContext context)
     {
-        CorsSupport.AllowCors(context.Response);
-        CacheControl.DisableCache(context.Response);
-        if (context.Request.HttpMethod == "OPTIONS")
-            context.Response.Close();
+        var endpointPath = context.Request.Path.Value;
+        await HandleEndpointRequest(_endpoints, endpointPath?.TrimStart('/'), context);
+    }
+
+    private static async Task HandleEndpointRequest(ConcurrentDictionary<string, EndpointHandler> endpoints,
+        string endpointPath, HttpContext context)
+    {
+        if (endpoints.TryGetValue(endpointPath, out var endpoint)) 
+            await InvokeEndpoint(endpoint, context);
         else
         {
-            var endpointPath = context.Request.Url?.AbsolutePath;
-            HandleEndpointRequest(_endpoints, endpointPath?.TrimStart('/'), context);
+            context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+            await context.Response.WriteAsJsonAsync(new TestingServerError($"Endpoint '{endpointPath}' is not registered."));
         }
     }
 
-    private static void HandleEndpointRequest(
-        ConcurrentDictionary<string, EndpointHandler> endpoints,
-        string endpointPath, HttpListenerContext context)
+    private static async Task InvokeEndpoint(EndpointHandler endpointHandler, HttpContext context)
     {
-        if (endpoints.TryGetValue(endpointPath, out var endpoint))
-            InvokeEndpoint(endpoint, context);
-        else
-            RespondNotFound(endpointPath, context);
+        await endpointHandler.Invoke(context);
     }
-
-    private static void InvokeEndpoint(EndpointHandler endpointHandler, HttpListenerContext context)
-    {
-        endpointHandler.Invoke(context);
-    }
-
-    private static void RespondNotFound(string endpointPath, HttpListenerContext context)
-    {
-        context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-        context.Response.StatusDescription = "Not found";
-        ResponseHelper.WriteObject(context, new TestingServerError($"Endpoint '{endpointPath}' is not registered."));
-    }
-
+    
     public bool Remove(string endpointPath)
     {
         return _endpoints.TryRemove(endpointPath, out _);

@@ -1,18 +1,19 @@
 ﻿using System.Net;
+using Microsoft.AspNetCore.Http;
 
 namespace TestAssist;
 
 public class ParameterlessEndpointHandler : EndpointHandler
 {
-    private readonly Func<object> _callback;
+    private readonly Func<Task<object>> _callback;
 
-    public ParameterlessEndpointHandler(string endpointPath, Func<object> callback) : base(endpointPath)
+    public ParameterlessEndpointHandler(string endpointPath, Func<Task<object>> callback) : base(endpointPath)
     {
         _callback = callback;
     }
     
-    protected override object InvokeImplementation(HttpListenerContext context)
+    protected override async Task<object> InvokeImplementation(HttpContext context)
     {
-        return _callback();
+        return await _callback();
     }
 }

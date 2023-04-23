@@ -12375,8 +12375,10 @@ class Endpoint {
         const json = await response.json();
         if (response.ok)
             return json;
-        else if (retries < 3) 
-            return await this.invoke(parameters, retries + 1) 
+        else if (retries < 3) {
+            await this._delay(100);
+            return await this.invoke(parameters, retries + 1)
+        }
         else 
             throw new _backendEndpointError__WEBPACK_IMPORTED_MODULE_0__.BackendEndpointError(json);
     }
@@ -12388,6 +12390,12 @@ class Endpoint {
 
     async invokeBackendEndpoint(parameters, requestUrl) {
         throw new Error('Abstract method invocation');
+    }
+
+    async _delay(timeout) {
+        return new Promise((resolve) => {
+            setTimeout(resolve, timeout);
+        });
     }
 }
 

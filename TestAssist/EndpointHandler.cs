@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Microsoft.AspNetCore.Http;
 using TestAssist.HttpServer;
 
 namespace TestAssist;
@@ -12,22 +13,22 @@ public abstract class EndpointHandler
         _endpointPath = endpointPath;
     }
     
-    public void Invoke(HttpListenerContext context)
+    public async Task Invoke(HttpContext context)
     {
         try
         {
-            var result = InvokeImplementation(context);
+            var result = await InvokeImplementation(context);
             context.Response.StatusCode = (int)HttpStatusCode.OK;
-            ResponseHelper.WriteObject(context, result);
+            await context.Response.WriteAsJsonAsync(result);
         }
         catch (Exception exception)
         {
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            ResponseHelper.WriteObject(context, MakeError(exception));
+            await context.Response.WriteAsJsonAsync(MakeError(exception));
         }
     }
 
-    protected abstract object InvokeImplementation(HttpListenerContext context);
+    protected abstract Task<object> InvokeImplementation(HttpContext context);
 
     private TestingServerError MakeError(Exception exception)
     {
