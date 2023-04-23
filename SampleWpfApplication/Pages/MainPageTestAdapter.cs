@@ -1,5 +1,4 @@
-﻿using System;
-using SampleWpfApplication.TestAssist.Wpf;
+﻿using SampleWpfApplication.TestAssist.Wpf;
 using TestAssist;
 
 namespace SampleWpfApplication.Pages;
