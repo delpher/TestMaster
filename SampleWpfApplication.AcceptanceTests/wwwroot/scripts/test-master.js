@@ -12340,7 +12340,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 ﻿class BackendEndpointError extends Error {
     constructor(errorResult) {
-        super(`${errorResult['Message']} ${errorResult['Exception']}`);
+        super(`${errorResult.message} ${errorResult.exception}`);
     }
 }
 
