@@ -102,7 +102,7 @@ public class TestAssistServerTests : IDisposable
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Options, _request.Uri);
         var response = await _client.SendAsync(requestMessage);
-        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        response.StatusCode.Should().Be(HttpStatusCode.NoContent, await response.Content.ReadAsStringAsync());
     }
 
     [Fact]
@@ -130,7 +130,6 @@ public class TestAssistServerTests : IDisposable
     {
         _request.Path = path;
         var responseMessage = await _client.GetAsync(_request.Uri);
-        VerifyCorsPolicy(responseMessage);
         await VerifyContentType(responseMessage, "application/json");
         return responseMessage;
     }
@@ -140,23 +139,10 @@ public class TestAssistServerTests : IDisposable
         _request.Path = path;
         var responseMessage = await _client.PostAsync(
             _request.Uri, JsonContent.Create(parameters));
-        VerifyCorsPolicy(responseMessage);
         await VerifyContentType(responseMessage, "application/json");
         return responseMessage;
     }
-
-    private static void VerifyCorsPolicy(HttpResponseMessage responseMessage)
-    {
-        // responseMessage.Headers.GetValues("Access-Control-Allow-Headers")
-        //     .Should().Contain("*");
-        //
-        // responseMessage.Headers.GetValues("Access-Control-Allow-Methods")
-        //     .Should().Contain("*");
-        //
-        // responseMessage.Headers.GetValues("Access-Control-Allow-Origin")
-        //     .Should().Contain("*");
-    }
-
+    
     private static async Task VerifyContentType(HttpResponseMessage responseMessage, string contentType)
     {
         var content = await responseMessage.Content.ReadAsStringAsync();

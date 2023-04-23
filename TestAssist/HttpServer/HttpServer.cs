@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Net;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,7 +34,10 @@ public abstract class HttpServer : IDisposable
         _webApplication.Use(async (context, next) =>
         {
             await next();
-            await HandleRequest(context);
+            if (HttpMethods.IsOptions(context.Request.Method))
+                context.Response.StatusCode = (int)HttpStatusCode.NoContent;
+            else
+                await HandleRequest(context);
         });
         
         _webApplication.RunAsync();

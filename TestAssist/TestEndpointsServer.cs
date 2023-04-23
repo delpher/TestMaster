@@ -28,8 +28,8 @@ public class TestEndpointsServer : HttpServer.HttpServer
     {
         return Register<TParameters>(endpointPath, parameters => Task.FromResult(handler(parameters)));
     }
-    
-    public bool Register<TParameters>(string endpointPath, Func<TParameters, Task<object>> handler)
+
+    private bool Register<TParameters>(string endpointPath, Func<TParameters, Task<object>> handler)
     {
         return RegisterEndpointHandler(endpointPath, new ParametrizedEndpointHandler<TParameters>(endpointPath, handler));
     }
