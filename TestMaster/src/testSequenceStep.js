@@ -12,14 +12,14 @@ export class TestSequenceStep {
         this._view.showRunning();
         try {
             const invocationResult = await this._endpointInvocator.invoke(context);
-            const result = this.handleResult(invocationResult);
-            if (result === true) this._view.showSuccess();
-            else this._view.showFailure();
+            this.handleResult(invocationResult);
         } catch (e) {
             this._view.showError(e);
         }
     }
-    handleResult(invocationResult) {
-        return invocationResult;
+    
+    handleResult(result) {
+        if (result === true) this._view.showSuccess();
+        else this._view.showFailure();
     }
 }

@@ -12585,7 +12585,7 @@ class TestExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_1__.Tes
     handleResult(invocationResult) {
         try {
             this._runExpectation(invocationResult);
-            return true;
+            this._view.showSuccess();
         } catch (error) {
             return this._handleError(error);
         }
@@ -12593,10 +12593,10 @@ class TestExpectation extends _testSequenceStep__WEBPACK_IMPORTED_MODULE_1__.Tes
 
     _handleError(error) {
         if (error instanceof chai__WEBPACK_IMPORTED_MODULE_0__.AssertionError) {
-            this._view.showFailure(error.message);
-            return false;
+            this._view.showFailure(error);
+        } else {
+            this._view.showError(error);
         }
-        throw error;
     }
 
     _runExpectation(invocationResult) {
@@ -13170,15 +13170,15 @@ class TestSequenceStep {
         this._view.showRunning();
         try {
             const invocationResult = await this._endpointInvocator.invoke(context);
-            const result = this.handleResult(invocationResult);
-            if (result === true) this._view.showSuccess();
-            else this._view.showFailure();
+            this.handleResult(invocationResult);
         } catch (e) {
             this._view.showError(e);
         }
     }
-    handleResult(invocationResult) {
-        return invocationResult;
+    
+    handleResult(result) {
+        if (result === true) this._view.showSuccess();
+        else this._view.showFailure();
     }
 }
 

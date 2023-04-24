@@ -16,7 +16,7 @@ export class TestExpectation extends TestSequenceStep {
     handleResult(invocationResult) {
         try {
             this._runExpectation(invocationResult);
-            return true;
+            this._view.showSuccess();
         } catch (error) {
             return this._handleError(error);
         }
@@ -24,10 +24,10 @@ export class TestExpectation extends TestSequenceStep {
 
     _handleError(error) {
         if (error instanceof AssertionError) {
-            this._view.showFailure(error.message);
-            return false;
+            this._view.showFailure(error);
+        } else {
+            this._view.showError(error);
         }
-        throw error;
     }
 
     _runExpectation(invocationResult) {
