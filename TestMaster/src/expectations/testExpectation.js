@@ -24,7 +24,7 @@ export class TestExpectation extends TestSequenceStep {
 
     _handleError(error) {
         if (error instanceof AssertionError) {
-            this._view.displayErrorMessage(error);
+            this._view.showFailure(error.message);
             return false;
         }
         throw error;

@@ -18,33 +18,36 @@
     showRunning() {
         this._node.className = '';
         this._node.classList.add('running');
-        this._hideError();
+        this._clearErrorMessage();
     }
 
     showSuccess() {
         this._node.className = '';
         this._node.classList.add('success');
+        this._clearErrorMessage();
     }
 
-    showFailure() {
+    showFailure(message) {
         this._node.className = '';
         this._node.classList.add('failure');
+        
+        if (message) this._showErrorMessage(message)
+        else this._clearErrorMessage();
     }
 
     showError(error) {
         this._node.className = '';
         this._node.classList.add('error');
-        this.displayErrorMessage(error);
+        this._showErrorMessage(error);
     }
 
-    displayErrorMessage(error) {
+    _showErrorMessage(error) {
         this._errorDisplay.innerHTML = error.toString();
         this._errorDisplay.style.display = 'inline';
         console.error(error);
     }
 
-    _hideError() {
-        this._node.className = '';
+    _clearErrorMessage() {
         this._errorDisplay.style.display = 'none';
     }
 }
