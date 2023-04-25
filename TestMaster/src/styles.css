@@ -6,6 +6,19 @@ body {
     padding: 3rem;
 }
 
+a:link {
+    text-decoration: none;
+}
+
+[tm-role="test-cases"] a:link[rel="index"]:after {
+    content: ' 📄';
+}
+
+[tm-role="test-cases"] a:link:after {
+    content: ' 🧪';
+}
+
+
 [tm-role="setup"] p:first-child,
 [tm-role="act"] p:first-child,
 [tm-role="assert"] p:first-child {

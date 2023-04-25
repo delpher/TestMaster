@@ -28,11 +28,11 @@ module.exports = {
                     copy: [
                         {
                             source: './dist/**/*.js',
-                            destination: '../SampleWpfApplication.AcceptanceTests/wwwroot/scripts'
+                            destination: '../SampleWpfApplication.AcceptanceTests/scripts'
                         },
                         {
                             source: './dist/**/*.map',
-                            destination: '../SampleWpfApplication.AcceptanceTests/wwwroot/scripts'
+                            destination: '../SampleWpfApplication.AcceptanceTests/scripts'
                         },
                     ]
                 }

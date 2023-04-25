@@ -36,7 +36,7 @@ export class TestExplorerComponent {
         const backLink = document.createElement('a');
         backLink.id = 'back-link';
         backLink.href = 'javascript:void(0)';
-        backLink.innerHTML = '&larr; back to test cases';
+        backLink.innerHTML = '&larr; back to index';
         backLink.onclick = () => this._showTestCases();
         return backLink;
     }
@@ -44,9 +44,14 @@ export class TestExplorerComponent {
     _initializeTestCases() {
         const links = document.querySelectorAll("[tm-role='test-cases'] a");
         links.forEach(anchor => {
-            const testCaseUrl = anchor.href;
-            anchor.href = 'javascript:void(0)';
-            anchor.onclick = () => this._loadTestCase(testCaseUrl);
+            if (anchor.rel === "index") {
+                anchor.title = 'Tests index';
+            } else {
+                anchor.title = 'Test case';
+                const testCaseUrl = anchor.href;
+                anchor.href = 'javascript:void(0)';
+                anchor.onclick = () => this._loadTestCase(testCaseUrl);
+            }
         });
     }
 

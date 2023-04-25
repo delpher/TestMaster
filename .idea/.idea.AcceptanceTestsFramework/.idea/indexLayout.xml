@@ -2,6 +2,7 @@
 <project version="4">
   <component name="UserContentModel">
     <attachedFolders>
+      <Path>SampleWpfApplication.AcceptanceTests</Path>
       <Path>TestMaster</Path>
       <Path>TestMaster.Frontend</Path>
     </attachedFolders>
