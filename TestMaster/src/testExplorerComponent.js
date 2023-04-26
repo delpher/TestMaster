@@ -16,12 +16,13 @@ export class TestExplorerComponent {
     _testRunner;
 
     init() {
-        this._endpointsContext = EndpointsParser.parse(document.querySelector("[tm-role='endpoints']"));
+        this._endpointsContext = EndpointsParser.parse(document.body);
         
         this._casesContainer = document.querySelectorAll("[tm-role='test-cases']").item(0);
 
         this._testDisplay = document.createElement('div');
         this._testDisplay.setAttribute('id', 'test-display');
+        this._testDisplay.setAttribute('tm-role', 'test');
         this._testContainer = this._createTestContainer(this._testDisplay);
         this._casesContainer.after(this._testContainer);
         this._loader = document.createElement('div');
@@ -81,7 +82,12 @@ export class TestExplorerComponent {
     }
 
     _loadTestContents(html) {
-        this._testDisplay.innerHTML = html;
+        const testDocument = document.createElement('html');
+        testDocument.innerHTML = html;
+        
+        this._testDisplay.innerHTML = testDocument
+            .querySelectorAll('[tm-role="test"]')
+            .item(0).innerHTML;
     }
 
     _hideTestCases() {

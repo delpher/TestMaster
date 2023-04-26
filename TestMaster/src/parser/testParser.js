@@ -3,7 +3,7 @@ import {TestSequenceParser} from "./testSequenceParser";
 import {TestAssertParser} from "./testAssertParser";
 
 export class TestParser {
-    static build(node) {
+    static parse(node) {
         const setup = this._parseSetup(node);
         const act = this._parseAct(node);
         const assert = this._parseAssert(node);

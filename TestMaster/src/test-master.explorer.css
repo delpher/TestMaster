@@ -1,0 +1,41 @@
+@import "test-master.standalone.css";
+
+html, body {
+    font-family: "Cascadia Mono", Tahoma, Verdana, Arial, sans-serif;
+}
+
+body {
+    padding: 3rem;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+[tm-role="test-cases"] a:link[rel="index"]:after {
+    content: ' 📄';
+}
+
+[tm-role="test-cases"] a:link:after {
+    content: ' 🧪';
+}
+
+[tm-role="test"] [tm-role="test-name"] button {
+    background: none;
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    color: black;
+    margin-left: 1rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    font-size: xx-large;
+    font-weight: bold;
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+[tm-role="test"] [tm-role="test-name"] button:hover {
+    background: rgba(0,255,0,0.5);
+}

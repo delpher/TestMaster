@@ -2,15 +2,15 @@ import {TestParser} from "./parser/testParser";
 
 export class TestRunner {
 
-    _testNode;
+    _node;
     
-    constructor(testNode) {
-        this._testNode = testNode;
+    constructor(node) {
+        this._node = node;
         this._test = this._parseTest();
     }
 
     _parseTest() {
-        return TestParser.build(this._testNode);
+        return TestParser.parse(this._node);
     }
 
     async run(context) {

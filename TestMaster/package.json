@@ -2,7 +2,7 @@
   "name": "test-master",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.js",
+  "main": "src/test-master.standalone.js",
   "scripts": {
     "build": "webpack --config=webpack.config.js",
     "autobuild": "webpack watch --config=webpack.config.js",
@@ -15,6 +15,7 @@
     "cypress": "^12.10.0",
     "filemanager-webpack-plugin": "^8.0.0",
     "html-loader": "^4.2.0",
+    "mini-css-extract-plugin": "^2.7.5",
     "style-loader": "^3.3.2",
     "webpack-cli": "^5.0.1"
   },

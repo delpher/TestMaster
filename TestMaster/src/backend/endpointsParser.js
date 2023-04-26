@@ -3,9 +3,10 @@ import {EndpointParser} from './endpointParser';
 
 export class EndpointsParser {
     static parse(node) {
-        const endpointNodes = node.querySelectorAll('tm-endpoint');
+        const endpointsNode = node.querySelectorAll('[tm-role="endpoints"]').item(0);
+        const endpointNodes = endpointsNode.querySelectorAll('tm-endpoint');
         const endpoints = [];
-        const backendUrl = node.getAttribute('tm-backend');
+        const backendUrl = endpointsNode.getAttribute('tm-backend');
         for (let endpointNode of endpointNodes)
             endpoints.push(EndpointParser.parse(backendUrl, endpointNode));
         return new EndpointContext(endpoints);

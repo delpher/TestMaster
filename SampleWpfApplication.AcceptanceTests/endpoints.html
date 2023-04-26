@@ -1,0 +1,10 @@
+﻿<div tm-role="endpoints" tm-backend="http://localhost:8080">
+  <tm-endpoint name="Index" method="GET"></tm-endpoint>
+  <tm-endpoint name="Index/UserDetailsExample" method="GET"></tm-endpoint>
+  <tm-endpoint name="UserDetails/SetFirstName" method="POST">"{{userName}}"</tm-endpoint>
+  <tm-endpoint name="UserDetails/SetLastName" method="POST">"{{userName}}"</tm-endpoint>
+  <tm-endpoint name="UserDetails/GetFullName" method="GET"></tm-endpoint>
+  <tm-endpoint name="ReturnFailure" method="POST"></tm-endpoint>
+  <tm-endpoint name="ReturnSuccess" method="POST"></tm-endpoint>
+  <tm-endpoint name="ThrowException" method="GET"></tm-endpoint>
+</div>

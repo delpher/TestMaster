@@ -9691,10 +9691,40 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/styles.css":
-/*!**************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/styles.css ***!
-  \**************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/test-master.explorer.css":
+/*!****************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/test-master.explorer.css ***!
+  \****************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_test_master_standalone_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! -!../node_modules/css-loader/dist/cjs.js!./test-master.standalone.css */ "./node_modules/css-loader/dist/cjs.js!./src/test-master.standalone.css");
+// Imports
+
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_test_master_standalone_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\na:link {\r\n    text-decoration: none;\r\n}\r\n\r\n[tm-role=\"test-cases\"] a:link[rel=\"index\"]:after {\r\n    content: ' 📄';\r\n}\r\n\r\n[tm-role=\"test-cases\"] a:link:after {\r\n    content: ' 🧪';\r\n}\r\n\r\n[tm-role=\"test\"] [tm-role=\"test-name\"] button {\r\n    background: none;\r\n    border: solid 2px black;\r\n    border-radius: 5px;\r\n    padding: 0.3rem 1rem 0.3rem 1rem;\r\n    color: black;\r\n    margin-left: 1rem;\r\n    margin-top: 0.2rem;\r\n    margin-bottom: 0.2rem;\r\n    font-size: xx-large;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n    transition-property: background-color;\r\n    transition-duration: 0.3s;\r\n}\r\n\r\n[tm-role=\"test\"] [tm-role=\"test-name\"] button:hover {\r\n    background: rgba(0,255,0,0.5);\r\n}", "",{"version":3,"sources":["webpack://./src/test-master.explorer.css"],"names":[],"mappings":"AAEA;IACI,gEAAgE;AACpE;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,qBAAqB;AACzB;;AAEA;IACI,cAAc;AAClB;;AAEA;IACI,cAAc;AAClB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;IACvB,kBAAkB;IAClB,gCAAgC;IAChC,YAAY;IACZ,iBAAiB;IACjB,kBAAkB;IAClB,qBAAqB;IACrB,mBAAmB;IACnB,iBAAiB;IACjB,eAAe;IACf,qCAAqC;IACrC,yBAAyB;AAC7B;;AAEA;IACI,6BAA6B;AACjC","sourcesContent":["@import \"test-master.standalone.css\";\r\n\r\nhtml, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\na:link {\r\n    text-decoration: none;\r\n}\r\n\r\n[tm-role=\"test-cases\"] a:link[rel=\"index\"]:after {\r\n    content: ' 📄';\r\n}\r\n\r\n[tm-role=\"test-cases\"] a:link:after {\r\n    content: ' 🧪';\r\n}\r\n\r\n[tm-role=\"test\"] [tm-role=\"test-name\"] button {\r\n    background: none;\r\n    border: solid 2px black;\r\n    border-radius: 5px;\r\n    padding: 0.3rem 1rem 0.3rem 1rem;\r\n    color: black;\r\n    margin-left: 1rem;\r\n    margin-top: 0.2rem;\r\n    margin-bottom: 0.2rem;\r\n    font-size: xx-large;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n    transition-property: background-color;\r\n    transition-duration: 0.3s;\r\n}\r\n\r\n[tm-role=\"test\"] [tm-role=\"test-name\"] button:hover {\r\n    background: rgba(0,255,0,0.5);\r\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/test-master.standalone.css":
+/*!******************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/test-master.standalone.css ***!
+  \******************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -9711,7 +9741,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\na:link {\r\n    text-decoration: none;\r\n}\r\n\r\n[tm-role=\"test-cases\"] a:link[rel=\"index\"]:after {\r\n    content: ' 📄';\r\n}\r\n\r\n[tm-role=\"test-cases\"] a:link:after {\r\n    content: ' 🧪';\r\n}\r\n\r\n\r\n[tm-role=\"setup\"] p:first-child,\r\n[tm-role=\"act\"] p:first-child,\r\n[tm-role=\"assert\"] p:first-child {\r\n    font-size: larger;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='endpoints'] {\r\n    display: none;\r\n}\r\n\r\n[tm-role=\"test-name\"] button {\r\n    background: none;\r\n    border: solid 2px black;\r\n    border-radius: 5px;\r\n    padding: 0.3rem 1rem 0.3rem 1rem;\r\n    color: black;\r\n    margin-left: 1rem;\r\n    margin-top: 0.2rem;\r\n    margin-bottom: 0.2rem;\r\n    font-size: xx-large;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n    transition-property: background-color;\r\n    transition-duration: 0.3s;\r\n}\r\n\r\n[tm-role=\"test-name\"] button:hover {\r\n    background: rgba(0,255,0,0.5);\r\n}\r\n\r\n[tm-arg] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='expected'] {\r\n    color: darkgreen;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n.running:before {\r\n    content: '⌛';\r\n}\r\n\r\n.failure:before {\r\n    content: '❌'\r\n}\r\n\r\n.success:before {\r\n    content: '✅'\r\n}\r\n\r\np.error:before {\r\n    content: '❌'\r\n}\r\n\r\nspan.error {\r\n    color: darkred;\r\n    padding-left: 2rem;\r\n}\r\n\r\nspan.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}\r\n\r\ntable {\r\n    border-spacing: 0;\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n    text-align: left;\r\n}\r\n\r\ntable th, table td {\r\n    border: solid 2px black;\r\n    padding-left: 1rem;\r\n}", "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,gEAAgE;AACpE;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,qBAAqB;AACzB;;AAEA;IACI,cAAc;AAClB;;AAEA;IACI,cAAc;AAClB;;;AAGA;;;IAGI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;IACvB,kBAAkB;IAClB,gCAAgC;IAChC,YAAY;IACZ,iBAAiB;IACjB,kBAAkB;IAClB,qBAAqB;IACrB,mBAAmB;IACnB,iBAAiB;IACjB,eAAe;IACf,qCAAqC;IACrC,yBAAyB;AAC7B;;AAEA;IACI,6BAA6B;AACjC;;AAEA;IACI,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI;AACJ;;AAEA;IACI;AACJ;;AAEA;IACI;AACJ;;AAEA;IACI,cAAc;IACd,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,yBAAyB;IACzB,WAAW;IACX,gBAAgB;AACpB;;AAEA;IACI,uBAAuB;IACvB,kBAAkB;AACtB","sourcesContent":["html, body {\r\n    font-family: \"Cascadia Mono\", Tahoma, Verdana, Arial, sans-serif;\r\n}\r\n\r\nbody {\r\n    padding: 3rem;\r\n}\r\n\r\na:link {\r\n    text-decoration: none;\r\n}\r\n\r\n[tm-role=\"test-cases\"] a:link[rel=\"index\"]:after {\r\n    content: ' 📄';\r\n}\r\n\r\n[tm-role=\"test-cases\"] a:link:after {\r\n    content: ' 🧪';\r\n}\r\n\r\n\r\n[tm-role=\"setup\"] p:first-child,\r\n[tm-role=\"act\"] p:first-child,\r\n[tm-role=\"assert\"] p:first-child {\r\n    font-size: larger;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='endpoints'] {\r\n    display: none;\r\n}\r\n\r\n[tm-role=\"test-name\"] button {\r\n    background: none;\r\n    border: solid 2px black;\r\n    border-radius: 5px;\r\n    padding: 0.3rem 1rem 0.3rem 1rem;\r\n    color: black;\r\n    margin-left: 1rem;\r\n    margin-top: 0.2rem;\r\n    margin-bottom: 0.2rem;\r\n    font-size: xx-large;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n    transition-property: background-color;\r\n    transition-duration: 0.3s;\r\n}\r\n\r\n[tm-role=\"test-name\"] button:hover {\r\n    background: rgba(0,255,0,0.5);\r\n}\r\n\r\n[tm-arg] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='expected'] {\r\n    color: darkgreen;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n.running:before {\r\n    content: '⌛';\r\n}\r\n\r\n.failure:before {\r\n    content: '❌'\r\n}\r\n\r\n.success:before {\r\n    content: '✅'\r\n}\r\n\r\np.error:before {\r\n    content: '❌'\r\n}\r\n\r\nspan.error {\r\n    color: darkred;\r\n    padding-left: 2rem;\r\n}\r\n\r\nspan.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}\r\n\r\ntable {\r\n    border-spacing: 0;\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n    text-align: left;\r\n}\r\n\r\ntable th, table td {\r\n    border: solid 2px black;\r\n    padding-left: 1rem;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "[tm-role=\"test\"] [tm-role=\"setup\"] p:first-child,\r\n[tm-role=\"test\"] [tm-role=\"act\"] p:first-child,\r\n[tm-role=\"test\"] [tm-role=\"assert\"] p:first-child {\r\n    font-size: larger;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='endpoints'] {\r\n    display: none;\r\n}\r\n\r\n[tm-role=\"test\"] [tm-arg] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role=\"test\"] [tm-role='expected'] {\r\n    color: darkgreen;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role=\"test\"] [tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n[tm-role=\"test\"] .running:before {\r\n    content: '⌛';\r\n}\r\n\r\n[tm-role=\"test\"] .failure:before {\r\n    content: '❌'\r\n}\r\n\r\n[tm-role=\"test\"] .success:before {\r\n    content: '✅'\r\n}\r\n\r\n[tm-role=\"test\"] p.error:before {\r\n    content: '❌'\r\n}\r\n\r\n[tm-role=\"test\"] span.error {\r\n    color: darkred;\r\n    padding-left: 2rem;\r\n}\r\n\r\n[tm-role=\"test\"] span.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}", "",{"version":3,"sources":["webpack://./src/test-master.standalone.css"],"names":[],"mappings":"AAAA;;;IAGI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI;AACJ;;AAEA;IACI;AACJ;;AAEA;IACI;AACJ;;AAEA;IACI,cAAc;IACd,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,kBAAkB;AACtB","sourcesContent":["[tm-role=\"test\"] [tm-role=\"setup\"] p:first-child,\r\n[tm-role=\"test\"] [tm-role=\"act\"] p:first-child,\r\n[tm-role=\"test\"] [tm-role=\"assert\"] p:first-child {\r\n    font-size: larger;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role='endpoints'] {\r\n    display: none;\r\n}\r\n\r\n[tm-role=\"test\"] [tm-arg] {\r\n    color: darkred;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role=\"test\"] [tm-role='expected'] {\r\n    color: darkgreen;\r\n    font-weight: bold;\r\n}\r\n\r\n[tm-role=\"test\"] [tm-role='assert'] p:first-child {\r\n    font-weight: bold;\r\n    font-size: larger;\r\n}\r\n\r\n[tm-role=\"test\"] .running:before {\r\n    content: '⌛';\r\n}\r\n\r\n[tm-role=\"test\"] .failure:before {\r\n    content: '❌'\r\n}\r\n\r\n[tm-role=\"test\"] .success:before {\r\n    content: '✅'\r\n}\r\n\r\n[tm-role=\"test\"] p.error:before {\r\n    content: '❌'\r\n}\r\n\r\n[tm-role=\"test\"] span.error {\r\n    color: darkred;\r\n    padding-left: 2rem;\r\n}\r\n\r\n[tm-role=\"test\"] span.error {\r\n    font-size: smaller;\r\n    font-style: italic;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11602,10 +11632,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./src/styles.css":
-/*!************************!*\
-  !*** ./src/styles.css ***!
-  \************************/
+/***/ "./src/test-master.explorer.css":
+/*!**************************************!*\
+  !*** ./src/test-master.explorer.css ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -11625,7 +11655,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_styles_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../node_modules/css-loader/dist/cjs.js!./styles.css */ "./node_modules/css-loader/dist/cjs.js!./src/styles.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_test_master_explorer_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../node_modules/css-loader/dist/cjs.js!./test-master.explorer.css */ "./node_modules/css-loader/dist/cjs.js!./src/test-master.explorer.css");
 
       
       
@@ -11647,12 +11677,67 @@ options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWi
 options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
 options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_test_master_explorer_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
 
 
 
 
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_test_master_explorer_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_test_master_explorer_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_test_master_explorer_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/test-master.standalone.css":
+/*!****************************************!*\
+  !*** ./src/test-master.standalone.css ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_test_master_standalone_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../node_modules/css-loader/dist/cjs.js!./test-master.standalone.css */ "./node_modules/css-loader/dist/cjs.js!./src/test-master.standalone.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_test_master_standalone_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_test_master_standalone_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_test_master_standalone_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_test_master_standalone_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -12418,11 +12503,15 @@ __webpack_require__.r(__webpack_exports__);
     constructor(endpoints) {
         this._endpoints = endpoints;
     }
-    
+   
     invoke(name, parameters) {
         const endpoint = this._endpoints.filter(endpoint => endpoint._name === name)[0];
         if (endpoint) return endpoint.invoke(parameters);
         throw new Error(`Endpoint ${name} not found.`);
+    }
+    
+    join(otherContext) {
+        return new EndpointContext(this._endpoints.concat(otherContext._endpoints));
     }
 }
 
@@ -12479,9 +12568,10 @@ __webpack_require__.r(__webpack_exports__);
 
 class EndpointsParser {
     static parse(node) {
-        const endpointNodes = node.querySelectorAll('tm-endpoint');
+        const endpointsNode = node.querySelectorAll('[tm-role="endpoints"]').item(0);
+        const endpointNodes = endpointsNode.querySelectorAll('tm-endpoint');
         const endpoints = [];
-        const backendUrl = node.getAttribute('tm-backend');
+        const backendUrl = endpointsNode.getAttribute('tm-backend');
         for (let endpointNode of endpointNodes)
             endpoints.push(_endpointParser__WEBPACK_IMPORTED_MODULE_1__.EndpointParser.parse(backendUrl, endpointNode));
         return new _endpointContext__WEBPACK_IMPORTED_MODULE_0__.EndpointContext(endpoints);
@@ -12792,7 +12882,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class TestParser {
-    static build(node) {
+    static parse(node) {
         const setup = this._parseSetup(node);
         const act = this._parseAct(node);
         const assert = this._parseAssert(node);
@@ -12968,12 +13058,13 @@ class TestExplorerComponent {
     _testRunner;
 
     init() {
-        this._endpointsContext = _backend_endpointsParser__WEBPACK_IMPORTED_MODULE_1__.EndpointsParser.parse(document.querySelector("[tm-role='endpoints']"));
+        this._endpointsContext = _backend_endpointsParser__WEBPACK_IMPORTED_MODULE_1__.EndpointsParser.parse(document.body);
         
         this._casesContainer = document.querySelectorAll("[tm-role='test-cases']").item(0);
 
         this._testDisplay = document.createElement('div');
         this._testDisplay.setAttribute('id', 'test-display');
+        this._testDisplay.setAttribute('tm-role', 'test');
         this._testContainer = this._createTestContainer(this._testDisplay);
         this._casesContainer.after(this._testContainer);
         this._loader = document.createElement('div');
@@ -13033,7 +13124,12 @@ class TestExplorerComponent {
     }
 
     _loadTestContents(html) {
-        this._testDisplay.innerHTML = html;
+        const testDocument = document.createElement('html');
+        testDocument.innerHTML = html;
+        
+        this._testDisplay.innerHTML = testDocument
+            .querySelectorAll('[tm-role="test"]')
+            .item(0).innerHTML;
     }
 
     _hideTestCases() {
@@ -13103,15 +13199,15 @@ __webpack_require__.r(__webpack_exports__);
 
 class TestRunner {
 
-    _testNode;
+    _node;
     
-    constructor(testNode) {
-        this._testNode = testNode;
+    constructor(node) {
+        this._node = node;
         this._test = this._parseTest();
     }
 
     _parseTest() {
-        return _parser_testParser__WEBPACK_IMPORTED_MODULE_0__.TestParser.build(this._testNode);
+        return _parser_testParser__WEBPACK_IMPORTED_MODULE_0__.TestParser.parse(this._node);
     }
 
     async run(context) {
@@ -14174,19 +14270,21 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/*!*********************!*\
-  !*** ./src/main.js ***!
-  \*********************/
+/*!*************************************!*\
+  !*** ./src/test-master.explorer.js ***!
+  \*************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ "./src/styles.css");
-/* harmony import */ var _testExplorerComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./testExplorerComponent */ "./src/testExplorerComponent.js");
+/* harmony import */ var _test_master_explorer_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test-master.explorer.css */ "./src/test-master.explorer.css");
+/* harmony import */ var _test_master_standalone_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./test-master.standalone.css */ "./src/test-master.standalone.css");
+/* harmony import */ var _testExplorerComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./testExplorerComponent */ "./src/testExplorerComponent.js");
 
 
 
-const testExplorerComponent = new _testExplorerComponent__WEBPACK_IMPORTED_MODULE_1__.TestExplorerComponent();
+
+const testExplorerComponent = new _testExplorerComponent__WEBPACK_IMPORTED_MODULE_2__.TestExplorerComponent();
 testExplorerComponent.init();
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=test-master.js.map
+//# sourceMappingURL=test-master.explorer.js.map

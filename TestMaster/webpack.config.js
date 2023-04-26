@@ -2,12 +2,15 @@ const path = require('path');
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 
 module.exports = {
-    entry: './src/main.js',
+    entry: {
+        'test-master.explorer': './src/test-master.explorer.js',
+        'test-master.standalone': './src/test-master.standalone.js'
+    },
     mode: 'development',
     devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'test-master.js',
+        filename: '[name].js',
     },
     module: {
         rules: [
@@ -27,11 +30,19 @@ module.exports = {
                 onEnd: {
                     copy: [
                         {
+                            source: './src/test-master.standalone.css',
+                            destination: './dist/test-master.standalone.css'
+                        },
+                        {
                             source: './dist/**/*.js',
                             destination: '../SampleWpfApplication.AcceptanceTests/scripts'
                         },
                         {
                             source: './dist/**/*.map',
+                            destination: '../SampleWpfApplication.AcceptanceTests/scripts'
+                        },
+                        {
+                            source: './dist/**/*.css',
                             destination: '../SampleWpfApplication.AcceptanceTests/scripts'
                         },
                     ]

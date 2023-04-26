@@ -1,0 +1,51 @@
+﻿[tm-role="test"] [tm-role="setup"] p:first-child,
+[tm-role="test"] [tm-role="act"] p:first-child,
+[tm-role="test"] [tm-role="assert"] p:first-child {
+    font-size: larger;
+    font-weight: bold;
+}
+
+[tm-role='endpoints'] {
+    display: none;
+}
+
+[tm-role="test"] [tm-arg] {
+    color: darkred;
+    font-weight: bold;
+}
+
+[tm-role="test"] [tm-role='expected'] {
+    color: darkgreen;
+    font-weight: bold;
+}
+
+[tm-role="test"] [tm-role='assert'] p:first-child {
+    font-weight: bold;
+    font-size: larger;
+}
+
+[tm-role="test"] .running:before {
+    content: '⌛';
+}
+
+[tm-role="test"] .failure:before {
+    content: '❌'
+}
+
+[tm-role="test"] .success:before {
+    content: '✅'
+}
+
+[tm-role="test"] p.error:before {
+    content: '❌'
+}
+
+[tm-role="test"] span.error {
+    color: darkred;
+    padding-left: 2rem;
+}
+
+[tm-role="test"] span.error {
+    font-size: smaller;
+    font-style: italic;
+}
