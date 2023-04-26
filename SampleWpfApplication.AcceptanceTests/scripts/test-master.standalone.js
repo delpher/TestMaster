@@ -12008,12 +12008,50 @@ __webpack_require__.r(__webpack_exports__);
 class EndpointsParser {
     static parse(node) {
         const endpointsNode = node.querySelectorAll('[tm-role="endpoints"]').item(0);
+        if (!endpointsNode) return new _endpointContext__WEBPACK_IMPORTED_MODULE_0__.EndpointContext([]);
+        
         const endpointNodes = endpointsNode.querySelectorAll('tm-endpoint');
         const endpoints = [];
         const backendUrl = endpointsNode.getAttribute('tm-backend');
         for (let endpointNode of endpointNodes)
             endpoints.push(_endpointParser__WEBPACK_IMPORTED_MODULE_1__.EndpointParser.parse(backendUrl, endpointNode));
         return new _endpointContext__WEBPACK_IMPORTED_MODULE_0__.EndpointContext(endpoints);
+    }
+}
+
+/***/ }),
+
+/***/ "./src/backend/externalEndpointsParser.js":
+/*!************************************************!*\
+  !*** ./src/backend/externalEndpointsParser.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ExternalEndpointsParser": () => (/* binding */ ExternalEndpointsParser)
+/* harmony export */ });
+/* harmony import */ var _endpointContext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./endpointContext */ "./src/backend/endpointContext.js");
+/* harmony import */ var _endpointsParser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./endpointsParser */ "./src/backend/endpointsParser.js");
+﻿
+
+
+class ExternalEndpointsParser {
+    static async parse() {
+        let emptyContext = new _endpointContext__WEBPACK_IMPORTED_MODULE_0__.EndpointContext([]);
+
+        const links = document.querySelectorAll('link[rel="endpoints"]');
+        if (links.length === 0) return emptyContext;
+
+        let endpointsUrl = links.item(0).href;
+        const response = await fetch(endpointsUrl);
+        if (!response.ok) throw new Error(`Failed to load endpoint from: ${endpointsUrl}`)
+
+        const container = document.createElement('div');
+        container.innerHTML = await response.text();
+
+        return _endpointsParser__WEBPACK_IMPORTED_MODULE_1__.EndpointsParser.parse(container);
     }
 }
 
@@ -12035,7 +12073,7 @@ __webpack_require__.r(__webpack_exports__);
 
 class ParameterlessEndpoint extends _endpoint__WEBPACK_IMPORTED_MODULE_0__.Endpoint {
     async invokeBackendEndpoint(parameters, requestUrl) {
-        return await fetch(requestUrl);
+        return fetch(requestUrl);
     }
 }
 
@@ -12478,23 +12516,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TestRunner": () => (/* binding */ TestRunner)
 /* harmony export */ });
 /* harmony import */ var _parser_testParser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./parser/testParser */ "./src/parser/testParser.js");
+/* harmony import */ var _backend_endpointsParser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./backend/endpointsParser */ "./src/backend/endpointsParser.js");
+
 
 
 class TestRunner {
-
     _node;
+    _test;
+    _testEndpoints;
     
     constructor(node) {
         this._node = node;
         this._test = this._parseTest();
+        this._testEndpoints = this._parseTestEndpoints(node);
+    }
+
+    async run(globalContext) {
+        const context = globalContext.join(this._testEndpoints); 
+        await this._test.execute(context)
     }
 
     _parseTest() {
         return _parser_testParser__WEBPACK_IMPORTED_MODULE_0__.TestParser.parse(this._node);
     }
 
-    async run(context) {
-        await this._test.execute(context)
+    _parseTestEndpoints(node) {
+        return  _backend_endpointsParser__WEBPACK_IMPORTED_MODULE_1__.EndpointsParser.parse(node);
     }
 }
 
@@ -13541,49 +13588,24 @@ var __webpack_exports__ = {};
   \***************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _testRunner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./testRunner */ "./src/testRunner.js");
-/* harmony import */ var _backend_endpointsParser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./backend/endpointsParser */ "./src/backend/endpointsParser.js");
-/* harmony import */ var _backend_endpointContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./backend/endpointContext */ "./src/backend/endpointContext.js");
+/* harmony import */ var _backend_externalEndpointsParser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./backend/externalEndpointsParser */ "./src/backend/externalEndpointsParser.js");
 ﻿
 
 
-
 (async () => {
-    const testNode = document.querySelectorAll('[tm-role="test"]').item(0);
+    const tests = [];
+    
+    const globalContext = await _backend_externalEndpointsParser__WEBPACK_IMPORTED_MODULE_1__.ExternalEndpointsParser.parse();
 
-    function parseInlineEndpoints() {
-        const inlineEndpoints = document.querySelectorAll('[tm-role="endpoints"]');
-        let inlineContext = new _backend_endpointContext__WEBPACK_IMPORTED_MODULE_2__.EndpointContext([]);
-        
-        if (inlineEndpoints.length === 1)
-            inlineContext = _backend_endpointsParser__WEBPACK_IMPORTED_MODULE_1__.EndpointsParser.parse(inlineEndpoints.item(0));
+    document
+        .querySelectorAll('[tm-role="test"]')
+        .forEach(testNode => tests.push(runTest(globalContext, testNode)));
 
-        return inlineContext;
-    }
+    await Promise.all(tests);
 
-    if (testNode) {
-
-        let linkedEndpoints = await prefetchLinkedEndpoints();
-
+    async function runTest(globalContext, testNode) {
         const runner = new _testRunner__WEBPACK_IMPORTED_MODULE_0__.TestRunner(testNode);
-        const inlineEndpoints = parseInlineEndpoints();
-        
-        await runner.run(linkedEndpoints.join(inlineEndpoints));
-    }
-
-    async function prefetchLinkedEndpoints() {
-        let emptyContext = new _backend_endpointContext__WEBPACK_IMPORTED_MODULE_2__.EndpointContext([]);
-
-        const links = document.querySelectorAll('link[rel="endpoints"]');
-        if (links.length === 0) return emptyContext;
-
-        let endpointsUrl = links.item(0).href;
-        const response = await fetch(endpointsUrl);
-        if (!response.ok) throw new Error(`Failed to load endpoint from: ${endpointsUrl}`)
-
-        const container = document.createElement('div');
-        container.innerHTML = await response.text();
-
-        return _backend_endpointsParser__WEBPACK_IMPORTED_MODULE_1__.EndpointsParser.parse(container);
+        await runner.run(globalContext);
     }
 })();
 })();

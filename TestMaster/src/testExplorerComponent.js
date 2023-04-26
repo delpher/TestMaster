@@ -1,9 +1,16 @@
 ﻿import {TestRunner} from './testRunner';
 import {EndpointsParser} from './backend/endpointsParser';
+import {ExternalEndpointsParser} from './backend/externalEndpointsParser';
 
 class ContentsLoadError extends Error {
     constructor(response) {
         super(`Failed to load test case contents. ${response.status} ${response.statusText}`);
+    }
+}
+
+class ContentsParseError extends Error {
+    constructor(error) {
+        super(`Failed to parse test case contents. ${error}`);
     }
 }
 
@@ -15,8 +22,9 @@ export class TestExplorerComponent {
     _endpointsContext;
     _testRunner;
 
-    init() {
-        this._endpointsContext = EndpointsParser.parse(document.body);
+    async init() {
+        const externalEndpoints = await ExternalEndpointsParser.parse();
+        this._endpointsContext = externalEndpoints.join(EndpointsParser.parse(document.body));
         
         this._casesContainer = document.querySelectorAll("[tm-role='test-cases']").item(0);
 
@@ -62,11 +70,16 @@ export class TestExplorerComponent {
         try {
             const response = await fetch(url, {cache: 'no-store'})
             if (response.ok) {
-                const html = await response.text();
-                this._loadTestContents(html);
-                this._showTestContents();
-                this._appendRunTestButton();
-                this._initializeTest();
+                try {
+                    const html = await response.text();
+                    this._loadTestContents(html);
+                    this._showTestContents();
+                    this._appendRunTestButton();
+                    this._initializeTest();
+                } catch (error)
+                {
+                    this._showError(new ContentsParseError(error))
+                }
             } else
                 this._showError(new ContentsLoadError(response));
 
@@ -108,7 +121,7 @@ export class TestExplorerComponent {
     }
 
     _showError(error) {
-        this._loadTestContents(`<b>FAILED TO LOAD TEST</b><br/>${error}`)
+        this._testDisplay.innerHTML = `<b>FAILED TO LOAD TEST</b><br/>${error}`;
         this._showTestContents();
         error.response && console.error(error.message, error.response);
     }

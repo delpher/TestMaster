@@ -2,6 +2,6 @@
 
 export class ParameterlessEndpoint extends Endpoint {
     async invokeBackendEndpoint(parameters, requestUrl) {
-        return await fetch(requestUrl);
+        return fetch(requestUrl);
     }
 }
