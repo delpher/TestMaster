@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SampleWpfApplication.TestAssist.Wpf;
+namespace TestMaster.Assistant.DotNet.Wpf;
 
 public abstract class FrameworkElementTestAdapter<TElement> where TElement: FrameworkElement
 {

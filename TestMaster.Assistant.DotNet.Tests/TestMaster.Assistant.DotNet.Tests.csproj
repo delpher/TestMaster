@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TestAssist\TestAssist.csproj" />
+      <ProjectReference Include="..\TestMaster.Assistant.DotNet\TestMaster.Assistant.DotNet.csproj" />
     </ItemGroup>
 
 </Project>

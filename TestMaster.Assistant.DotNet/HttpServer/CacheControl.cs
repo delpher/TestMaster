@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace TestAssist.HttpServer;
+namespace TestMaster.Assistant.DotNet.HttpServer;
 
 public static class CacheControl
 {

@@ -2,7 +2,7 @@
 using System.Windows.Navigation;
 using SampleWpfApplication.Pages;
 using SampleWpfApplication.TestEndpoints;
-using TestAssist;
+using TestMaster.Assistant.DotNet;
 
 namespace SampleWpfApplication;
 

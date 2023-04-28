@@ -8,7 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TestAssist\TestAssist.csproj" />
+      <ProjectReference Include="..\TestMaster.Assistant.DotNet.Wpf\TestMaster.Assistant.DotNet.Wpf.csproj" />
+      <ProjectReference Include="..\TestMaster.Assistant.DotNet\TestMaster.Assistant.DotNet.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="TestAssist.Wpf\" />
     </ItemGroup>
 
 </Project>

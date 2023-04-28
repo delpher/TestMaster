@@ -1,5 +1,5 @@
 ﻿using System;
-using TestAssist;
+using TestMaster.Assistant.DotNet;
 
 namespace SampleWpfApplication.TestEndpoints;
 

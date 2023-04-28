@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace SampleWpfApplication.TestAssist.Wpf;
+namespace TestMaster.Assistant.DotNet.Wpf;
 
 public abstract class PageTestAdapter<T> : FrameworkElementTestAdapter<T> where T: Page
 {

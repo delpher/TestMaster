@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 
-namespace TestAssist.HttpServer;
+namespace TestMaster.Assistant.DotNet.HttpServer;
 
 internal static class ResponseHelper
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace TestAssist;
+namespace TestMaster.Assistant.DotNet;
 
 public class ParameterlessEndpointHandler : EndpointHandler
 {

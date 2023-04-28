@@ -1,5 +1,5 @@
-﻿using SampleWpfApplication.TestAssist.Wpf;
-using TestAssist;
+﻿using TestMaster.Assistant.DotNet;
+using TestMaster.Assistant.DotNet.Wpf;
 
 namespace SampleWpfApplication.Pages;
 

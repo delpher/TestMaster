@@ -1,4 +1,4 @@
-﻿namespace TestAssist;
+﻿namespace TestMaster.Assistant.DotNet;
 
 public static class TestAssistServer
 {

@@ -1,4 +1,4 @@
-﻿namespace TestAssist.HttpServer;
+﻿namespace TestMaster.Assistant.DotNet.HttpServer;
 
 public class ServerStartupArguments
 {

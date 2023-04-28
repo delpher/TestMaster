@@ -2,7 +2,7 @@
 using System.Net;
 using Microsoft.AspNetCore.Http;
 
-namespace TestAssist;
+namespace TestMaster.Assistant.DotNet;
 
 public class TestEndpointsServer : HttpServer.HttpServer
 {
