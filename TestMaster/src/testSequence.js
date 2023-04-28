@@ -6,8 +6,8 @@ export class TestSequence {
         this._steps = steps;
     }
 
-    async execute(context) {
+    async execute(context, reporter) {
         for (let step of this._steps)
-            await step.execute(context);
+            await step.execute(context, reporter);
     }
 }

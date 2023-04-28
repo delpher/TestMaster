@@ -4,7 +4,7 @@ import {TestExpectationParser} from "./testExpectationParser";
 import {TestUnknownExpectation} from "../expectations/testUnknownExpectation";
 
 export class TestAssertParser {
-    static build(node) {
+    static parse(node) {
         const expectations = [];
         node.querySelectorAll('[tm-role="expect"]').forEach(
             n => expectations.push(this._createExpectation(n))

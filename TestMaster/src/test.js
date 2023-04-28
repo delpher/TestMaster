@@ -9,9 +9,9 @@ export class Test {
         this._assert = assert;
     }
 
-    async execute(context) {
-        await this._setup.execute(context);
-        await this._act.execute(context);
-        await this._assert.execute(context);
+    async execute(context, reporter) {
+        await this._setup.execute(context, reporter);
+        await this._act.execute(context, reporter);
+        await this._assert.execute(context, reporter);
     }
 }

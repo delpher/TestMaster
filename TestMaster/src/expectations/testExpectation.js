@@ -5,28 +5,30 @@ export class TestExpectation extends TestSequenceStep {
     _expectation;
     _expectedValue;
     _assert;
+    _node;
     
-    constructor(endpointInvocator, view, expectation, expectedValue) {
-        super(endpointInvocator, view);
+    constructor(endpointInvocator, expectation, expectedValue, node) {
+        super(endpointInvocator, node);
+        this._node = node;
         this._assert = assert;
         this._expectation = expectation;
         this._expectedValue = expectedValue;
     }
     
-    handleResult(invocationResult) {
+    handleResult(invocationResult, reporter) {
         try {
             this._runExpectation(invocationResult);
-            this._view.showSuccess();
+            reporter.success(this._node);
         } catch (error) {
-            return this._handleError(error);
+            return this._handleError(error, reporter);
         }
     }
 
-    _handleError(error) {
+    _handleError(error, reporter) {
         if (error instanceof AssertionError) {
-            this._view.showFailure(error);
+            reporter.failure(this._node, error);
         } else {
-            this._view.showError(error);
+            reporter.error(this._node, error);
         }
     }
 

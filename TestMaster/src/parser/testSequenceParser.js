@@ -3,17 +3,17 @@
 import {TestSequenceStepParser} from "./testSequenceStepParser";
 
 export class TestSequenceParser {
-    static build(node) {
+    static parse(node) {
         const steps = [];
 
         node
             .querySelectorAll('p[tm-call]')
-            .forEach(n => steps.push(this._createStep(n)));
+            .forEach(n => steps.push(this._parseStep(n)));
 
         return new TestSequence(steps);
     }
 
-    static _createStep(node) {
-        return TestSequenceStepParser.build(node);
+    static _parseStep(node) {
+        return TestSequenceStepParser.parse(node);
     }
 }

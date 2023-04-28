@@ -1,15 +1,9 @@
 ﻿import {TestSequenceStep} from "../testSequenceStep";
-import {TestSequenceStepView} from "../testSequenceStepView";
 import {TestEndpointInvocatorParser} from "./testEndpointInvocatorParser";
 
 export class TestSequenceStepParser {
-    static build(node) {
+    static parse(node) {
         const endpointInvocator = TestEndpointInvocatorParser.parse(node);
-        const view = this._createView(node);
-        return new TestSequenceStep(endpointInvocator, view);
-    }
-
-    static _createView(node) {
-        return new TestSequenceStepView(node);
+        return new TestSequenceStep(endpointInvocator, node);
     }
 }

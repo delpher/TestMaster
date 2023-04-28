@@ -1,14 +1,12 @@
-﻿import {TestSequenceStepParser} from "./testSequenceStepParser";
-import {TestEndpointInvocatorParser} from "./testEndpointInvocatorParser";
+﻿import {TestEndpointInvocatorParser} from "./testEndpointInvocatorParser";
 import {TestExpectation} from "../expectations/testExpectation";
 
 export class TestExpectationParser {
     static build(node) {
         const endpointInvocator = TestEndpointInvocatorParser.parse(node);
-        const view = TestSequenceStepParser._createView(node);
         const expectation = this._parseExpectation(node);
         const expectedValue = this._parseExpectedValue(node);
-        return new TestExpectation(endpointInvocator, view, expectation, expectedValue);
+        return new TestExpectation(endpointInvocator, expectation, expectedValue, node);
     }
 
     static _parseExpectation(node) {

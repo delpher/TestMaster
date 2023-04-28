@@ -10,15 +10,15 @@ export class TestParser {
         return new Test(setup, act, assert);
     }
 
-    static _parseAssert(node) {
-        return TestAssertParser.build(node.querySelectorAll('div[tm-role="assert"]').item(0));
+    static _parseSetup(node) {
+        return TestSequenceParser.parse(node.querySelectorAll('div[tm-role="setup"]').item(0));
     }
 
     static _parseAct(node) {
-        return TestSequenceParser.build(node.querySelectorAll('div[tm-role="act"]').item(0));
+        return TestSequenceParser.parse(node.querySelectorAll('div[tm-role="act"]').item(0));
     }
 
-    static _parseSetup(node) {
-        return TestSequenceParser.build(node.querySelectorAll('div[tm-role="setup"]').item(0));
+    static _parseAssert(node) {
+        return TestAssertParser.parse(node.querySelectorAll('div[tm-role="assert"]').item(0));
     }
 }
